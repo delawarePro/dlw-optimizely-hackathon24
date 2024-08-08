@@ -1,0 +1,51 @@
+{
+  "key": "CampaignPage",
+  "displayName": "Campaign Page",
+  "description": "",
+  "baseType": "experience",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod",
+    "routing"
+  ],
+  "usage": [
+    "instance"
+  ],
+  "mayContainTypes": [
+    "*"
+  ],
+  "mediaFileExtensions": [],
+  "created": "2024-08-08T09:30:21.3459992+00:00",
+  "lastModified": "2024-08-08T09:31:51.1613427+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {
+    "Title": {
+      "type": "string",
+      "displayName": "Title",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Categories",
+      "sortOrder": -100,
+      "editorSettings": {}
+    },
+    "Content": {
+      "type": "array",
+      "displayName": "Content",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Categories",
+      "sortOrder": 0,
+      "editorSettings": {},
+      "items": {
+        "type": "content",
+        "allowedTypes": [],
+        "restrictedTypes": []
+      }
+    }
+  }
+}

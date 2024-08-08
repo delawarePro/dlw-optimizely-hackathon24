@@ -1,0 +1,25 @@
+{
+  "key": "BlankExperience",
+  "displayName": "Blank Experience",
+  "description": "An experience without a predefined layout.",
+  "baseType": "experience",
+  "source": "serverModel",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod",
+    "routing"
+  ],
+  "usage": [
+    "instance"
+  ],
+  "mayContainTypes": [
+    "*"
+  ],
+  "mediaFileExtensions": [],
+  "created": "2024-04-29T07:59:35.84+00:00",
+  "lastModified": "2024-07-11T16:39:36.8546862+00:00",
+  "lastModifiedBy": "",
+  "properties": {}
+}
