@@ -1,0 +1,4 @@
+fragment WebEssentialQuoteData on WebEssentialQuote {
+  Text { json, html }
+  Author
+}

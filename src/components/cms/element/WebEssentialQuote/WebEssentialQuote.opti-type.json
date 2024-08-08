@@ -1,0 +1,46 @@
+{
+  "key": "WebEssentialQuote",
+  "displayName": "Quote - Web Essential",
+  "description": "",
+  "baseType": "element",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod"
+  ],
+  "usage": [
+    "property",
+    "instance"
+  ],
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "created": "2024-08-08T15:08:48.186971+00:00",
+  "lastModified": "2024-08-08T15:13:09.9461202+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {
+    "Text": {
+      "type": "string",
+      "format": "html",
+      "displayName": "Text",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "Author": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Author",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    }
+  }
+}

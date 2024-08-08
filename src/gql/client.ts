@@ -42,9 +42,19 @@ export const IElementDataFragmentDoc = /*#__PURE__*/ gql`
   _type: __typename
 }
     `;
+export const WebEssentialQuoteDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment WebEssentialQuoteData on WebEssentialQuote {
+  Text {
+    json
+    html
+  }
+  Author
+}
+    `;
 export const ElementDataFragmentDoc = /*#__PURE__*/ gql`
     fragment ElementData on _IElement {
   ...IElementData
+  ...WebEssentialQuoteData
 }
     `;
 export const CompositionDataFragmentDoc = /*#__PURE__*/ gql`
@@ -141,6 +151,7 @@ ${ExperienceDataFragmentDoc}
 ${CompositionDataFragmentDoc}
 ${ElementDataFragmentDoc}
 ${IElementDataFragmentDoc}
+${WebEssentialQuoteDataFragmentDoc}
 ${CampaignPageDataFragmentDoc}`;
 export const getContentByPathDocument = /*#__PURE__*/ gql`
     query getContentByPath($path: String!, $version: String, $locale: [Locales!], $domain: String) {
@@ -163,6 +174,7 @@ ${ExperienceDataFragmentDoc}
 ${CompositionDataFragmentDoc}
 ${ElementDataFragmentDoc}
 ${IElementDataFragmentDoc}
+${WebEssentialQuoteDataFragmentDoc}
 ${CampaignPageDataFragmentDoc}
 ${BlockDataFragmentDoc}`;
 
