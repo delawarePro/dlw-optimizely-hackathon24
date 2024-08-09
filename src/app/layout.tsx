@@ -18,12 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        <main>
-          {children}
-        </main>
-      </body>
+    <head>
+      <link rel="stylesheet" href="/assets/css/main.css"/>
+      <script type="module" src="/assets/js/vendor.mjs"></script>
+      <script type="module" src="/assets/js/main.mjs"></script>
+    </head>
+    <body className={inter.className}>
+    <Header/>
+    <main>
+      {children}
+    </main>
+    </body>
     </html>
   );
 }

@@ -1,5 +1,6 @@
 import { CmsComponent } from "@remkoj/optimizely-cms-react";
 import { WebEssentialQuoteDataFragmentDoc, type WebEssentialQuoteDataFragment } from "@/gql/graphql";
+import WeQuote from "@/components/web-essentials/quote/quote";
 
 /**
  * Quote - Web Essential
@@ -9,7 +10,7 @@ export const WebEssentialQuoteElement : CmsComponent<WebEssentialQuoteDataFragme
     const componentName = 'Quote - Web Essential'
     const componentInfo = ''
     return (
-        <p>placeholder</p>
+        <WeQuote></WeQuote>
     )
 }
 WebEssentialQuoteElement.displayName = "Quote - Web Essential (Element/WebEssentialQuote)"
