@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from 'next/script';
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -20,8 +21,8 @@ export default function RootLayout({
     <html lang="en">
     <head>
       <link rel="stylesheet" href="/assets/css/main.css"/>
-      <script type="module" src="/assets/js/vendor.mjs"></script>
-      <script type="module" src="/assets/js/main.mjs"></script>
+      <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
+      <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
     </head>
     <body className={inter.className}>
     <Header/>
