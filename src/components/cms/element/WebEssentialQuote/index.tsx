@@ -7,10 +7,10 @@ import WeQuote from "@/components/web-essentials/quote/quote";
  * 
  */
 export const WebEssentialQuoteElement : CmsComponent<WebEssentialQuoteDataFragment> = ({ data, children }) => {
-    const componentName = 'Quote - Web Essential'
-    const componentInfo = ''
+    const { Author: author, Text: { html: quote } } = data; // Extract properties from data
+    
     return (
-        <WeQuote></WeQuote>
+        <WeQuote author={author} quote={quote}></WeQuote>
     )
 }
 WebEssentialQuoteElement.displayName = "Quote - Web Essential (Element/WebEssentialQuote)"

@@ -1,0 +1,3 @@
+fragment WebEssentialRichTextData on WebEssentialRichText {
+  Content { json, html }
+}

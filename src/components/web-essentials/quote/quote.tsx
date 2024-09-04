@@ -1,6 +1,12 @@
 ﻿import React from 'react';
 
-const WeQuote: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className = "o-wrapper", ...props }) => {
+interface WeQuoteProps extends React.HTMLAttributes<HTMLElement> {
+    author: string;
+    reference: string;
+    quote: string;
+}
+
+const WeQuote: React.FC<WeQuoteProps> = ({ className = "o-wrapper", author, reference, quote, ...props }) => {
     return React.createElement(
         'we-quote',
         {className, ...props},
@@ -17,13 +23,10 @@ const WeQuote: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className = "o-w
 
 
             <div className="we-quote__body">
-                <blockquote>This is a smart quote by one of our satisfied customer to give other customers
-                    reassurance that we have the best products.
-                </blockquote>
+                <blockquote dangerouslySetInnerHTML={{__html: quote}}></blockquote>
 
                 <figcaption>
-                    Name of customer,
-                    <cite>reference</cite>
+                    {author}
                 </figcaption>
             </div>
         </figure>

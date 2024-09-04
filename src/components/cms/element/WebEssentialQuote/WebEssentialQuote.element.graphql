@@ -1,4 +1,5 @@
 fragment WebEssentialQuoteData on WebEssentialQuote {
-  Text { json, html }
   Author
+  Text { json, html }
+  Image { ...ReferenceData }
 }

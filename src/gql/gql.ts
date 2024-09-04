@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "query getContentType($key: String!, $version: String, $locale: [Locales!], $path: String, $domain: String) {\n  content: _Content(\n    where: {_or: [{_metadata: {key: {eq: $key}, version: {eq: $version}}}, {_metadata: {url: {hierarchical: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}]}\n    locale: $locale\n  ) {\n    total\n    items {\n      _metadata {\n        types\n      }\n    }\n  }\n}": types.getContentTypeDocument,
+    "fragment ReferenceData on ContentReference {\n  key\n  url {\n    ...LinkData\n  }\n}": types.ReferenceDataFragmentDoc,
     "fragment ElementData on _IElement {\n  ...IElementData\n}": types.ElementDataFragmentDoc,
     "fragment ExperienceData on _IExperience {\n  composition {\n    ...CompositionData\n  }\n}": types.ExperienceDataFragmentDoc,
     "fragment IElementData on _IElement {\n  _metadata {\n    ...IContentInfo\n  }\n  _type: __typename\n}": types.IElementDataFragmentDoc,
@@ -26,7 +27,8 @@ const documents = {
     "query getContentByPath($path: String!, $version: String, $locale: [Locales!], $domain: String) {\n  content: _Content(\n    where: {_metadata: {url: {default: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}\n    locale: $locale\n  ) {\n    total\n    items {\n      ...PageData\n    }\n  }\n}": types.getContentByPathDocument,
     "fragment LinkData on ContentUrl {\n  base\n  hierarchical\n  default\n}": types.LinkDataFragmentDoc,
     "fragment IContentData on _IContent {\n  _metadata {\n    ...IContentInfo\n  }\n  _type: __typename\n}": types.IContentDataFragmentDoc,
-    "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Text {\n    json\n    html\n  }\n  Author\n}": types.WebEssentialQuoteDataFragmentDoc,
+    "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}": types.WebEssentialQuoteDataFragmentDoc,
+    "fragment WebEssentialRichTextData on WebEssentialRichText {\n  Content {\n    json\n    html\n  }\n}": types.WebEssentialRichTextDataFragmentDoc,
     "fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}": types.BlankExperienceDataFragmentDoc,
     "fragment CampaignPageData on CampaignPage {\n  Title\n  Content {\n    ...BlockData\n  }\n  ...ExperienceData\n}": types.CampaignPageDataFragmentDoc,
 };
@@ -49,6 +51,10 @@ export function gql(source: string): unknown;
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "query getContentType($key: String!, $version: String, $locale: [Locales!], $path: String, $domain: String) {\n  content: _Content(\n    where: {_or: [{_metadata: {key: {eq: $key}, version: {eq: $version}}}, {_metadata: {url: {hierarchical: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}]}\n    locale: $locale\n  ) {\n    total\n    items {\n      _metadata {\n        types\n      }\n    }\n  }\n}"): (typeof documents)["query getContentType($key: String!, $version: String, $locale: [Locales!], $path: String, $domain: String) {\n  content: _Content(\n    where: {_or: [{_metadata: {key: {eq: $key}, version: {eq: $version}}}, {_metadata: {url: {hierarchical: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}]}\n    locale: $locale\n  ) {\n    total\n    items {\n      _metadata {\n        types\n      }\n    }\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment ReferenceData on ContentReference {\n  key\n  url {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment ReferenceData on ContentReference {\n  key\n  url {\n    ...LinkData\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -100,7 +106,11 @@ export function gql(source: "fragment IContentData on _IContent {\n  _metadata {
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Text {\n    json\n    html\n  }\n  Author\n}"): (typeof documents)["fragment WebEssentialQuoteData on WebEssentialQuote {\n  Text {\n    json\n    html\n  }\n  Author\n}"];
+export function gql(source: "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}"): (typeof documents)["fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment WebEssentialRichTextData on WebEssentialRichText {\n  Content {\n    json\n    html\n  }\n}"): (typeof documents)["fragment WebEssentialRichTextData on WebEssentialRichText {\n  Content {\n    json\n    html\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

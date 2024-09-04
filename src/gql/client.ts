@@ -42,19 +42,39 @@ export const IElementDataFragmentDoc = /*#__PURE__*/ gql`
   _type: __typename
 }
     `;
+export const ReferenceDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment ReferenceData on ContentReference {
+  key
+  url {
+    ...LinkData
+  }
+}
+    `;
 export const WebEssentialQuoteDataFragmentDoc = /*#__PURE__*/ gql`
     fragment WebEssentialQuoteData on WebEssentialQuote {
+  Author
   Text {
     json
     html
   }
-  Author
+  Image {
+    ...ReferenceData
+  }
+}
+    `;
+export const WebEssentialRichTextDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment WebEssentialRichTextData on WebEssentialRichText {
+  Content {
+    json
+    html
+  }
 }
     `;
 export const ElementDataFragmentDoc = /*#__PURE__*/ gql`
     fragment ElementData on _IElement {
   ...IElementData
   ...WebEssentialQuoteData
+  ...WebEssentialRichTextData
 }
     `;
 export const CompositionDataFragmentDoc = /*#__PURE__*/ gql`
@@ -152,6 +172,8 @@ ${CompositionDataFragmentDoc}
 ${ElementDataFragmentDoc}
 ${IElementDataFragmentDoc}
 ${WebEssentialQuoteDataFragmentDoc}
+${ReferenceDataFragmentDoc}
+${WebEssentialRichTextDataFragmentDoc}
 ${CampaignPageDataFragmentDoc}`;
 export const getContentByPathDocument = /*#__PURE__*/ gql`
     query getContentByPath($path: String!, $version: String, $locale: [Locales!], $domain: String) {
@@ -175,6 +197,8 @@ ${CompositionDataFragmentDoc}
 ${ElementDataFragmentDoc}
 ${IElementDataFragmentDoc}
 ${WebEssentialQuoteDataFragmentDoc}
+${ReferenceDataFragmentDoc}
+${WebEssentialRichTextDataFragmentDoc}
 ${CampaignPageDataFragmentDoc}
 ${BlockDataFragmentDoc}`;
 
