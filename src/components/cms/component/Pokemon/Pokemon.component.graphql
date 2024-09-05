@@ -1,0 +1,12 @@
+fragment PokemonData on Pokemon {
+  Identifier
+  Name
+  Thumbnail { ...ReferenceData }
+  Species
+  Types
+  Attack
+  Height
+  HP
+  Speed
+  Weight
+}

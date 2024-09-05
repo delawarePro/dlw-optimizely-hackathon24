@@ -1,0 +1,131 @@
+{
+  "key": "Pokemon",
+  "displayName": "Pokémon",
+  "description": "",
+  "baseType": "component",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod"
+  ],
+  "usage": [
+    "property",
+    "instance"
+  ],
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "created": "2024-09-05T10:55:53.9282801+00:00",
+  "lastModified": "2024-09-05T11:09:27.4358619+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {
+    "Identifier": {
+      "type": "integer",
+      "displayName": "Identifier",
+      "description": "",
+      "localized": false,
+      "required": true,
+      "group": "Information",
+      "sortOrder": -200,
+      "editorSettings": {}
+    },
+    "Name": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Name",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": -100,
+      "editorSettings": {},
+      "maxLength": 0
+    },
+    "Thumbnail": {
+      "type": "contentReference",
+      "displayName": "Thumbnail",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 100,
+      "editorSettings": {},
+      "allowedTypes": [
+        "Image"
+      ],
+      "restrictedTypes": []
+    },
+    "Species": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Species",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 125,
+      "editorSettings": {}
+    },
+    "Types": {
+      "type": "string",
+      "displayName": "Types",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 137,
+      "editorSettings": {}
+    },
+    "Attack": {
+      "type": "integer",
+      "displayName": "Attack",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 150,
+      "editorSettings": {}
+    },
+    "Height": {
+      "type": "integer",
+      "displayName": "Height",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 200,
+      "editorSettings": {}
+    },
+    "HP": {
+      "type": "integer",
+      "displayName": "HP",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 300,
+      "editorSettings": {}
+    },
+    "Speed": {
+      "type": "integer",
+      "displayName": "Speed",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 700,
+      "editorSettings": {}
+    },
+    "Weight": {
+      "type": "integer",
+      "displayName": "Weight",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 900,
+      "editorSettings": {}
+    }
+  }
+}

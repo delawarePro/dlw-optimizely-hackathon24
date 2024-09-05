@@ -27,10 +27,16 @@ const documents = {
     "query getContentByPath($path: String!, $version: String, $locale: [Locales!], $domain: String) {\n  content: _Content(\n    where: {_metadata: {url: {default: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}\n    locale: $locale\n  ) {\n    total\n    items {\n      ...PageData\n    }\n  }\n}": types.getContentByPathDocument,
     "fragment LinkData on ContentUrl {\n  base\n  hierarchical\n  default\n}": types.LinkDataFragmentDoc,
     "fragment IContentData on _IContent {\n  _metadata {\n    ...IContentInfo\n  }\n  _type: __typename\n}": types.IContentDataFragmentDoc,
+    "fragment PokemonData on Pokemon {\n  Identifier\n  Name\n  Thumbnail {\n    ...ReferenceData\n  }\n  Species\n  Types\n  Attack\n  Height\n  HP\n  Speed\n  Weight\n}": types.PokemonDataFragmentDoc,
+    "fragment WebEssentialBannerData on WebEssentialBanner {\n  Title\n  Description {\n    json\n    html\n  }\n}": types.WebEssentialBannerDataFragmentDoc,
+    "fragment WebEssentialCallToActionData on WebEssentialCallToAction {\n  Label\n  Link {\n    ...LinkData\n  }\n}": types.WebEssentialCallToActionDataFragmentDoc,
+    "fragment WebEssentialImageData on WebEssentialImage {\n  Image {\n    ...LinkData\n  }\n}": types.WebEssentialImageDataFragmentDoc,
     "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}": types.WebEssentialQuoteDataFragmentDoc,
     "fragment WebEssentialRichTextData on WebEssentialRichText {\n  Content {\n    json\n    html\n  }\n}": types.WebEssentialRichTextDataFragmentDoc,
+    "fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...ReferenceData\n  }\n}": types.WebEssentialRichTextMediaDataFragmentDoc,
     "fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}": types.BlankExperienceDataFragmentDoc,
     "fragment CampaignPageData on CampaignPage {\n  Title\n  Content {\n    ...BlockData\n  }\n  ...ExperienceData\n}": types.CampaignPageDataFragmentDoc,
+    "fragment HomePageData on HomePage {\n  ...ExperienceData\n}": types.HomePageDataFragmentDoc,
 };
 
 /**
@@ -106,6 +112,22 @@ export function gql(source: "fragment IContentData on _IContent {\n  _metadata {
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function gql(source: "fragment PokemonData on Pokemon {\n  Identifier\n  Name\n  Thumbnail {\n    ...ReferenceData\n  }\n  Species\n  Types\n  Attack\n  Height\n  HP\n  Speed\n  Weight\n}"): (typeof documents)["fragment PokemonData on Pokemon {\n  Identifier\n  Name\n  Thumbnail {\n    ...ReferenceData\n  }\n  Species\n  Types\n  Attack\n  Height\n  HP\n  Speed\n  Weight\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment WebEssentialBannerData on WebEssentialBanner {\n  Title\n  Description {\n    json\n    html\n  }\n}"): (typeof documents)["fragment WebEssentialBannerData on WebEssentialBanner {\n  Title\n  Description {\n    json\n    html\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment WebEssentialCallToActionData on WebEssentialCallToAction {\n  Label\n  Link {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment WebEssentialCallToActionData on WebEssentialCallToAction {\n  Label\n  Link {\n    ...LinkData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment WebEssentialImageData on WebEssentialImage {\n  Image {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment WebEssentialImageData on WebEssentialImage {\n  Image {\n    ...LinkData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function gql(source: "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}"): (typeof documents)["fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -114,11 +136,19 @@ export function gql(source: "fragment WebEssentialRichTextData on WebEssentialRi
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function gql(source: "fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...ReferenceData\n  }\n}"): (typeof documents)["fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...ReferenceData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function gql(source: "fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}"): (typeof documents)["fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "fragment CampaignPageData on CampaignPage {\n  Title\n  Content {\n    ...BlockData\n  }\n  ...ExperienceData\n}"): (typeof documents)["fragment CampaignPageData on CampaignPage {\n  Title\n  Content {\n    ...BlockData\n  }\n  ...ExperienceData\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment HomePageData on HomePage {\n  ...ExperienceData\n}"): (typeof documents)["fragment HomePageData on HomePage {\n  ...ExperienceData\n}"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

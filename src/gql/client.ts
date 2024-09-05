@@ -42,6 +42,30 @@ export const IElementDataFragmentDoc = /*#__PURE__*/ gql`
   _type: __typename
 }
     `;
+export const WebEssentialBannerDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment WebEssentialBannerData on WebEssentialBanner {
+  Title
+  Description {
+    json
+    html
+  }
+}
+    `;
+export const WebEssentialCallToActionDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment WebEssentialCallToActionData on WebEssentialCallToAction {
+  Label
+  Link {
+    ...LinkData
+  }
+}
+    `;
+export const WebEssentialImageDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment WebEssentialImageData on WebEssentialImage {
+  Image {
+    ...LinkData
+  }
+}
+    `;
 export const ReferenceDataFragmentDoc = /*#__PURE__*/ gql`
     fragment ReferenceData on ContentReference {
   key
@@ -70,11 +94,26 @@ export const WebEssentialRichTextDataFragmentDoc = /*#__PURE__*/ gql`
   }
 }
     `;
+export const WebEssentialRichTextMediaDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {
+  Content {
+    json
+    html
+  }
+  Media {
+    ...ReferenceData
+  }
+}
+    `;
 export const ElementDataFragmentDoc = /*#__PURE__*/ gql`
     fragment ElementData on _IElement {
   ...IElementData
+  ...WebEssentialBannerData
+  ...WebEssentialCallToActionData
+  ...WebEssentialImageData
   ...WebEssentialQuoteData
   ...WebEssentialRichTextData
+  ...WebEssentialRichTextMediaData
 }
     `;
 export const CompositionDataFragmentDoc = /*#__PURE__*/ gql`
@@ -112,9 +151,26 @@ export const BlankExperienceDataFragmentDoc = /*#__PURE__*/ gql`
   ...ExperienceData
 }
     `;
+export const PokemonDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment PokemonData on Pokemon {
+  Identifier
+  Name
+  Thumbnail {
+    ...ReferenceData
+  }
+  Species
+  Types
+  Attack
+  Height
+  HP
+  Speed
+  Weight
+}
+    `;
 export const BlockDataFragmentDoc = /*#__PURE__*/ gql`
     fragment BlockData on _IContent {
   ...IContentData
+  ...PokemonData
 }
     `;
 export const CampaignPageDataFragmentDoc = /*#__PURE__*/ gql`
@@ -126,11 +182,17 @@ export const CampaignPageDataFragmentDoc = /*#__PURE__*/ gql`
   ...ExperienceData
 }
     `;
+export const HomePageDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment HomePageData on HomePage {
+  ...ExperienceData
+}
+    `;
 export const PageDataFragmentDoc = /*#__PURE__*/ gql`
     fragment PageData on _IContent {
   ...IContentData
   ...BlankExperienceData
   ...CampaignPageData
+  ...HomePageData
 }
     `;
 export const getContentTypeDocument = /*#__PURE__*/ gql`
@@ -165,16 +227,22 @@ export const getContentByIdDocument = /*#__PURE__*/ gql`
 ${IContentDataFragmentDoc}
 ${IContentInfoFragmentDoc}
 ${LinkDataFragmentDoc}
+${PokemonDataFragmentDoc}
+${ReferenceDataFragmentDoc}
 ${PageDataFragmentDoc}
 ${BlankExperienceDataFragmentDoc}
 ${ExperienceDataFragmentDoc}
 ${CompositionDataFragmentDoc}
 ${ElementDataFragmentDoc}
 ${IElementDataFragmentDoc}
+${WebEssentialBannerDataFragmentDoc}
+${WebEssentialCallToActionDataFragmentDoc}
+${WebEssentialImageDataFragmentDoc}
 ${WebEssentialQuoteDataFragmentDoc}
-${ReferenceDataFragmentDoc}
 ${WebEssentialRichTextDataFragmentDoc}
-${CampaignPageDataFragmentDoc}`;
+${WebEssentialRichTextMediaDataFragmentDoc}
+${CampaignPageDataFragmentDoc}
+${HomePageDataFragmentDoc}`;
 export const getContentByPathDocument = /*#__PURE__*/ gql`
     query getContentByPath($path: String!, $version: String, $locale: [Locales!], $domain: String) {
   content: _Content(
@@ -196,11 +264,17 @@ ${ExperienceDataFragmentDoc}
 ${CompositionDataFragmentDoc}
 ${ElementDataFragmentDoc}
 ${IElementDataFragmentDoc}
+${WebEssentialBannerDataFragmentDoc}
+${WebEssentialCallToActionDataFragmentDoc}
+${WebEssentialImageDataFragmentDoc}
 ${WebEssentialQuoteDataFragmentDoc}
 ${ReferenceDataFragmentDoc}
 ${WebEssentialRichTextDataFragmentDoc}
+${WebEssentialRichTextMediaDataFragmentDoc}
 ${CampaignPageDataFragmentDoc}
-${BlockDataFragmentDoc}`;
+${BlockDataFragmentDoc}
+${PokemonDataFragmentDoc}
+${HomePageDataFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 

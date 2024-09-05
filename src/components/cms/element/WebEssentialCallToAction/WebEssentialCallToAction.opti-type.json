@@ -1,0 +1,45 @@
+{
+  "key": "WebEssentialCallToAction",
+  "displayName": "CTA - Web Essential",
+  "description": "",
+  "baseType": "element",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod"
+  ],
+  "usage": [
+    "property",
+    "instance"
+  ],
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "created": "2024-09-05T16:18:44.0675988+00:00",
+  "lastModified": "2024-09-05T16:31:39.2130352+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {
+    "Label": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Label",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "Link": {
+      "type": "url",
+      "displayName": "Link",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    }
+  }
+}

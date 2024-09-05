@@ -1,0 +1,45 @@
+{
+  "key": "WebEssentialBanner",
+  "displayName": "Banner - Web Essential",
+  "description": "",
+  "baseType": "element",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod"
+  ],
+  "usage": [
+    "property",
+    "instance"
+  ],
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "created": "2024-09-05T12:23:50.5769827+00:00",
+  "lastModified": "2024-09-05T12:24:31.9168985+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {
+    "Title": {
+      "type": "string",
+      "displayName": "Title",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "Description": {
+      "type": "string",
+      "format": "html",
+      "displayName": "Description",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    }
+  }
+}

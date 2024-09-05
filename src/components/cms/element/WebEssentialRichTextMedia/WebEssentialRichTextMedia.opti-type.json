@@ -1,0 +1,49 @@
+{
+  "key": "WebEssentialRichTextMedia",
+  "displayName": "Rich Text Media - Web Essential",
+  "description": "",
+  "baseType": "element",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod"
+  ],
+  "usage": [
+    "property",
+    "instance"
+  ],
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "created": "2024-09-05T12:18:59.7471483+00:00",
+  "lastModified": "2024-09-05T12:19:43.0554913+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {
+    "Content": {
+      "type": "string",
+      "format": "html",
+      "displayName": "Content",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "Media": {
+      "type": "contentReference",
+      "displayName": "Media",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {},
+      "allowedTypes": [
+        "Media"
+      ],
+      "restrictedTypes": []
+    }
+  }
+}
