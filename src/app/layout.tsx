@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Header from '@/components/header'
+import Search from "@/components/search";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,3 +34,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+

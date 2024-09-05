@@ -3,16 +3,21 @@ import { CampaignPageDataFragmentDoc, type CampaignPageDataFragment } from "@/gq
 import { type Maybe, type ICompositionNode, type ExperienceDataFragment } from "@/gql/graphql";
 import { OptimizelyComposition, isNode, CmsEditable } from "@remkoj/optimizely-cms-react/rsc";
 import { getSdk } from "@/gql"
+import Search from "@/components/search";
 
 /**
  * Campaign Page
  * 
  */
-export const CampaignPageExperience : CmsComponent<CampaignPageDataFragment> = ({ data }) => {
+export const CampaignPageExperience : CmsComponent<CampaignPageDataFragment> = async ({ data }) => {
+    "use server"
     const composition = (data as ExperienceDataFragment).composition as Maybe<ICompositionNode>
-    return <CmsEditable as="div" className="mx-auto px-2 container" cmsFieldName="unstructuredData">
+    return <div>
+        <Search />
+        <CmsEditable as="div" className="mx-auto px-2 container" cmsFieldName="unstructuredData">
         { composition && isNode(composition) && <OptimizelyComposition node={composition} /> }
     </CmsEditable>
+    </div>
 }
 CampaignPageExperience.displayName = "Campaign Page (Experience/CampaignPage)"
 CampaignPageExperience.getDataFragment = () => ['CampaignPageData', CampaignPageDataFragmentDoc]
