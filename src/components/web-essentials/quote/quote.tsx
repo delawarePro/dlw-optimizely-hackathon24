@@ -2,11 +2,10 @@
 
 interface WeQuoteProps extends React.HTMLAttributes<HTMLElement> {
     author: string;
-    reference: string;
     quote: string;
 }
 
-const WeQuote: React.FC<WeQuoteProps> = ({ className = "o-wrapper", author, reference, quote, ...props }) => {
+const WeQuote: React.FC<WeQuoteProps> = ({ className = "o-wrapper", author, quote, ...props }) => {
     return React.createElement(
         'we-quote',
         {className, ...props},
