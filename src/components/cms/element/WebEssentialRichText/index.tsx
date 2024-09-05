@@ -7,8 +7,8 @@ import WeRichText from "@/components/web-essentials/richtext/richtext";
  * 
  */
 export const WebEssentialRichTextElement : CmsComponent<WebEssentialRichTextDataFragment> = ({ data, children }) => {
-    const { Content: { html: content } } = data;
-
+    const content = data?.Content?.html || "";
+    
     return (
         <WeRichText content={content}></WeRichText>
     )
