@@ -1,0 +1,25 @@
+{
+  "key": "HomePage",
+  "displayName": "Home Page",
+  "description": "",
+  "baseType": "experience",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod",
+    "routing"
+  ],
+  "usage": [
+    "instance"
+  ],
+  "mayContainTypes": [
+    "*"
+  ],
+  "mediaFileExtensions": [],
+  "created": "2024-09-05T12:11:02.5111356+00:00",
+  "lastModified": "2024-09-05T12:11:02.5111356+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {}
+}

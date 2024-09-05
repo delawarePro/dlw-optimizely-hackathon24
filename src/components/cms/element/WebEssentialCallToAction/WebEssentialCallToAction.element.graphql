@@ -1,0 +1,4 @@
+fragment WebEssentialCallToActionData on WebEssentialCallToAction {
+  Label
+  Link { ...LinkData }
+}

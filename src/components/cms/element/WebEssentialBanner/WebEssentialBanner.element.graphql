@@ -1,0 +1,4 @@
+fragment WebEssentialBannerData on WebEssentialBanner {
+  Title
+  Description { json, html }
+}

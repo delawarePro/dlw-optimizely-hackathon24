@@ -1,0 +1,35 @@
+{
+  "key": "WebEssentialImage",
+  "displayName": "Image - Web Essential",
+  "description": "",
+  "baseType": "element",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod"
+  ],
+  "usage": [
+    "property",
+    "instance"
+  ],
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "created": "2024-09-05T16:16:55.2166353+00:00",
+  "lastModified": "2024-09-05T16:23:52.045042+00:00",
+  "lastModifiedBy": "bob.maes@delaware.pro",
+  "properties": {
+    "Image": {
+      "type": "url",
+      "format": "ImageUrl",
+      "displayName": "Image",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": -100,
+      "editorSettings": {}
+    }
+  }
+}

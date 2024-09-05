@@ -1,0 +1,3 @@
+fragment WebEssentialImageData on WebEssentialImage {
+  Image { ...LinkData }
+}

@@ -1,0 +1,4 @@
+fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {
+  Content { json, html }
+  Media { ...ReferenceData }
+}
