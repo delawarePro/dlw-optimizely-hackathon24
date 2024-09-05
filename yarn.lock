@@ -4423,7 +4423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.57.0":
+"eslint@npm:^8.0.0":
   version: 8.57.0
   resolution: "eslint@npm:8.57.0"
   dependencies:
@@ -6778,7 +6778,7 @@ __metadata:
     dotenv: "npm:^16.4.5"
     dotenv-expand: "npm:^11.0.6"
     entities: "npm:^5.0.0"
-    eslint: "npm:^8.57.0"
+    eslint: "npm:^8.0.0"
     eslint-config-next: "npm:14.2.4"
     figures: "npm:^6.1.0"
     graphql: "npm:^16.9.0"
@@ -6790,6 +6790,8 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-instantsearch: "npm:7.13.0"
+    react-instantsearch-nextjs: "npm:^0.3.10"
+    react-instantsearch-router-nextjs: "npm:^7.13.0"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.2"
   languageName: unknown
@@ -7302,6 +7304,28 @@ __metadata:
     algoliasearch: ">= 3.1 < 6"
     react: ">= 16.8.0 < 19"
   checksum: 10c0/54b58fe709a65774d2706ade5946b849e59a41caff7fb790cdcced827971c4b14541108f2c2c2b36ffb082c83b39ad635deb68cb80dbc798eeb02a97042e4681
+  languageName: node
+  linkType: hard
+
+"react-instantsearch-nextjs@npm:^0.3.10":
+  version: 0.3.10
+  resolution: "react-instantsearch-nextjs@npm:0.3.10"
+  peerDependencies:
+    next: "*"
+    react-instantsearch: "*"
+  checksum: 10c0/92da7eff31fd91d20d58bf5a8858de3665de1737cff4cd9b6aab9ba53664ae9a057f664186bc488063bc6e4800e9137541a3eca60eadcd28e7d047d26882cfbd
+  languageName: node
+  linkType: hard
+
+"react-instantsearch-router-nextjs@npm:^7.13.0":
+  version: 7.13.0
+  resolution: "react-instantsearch-router-nextjs@npm:7.13.0"
+  dependencies:
+    instantsearch.js: "npm:4.74.0"
+    react-instantsearch-core: "npm:7.13.0"
+  peerDependencies:
+    next: "*"
+  checksum: 10c0/f52184d0d7f44e4ceae17db9f98189d8ce9368d7196c73acc702cc4fe35027a3847299a923c6dedeb607f6a3434abd3ab7070c40fd0e1ee8891e9dbd58e80953
   languageName: node
   linkType: hard
 
