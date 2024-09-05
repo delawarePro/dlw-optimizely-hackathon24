@@ -3,6 +3,8 @@ import { BlankExperienceDataFragmentDoc, type BlankExperienceDataFragment } from
 import { type Maybe, type ICompositionNode, type ExperienceDataFragment } from "@/gql/graphql";
 import { OptimizelyComposition, isNode, CmsEditable } from "@remkoj/optimizely-cms-react/rsc";
 import { getSdk } from "@/gql"
+import { Search } from "@/components/search";
+import { liteClient as algoliasearch } from "algoliasearch/lite";
 
 /**
  * Blank Experience
@@ -10,9 +12,12 @@ import { getSdk } from "@/gql"
  */
 export const BlankExperienceExperience : CmsComponent<BlankExperienceDataFragment> = ({ data }) => {
     const composition = (data as ExperienceDataFragment).composition as Maybe<ICompositionNode>
-    return <CmsEditable as="div" className="mx-auto px-2 container" cmsFieldName="unstructuredData">
-        { composition && isNode(composition) && <OptimizelyComposition node={composition} /> }
-    </CmsEditable>
+    return <div>
+        <Search searchClient={client} />
+        <CmsEditable as="div" className="mx-auto px-2 container" cmsFieldName="unstructuredData">
+            { composition && isNode(composition) && <OptimizelyComposition node={composition} /> }
+        </CmsEditable>
+    </div>
 }
 BlankExperienceExperience.displayName = "Blank Experience (Experience/BlankExperience)"
 BlankExperienceExperience.getDataFragment = () => ['BlankExperienceData', BlankExperienceDataFragmentDoc]
@@ -21,5 +26,7 @@ BlankExperienceExperience.getMetaData = async (contentLink, locale, client) => {
     // Add your metadata logic here
     return {}
 }
+
+const client = algoliasearch("latency", "6be0576ff61c053d5f9a3225e2a90f76");
 
 export default BlankExperienceExperience

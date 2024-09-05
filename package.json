@@ -18,15 +18,18 @@
     "@remkoj/optimizely-cms-nextjs": "^2.0.1",
     "@remkoj/optimizely-cms-react": "^2.0.1",
     "@remkoj/optimizely-graph-client": "^2.0.1",
+    "algoliasearch": "5.1.1",
     "dotenv": "^16.4.5",
     "dotenv-expand": "^11.0.6",
     "entities": "^5.0.0",
     "graphql": "^16.9.0",
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6",
+    "instantsearch.css": "8.5.0",
     "next": "14.2.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-instantsearch": "7.13.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.2",
