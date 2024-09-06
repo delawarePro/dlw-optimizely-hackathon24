@@ -1,0 +1,27 @@
+{
+    "key": "rowLayout",
+    "displayName": "Row Layout",
+    "isDefault": false,
+    "nodeType": "row",
+    "settings": {
+        "alignment": {
+            "displayName": "Alignment",
+            "editor": "select",
+            "sortOrder": 10,
+            "choices": {
+                "start": {
+                    "displayName": "Start",
+                    "sortOrder": 10
+                },
+                "center": {
+                    "displayName": "Center",
+                    "sortOrder": 20
+                },
+                "end": {
+                    "displayName": "End",
+                    "sortOrder": 30
+                }
+            }
+        }
+    }
+}
