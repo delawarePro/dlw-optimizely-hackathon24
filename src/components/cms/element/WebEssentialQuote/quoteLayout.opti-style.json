@@ -2,7 +2,7 @@
   "key": "quoteLayout",
   "displayName": "Layout",
   "contentType": "WebEssentialQuote",
-  "isDefault": true,
+  "isDefault": false,
   "created": "2024-09-05T11:47:45.6098991+00:00",
   "createdBy": "postman",
   "lastModified": "2024-09-05T11:47:45.6098991+00:00",

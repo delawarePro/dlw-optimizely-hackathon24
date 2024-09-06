@@ -6,14 +6,17 @@ import { WebEssentialBannerDataFragmentDoc, type WebEssentialBannerDataFragment 
  * 
  */
 export const WebEssentialBannerElement : CmsComponent<WebEssentialBannerDataFragment> = ({ data, children }) => {
-    const componentName = 'Banner - Web Essential'
-    const componentInfo = ''
-    return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">
-        <div className="font-bold italic">{ componentName }</div>
-        <div>{ componentInfo }</div>
-        { Object.getOwnPropertyNames(data).length > 0 && <pre className="w-full overflow-x-hidden font-mono text-sm bg-slate-200 p-2 rounded-sm border border-solid border-slate-900 text-slate-900">{ JSON.stringify(data, undefined, 4) }</pre> }
-        { children && <div className="mt-4 mx-4 flex flex-col">{ children }</div>}
-    </div>
+    const title = data?.Title || "";
+    const description = data?.Description?.html || "";
+    
+    return (
+        <div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+                <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{ title }</h2>
+                <p className="mt-6 text-lg leading-8 text-gray-600" dangerouslySetInnerHTML={{__html: description}}></p>
+            </div>
+        </div>
+    )
 }
 WebEssentialBannerElement.displayName = "Banner - Web Essential (Element/WebEssentialBanner)"
 WebEssentialBannerElement.getDataFragment = () => ['WebEssentialBannerData', WebEssentialBannerDataFragmentDoc]
