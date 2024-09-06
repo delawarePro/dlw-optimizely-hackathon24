@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from 'next/script';
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "../../public/assets/css/pokemon.css";
+import "../../public/assets/css/pixels.css";
 
 import Header from '@/components/header'
 

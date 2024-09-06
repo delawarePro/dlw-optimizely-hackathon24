@@ -1,0 +1,41 @@
+﻿.pixels {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    inset: 0 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    .pixel {
+        width: 5%;
+        aspect-ratio: 1/1;
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -o-filter: blur(10px);
+        -ms-filter: blur(10px);
+    }
+}
+
+body {
+    animation: bodyblur 10s reverse infinite;
+}
+
+/* The animation code */
+@keyframes bodyblur {
+    0% {
+        filter: blur(1px);
+    }
+    10% {
+        filter: blur(0px);
+    }
+    12% {
+        filter: blur(2px);
+    }
+    14% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(0px);
+    }
+}

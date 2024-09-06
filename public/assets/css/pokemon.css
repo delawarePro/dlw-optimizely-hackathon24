@@ -1,0 +1,98 @@
+﻿.ais-Hits-list > li:first-child {
+    background-color: orange;
+}
+.ais-Hits-list > li:only-child {
+    background-color: aqua;
+
+    .pokeball {
+        display: flex;
+        animation: example2 2s 1s both;
+    }
+}
+
+.pokeball {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 100px;
+    overflow: hidden;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    z-index: 10;
+    transform: rotate(25deg);
+    display: none;
+
+    .pokeball--top {
+        position: absolute;
+        height: 100px;
+        width: 100%;
+        background-color: red;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        border-bottom: 10px solid black;
+    }
+
+    .pokeball--bottom {
+        position: absolute;
+        height: 100px;
+        width: 100%;
+        background-color: white;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border-top: 10px solid black;
+    }
+
+    .pokeball--mid {
+        height: 70px;
+        width: 1px;
+        margin-top: 65px;
+        background-color: #222;
+        border-radius: 100%;
+        z-index: 100;
+        animation: example 1s both;
+        position: relative;
+    }
+
+    .pokeball--mid::after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        inset: 20%;
+        background-color: white;
+        border-radius: 100%;
+    }
+}
+
+/* The animation code */
+@keyframes example2 {
+    0% {
+        height: 200px;
+        transform: rotate(25deg);
+        opacity: 1;
+    }
+    100% {
+        height: 1000px;
+        top: calc(50% - 500px);
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* The animation code */
+@keyframes example {
+    0% {
+        width: 1px;
+        margin-left: 0;
+    }
+    10% {
+        width: 20px;
+        margin-left: 0;
+    }
+    100% {
+        width: 70px;
+        margin-left: 65px;
+    }
+}
