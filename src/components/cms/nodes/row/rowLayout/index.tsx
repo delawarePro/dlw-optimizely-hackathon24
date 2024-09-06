@@ -1,11 +1,12 @@
 import { type CmsLayoutComponent } from "@remkoj/optimizely-cms-react";
-import { extractSettings } from "@remkoj/optimizely-cms-react/components";
+import type RowLayoutStyle from './rowLayout.opti-style.json'
+import { extractSettings, type LayoutProps } from "@remkoj/optimizely-cms-react/components";
 
-export const rowLayout : CmsLayoutComponent<{}> = ({ contentLink, layoutProps, children }) => {
+export const rowLayout : CmsLayoutComponent<LayoutProps<typeof RowLayoutStyle>> = ({ contentLink, layoutProps, children }) => {
     const cssClasses : string[] = ['vb:row','vb:row:rowLayout', 'flex'];
-    const layout = extractSettings(layoutProps);
+    const { alignment } = extractSettings(layoutProps);
 
-    switch (layout.alignment) {
+    switch (alignment) {
         case 'center':
             cssClasses.push('justify-center')
             break;
