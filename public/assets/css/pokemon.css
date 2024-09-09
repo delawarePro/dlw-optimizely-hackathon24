@@ -16,7 +16,7 @@ li:only-child .pokemon-card{
 
 .pokemon-card {
     button {
-        display: none;
+        /* display: none; */
     }
 }
 

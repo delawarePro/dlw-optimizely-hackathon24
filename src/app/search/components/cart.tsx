@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Dlw_CommerceFlows } from '@delawarepro/dlw-commerce-flows';
 
-// import '@delawarepro/commerce-flows-all.scss'
-
 function serverNotAvailableErrorCallback() {
     console.error("The server can not be reached.");
 }
@@ -16,18 +14,22 @@ let localizationconfig = {
 }
 
 async function init() {
+    document.getCustomerId = () => localStorage.getItem("customerId");
     
     document.cfApiBaseUrl = 'https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/';
-
+    
     // TODO: clear card with dom event: CLEAR_CART
-    let customerId = Math.round(Math.random() * 10000);
-    localStorage.setItem("customerId", customerId);
+    if(!document.getCustomerId()) {
+        let customerId = Math.round(Math.random() * 10000);
+        localStorage.setItem("customerId", customerId);
+    }
+    
 
     cfConfig = {
         apiBaseUrl: document.cfApiBaseUrl,
-        cartUrl: '/cart',
-        customerId: customerId,
-        userId: customerId, // For now, should change when login is supported.
+        cartUrl: '/checkout',
+        customerId: document.getCustomerId(),
+        userId: document.getCustomerId(), // For now, should change when login is supported.
         // Localization global initialised in index.js
         localization: localizationconfig,
         onServerError: serverNotAvailableErrorCallback,
