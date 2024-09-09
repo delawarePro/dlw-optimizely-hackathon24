@@ -40,12 +40,14 @@ function Hit({ hit }: HitProps) {
         <>
             <div className="pokemon-card">
                 ${hit.name}
+                {/* <img src={hit.image}></img> */}
                 <span className="pokeball">
                     <span className="pokeball--top"></span>
                     <span className="pokeball--bottom"></span>
                     <span className="pokeball--mid"></span>
                 </span>
-                <button onClick={() => addProduct(hit)}>add product</button>
+                <img src={hit.animation}></img>
+                <button onClick={() => addProduct(hit)}>CATCH!</button>
             </div>
         </>
     );
