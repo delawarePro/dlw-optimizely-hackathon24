@@ -188,12 +188,13 @@ const dummyData: AlgoliaHit[] = [
 
 export const stubbedSearchClient = {
     search(requests: any) {
-        // Return the hardcoded dummy data
+        var filteredResults = filterByName(dummyData, requests[0].params.query);
+        
         return Promise.resolve({
             results: [
                 {
-                    hits: dummyData,
-                    nbHits: dummyData.length,
+                    hits: filteredResults,
+                    nbHits: filteredResults.length,
                     processingTimeMS: 1,
                 },
             ],
@@ -201,3 +202,7 @@ export const stubbedSearchClient = {
     },
     searchForFacetValues: algoliaClient.searchForFacets.bind(algoliaClient),
 };
+
+function filterByName(data: AlgoliaHit[], searchString: string): AlgoliaHit[] {
+    return data.filter(item => item.name.toLowerCase().includes(searchString.toLowerCase()));
+}
