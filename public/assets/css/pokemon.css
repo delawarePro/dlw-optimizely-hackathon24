@@ -1,12 +1,22 @@
-﻿.ais-Hits-list > li:first-child {
-    background-color: orange;
-}
-.ais-Hits-list > li:only-child {
+﻿
+li:only-child .pokemon-card{
     background-color: aqua;
+    display: flex;
+    flex-direction: column;
 
     .pokeball {
         display: flex;
         animation: example2 2s 1s both;
+    }
+
+    button {
+        display: block;
+    }
+}
+
+.pokemon-card {
+    button {
+        display: none;
     }
 }
 
@@ -21,6 +31,7 @@
     z-index: 10;
     transform: rotate(25deg);
     display: none;
+    pointer-events: none;
 
     .pokeball--top {
         position: absolute;
