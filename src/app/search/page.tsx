@@ -15,11 +15,12 @@ import { InstantSearchNext } from 'react-instantsearch-nextjs';
 import { Search } from ".//components/search";
 
 import { stubbedSearchClient } from "./components/stubbedSearchClient";
+import { optiSearchClient } from "./components/optiSearchClient";
 
 export default async function SearchPage() {
     return (
         <>
-                <Search searchClient={stubbedSearchClient}/>
+                <Search searchClient={optiSearchClient}/>
         </>
     );
 }
