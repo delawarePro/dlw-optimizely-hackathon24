@@ -1,18 +1,19 @@
 ﻿import React from "react";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch";
 import { Hit as AlgoliaHit } from "instantsearch.js";
-import { Dlw_DOM_Message_Handler } from '@delawarepro/dlw-commerce-flows';
+// import { Dlw_DOM_Message_Handler } from '@delawarepro/dlw-commerce-flows';
 
 type HitProps = {
     hit: AlgoliaHit<{
         name: string;
         price: number;
+        animation: string;
     }>;
 };
 
-function addProduct(hit: HitProps) {
+function addProduct(hit: AlgoliaHit) {
 
-    document.dispatchEvent(new CustomEvent(Dlw_DOM_Message_Handler.ADD_ITEM_TO_CART.toLowerCase(), {
+    document.dispatchEvent(new CustomEvent("additemtocart", {
         bubbles: true,
         detail: {
             message: {

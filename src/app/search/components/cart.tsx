@@ -8,19 +8,21 @@ function serverNotAvailableErrorCallback() {
 let cfConfig: any;
 
 let localizationconfig = {
-    translate: function (key, defaultValue) {
+    translate: function (key : any, defaultValue : any) {
         return key;
     }
 }
 
 async function init() {
+    
+    var document : any = window.document;
     document.getCustomerId = () => localStorage.getItem("customerId");
     
     document.cfApiBaseUrl = 'https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/';
     
     // TODO: clear card with dom event: CLEAR_CART
     if(!document.getCustomerId()) {
-        let customerId = Math.round(Math.random() * 10000);
+        let customerId : string = Math.round(Math.random() * 10000).toString();
         localStorage.setItem("customerId", customerId);
     }
     
@@ -41,11 +43,11 @@ async function init() {
     
     // Wait for the components to be defined before initializing the commerce flows.
     // await Dlw_CommerceFlows.initializeCartSummaryComponents();
-    Dlw_CommerceFlows.initialize(cfConfig);
+    Dlw_CommerceFlows.initialize(cfConfig, null);
 }   
 
 
-export function Cart({ searchClient }: { searchClient: any }) {
+export function Cart() {
     
     useEffect(() => {
         init();
