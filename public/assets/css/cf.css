@@ -16,52 +16,6 @@
     --brand-logo-width: 200px;
 }
 
-/* GENERAL STYLING */
-body {
-    font-family: 'Poppins', "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-top: 0;
-}
-
-input[type=text], input[type=email], input[type=number], textarea, select {
-    background-color: white;
-    border: 1px solid var(--brand-color-border);
-    border-radius: var(--brand-border-radius);
-    padding: var(--brand-spacing-tiny) var(--brand-spacing-small);
-}
-
-.container {
-    padding: 0 20px;
-    max-width: 1150px;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-    margin-bottom: var(--brand-spacing-small);
-}
-
-li {
-    list-style: none;
-    margin: 0;
-    margin-bottom: var(--brand-spacing-tiny);
-}
-
-/* overwrite some skeleton defaults */
-button, input {
-    margin-block-end: 0;
-}
-
-
-
 /* ============================== */
 
 :root {
