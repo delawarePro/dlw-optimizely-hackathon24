@@ -15,6 +15,7 @@
     "webhook:list": "opti-graph webhook:list"
   },
   "dependencies": {
+    "@delawarepro/dlw-commerce-flows": "0.16.54890",
     "@remkoj/optimizely-cms-nextjs": "^2.0.1",
     "@remkoj/optimizely-cms-react": "^2.0.1",
     "@remkoj/optimizely-graph-client": "^2.0.1",
@@ -27,6 +28,7 @@
     "graphql-tag": "^2.12.6",
     "instantsearch.css": "^8.5.0",
     "instantsearch.js": "^4.74.0",
+    "lit": "2.6.1",
     "next": "14.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

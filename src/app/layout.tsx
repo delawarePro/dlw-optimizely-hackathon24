@@ -3,9 +3,7 @@ import Script from 'next/script';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "../../public/assets/css/pokemon.css";
-import "../../public/assets/css/pixels.css";
-
-import Header from '@/components/header'
+import "../../public/assets/css/cf.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +21,11 @@ export default function RootLayout({
     <html lang="en">
     <head>
       <link rel="stylesheet" href="/assets/css/main.css"/>
+      <link rel="stylesheet" href="/assets/css/cf.css"/>
       <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
       <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
     </head>
     <body className={inter.className}>
-    <Header/>
     <main>
       {children}
     </main>

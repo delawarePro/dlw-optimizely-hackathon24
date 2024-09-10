@@ -1,13 +1,385 @@
-﻿.ais-Hits-list > li:first-child {
-    background-color: orange;
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Pixelify+Sans:wght@600&display=swap');
+
+/* Use a mobile view at all times */
+html {
+    background-color: white;
 }
-.ais-Hits-list > li:only-child {
-    background-color: aqua;
+
+main {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    background-color: beige;
+    overflow: hidden;
+    position: relative;
+}
+
+/* pixels overlay */
+
+.pixel-overlay {
+    /* Change this color to change the overall feeling :D */
+    background-color: #999;
+    position: absolute;
+    inset: 0;
+    animation: pixelanimation 1s infinite both;
+    opacity: var(--pixel-overlay--opacity, .1);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes pixelanimation {
+    0% {
+        background-image:
+            linear-gradient(180deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .2) 100%),
+            linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .4) 50%),
+            linear-gradient(180deg, transparent 50%, rgba(255, 255, 255, .2) 50%),
+            linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .2) 50%),
+            linear-gradient(-180deg, transparent 50%, rgba(255, 255, 255, .4) 50%),
+            linear-gradient(-90deg, transparent 50%, rgba(255, 255, 255, .4) 50%);
+        background-size:
+            4em 4em,
+            4em 4em,
+            2em 2em,
+            2em 2em,
+            1em 1em,
+            1em 1em;
+    }
+
+    100% {
+        background-color: #fff;
+        background-image:
+            linear-gradient(180deg, transparent 50%, rgba(255, 0, 0, .1) 50%),
+            linear-gradient(90deg, transparent 50%, rgba(255, 0, 0, .4) 50%),
+            linear-gradient(180deg, transparent 50%, rgba(0, 255, 0, .2) 50%),
+            linear-gradient(90deg, transparent 50%, rgba(0, 255, 0, .2) 50%),
+            linear-gradient(-180deg, transparent 50%, rgba(0, 0, 255, .4) 50%),
+            linear-gradient(-90deg, transparent 50%, rgba(0, 0, 255, .4) 50%);
+        background-size:
+            1em 1em,
+            1em 1em,
+            2em 2em,
+            2em 2em,
+            1em 1em,
+            1em 1em;
+    }
+}
+
+/* Hackathon text part */
+.hackathon-box {
+    perspective: 400px;
+    position: absolute;
+    bottom: 65px;
+    z-index: 100;
+}
+
+.hackathon-box__inner {
+    width: 300px;
+    height: 50px;
+    transform-style: preserve-3d;
+    animation: zrotation 1s 1s both;
+}
+
+@keyframes zrotation {
+    0% {
+        transform: rotate3d(1, 0, 0, 0deg);
+    }
+    
+    100% {
+        transform: rotate3d(1, 0, 0, 15deg);
+    }
+}
+
+/* poke search */
+.poke-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .ais-SearchBox {
+        position: absolute;
+        bottom: 50%;
+        padding: 10px;
+        border-inline: 5px solid blue;
+        border-block: 5px solid red;
+        width: 400px;
+        margin: 0 auto;
+        opacity: var(--poke-search--opacity);
+        background-color: white;
+
+        svg {
+            display: none;
+        }
+
+        input {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+
+
+
+
+.hackathon-box__face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.hackathon-box__face--front {
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    width: 100%;
+    line-height: 1;
+    padding: 5px 15px;
+    transform: translateZ(25px);
+}
+
+.hackathon-box__face--bottom {
+    background: blue;
+    transform: rotateX(-90deg) translateZ(25px);
+}
+
+
+.face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+    font-size: 60px;
+    color: #fff;
+}
+
+/* Background spinner */
+
+.spin {
+    position: absolute;
+    inset: 0 0 0 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--spin--bg-color);
+    opacity: .2;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+.spin__center {
+    position: absolute;
+    inset: calc(50% - 50px) calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    background-color: var(--spin--bg-color, white);
+    border-radius: 50%;
+}
+
+.spin__effect {
+    width: 100%;
+    height: 100%;
+    perspective: 5px;
+}
+
+.spin__spinner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: spiningbackground linear infinite;
+    animation-duration: var(--spin--animation-time, 45s);
+}
+
+.spin__spinner>.spin__vane {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: #FFFDAB;
+}
+
+.spin__spinner>.spin__vane:nth-child(1) {
+    transform: translateX(50%) rotate(0deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(2) {
+    transform: translate(50%) rotate(36deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(3) {
+    transform: translate(50%) rotate(72deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(4) {
+    transform: translate(50%) rotate(108deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(5) {
+    transform: translate(50%) rotate(144deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(6) {
+    transform: translate(50%) rotate(180deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(7) {
+    transform: translate(50%) rotate(216deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(8) {
+    transform: translate(50%) rotate(252deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(9) {
+    transform: translate(50%) rotate(288deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(10) {
+    transform: translate(50%) rotate(324deg) rotateX(90deg) translateZ(300px);
+}
+
+@keyframes spiningbackground {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+body:has(.ais-Hits-list>li:only-child ) {
+    --pixel-overlay--opacity: .3;
+    --spin--animation-time: 3s;
+    --poke-search--opacity: 0;
+    --spin--bg-color: red;
+}
+
+.opti-title-image {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    z-index: 100000;
+
+    img {
+        position: absolute;
+        inset: 0 0 50px 0;
+        animation: scalepokemon .5s both;
+    }
+}
+
+.ais-Hits-list>li:only-child {
+    display: flex;
+    flex-direction: column;
 
     .pokeball {
         display: flex;
         animation: example2 2s 1s both;
     }
+
+    button,
+    img {
+        display: block;
+    }
+
+    img {
+        position: absolute;
+        z-index: 10;
+        inset: calc(50% - 125px);
+        width: 250px;
+        height: auto;
+        scale: .3;
+        animation: scalepokemon .2s 1.5s both;
+    }
+
+    button {
+        position: absolute;
+        z-index: 100;
+        top: calc(50% + 250px);
+        left: calc(50% - 150px);
+        width: 300px;
+        height: auto;
+        border: 10px solid red;
+        padding: 10px;
+        animation: appear .5s both;
+        animation-delay: 2s;
+        font-size: 70px;
+        background-color: blue;
+        color: white;
+    }
+}
+
+ol.ais-Hits-list:has(li:nth-child(2)) {
+
+
+    position: absolute;
+    inset: 250px 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 150px;
+    z-index: 1;
+    pointer-events: none;
+    
+    li:first-child { grid-area: 1 / 1 / 2 / 2; animation-delay: 0.5s;}
+    li:nth-child(2) { grid-area: 2 / 2 / 3 / 3; animation-delay: 0.8s;}
+    li:nth-child(3) { grid-area: 1 / 3 / 2 / 4; animation-delay: 0.1s;}
+    li:nth-child(4) { grid-area: 1 / 2 / 2 / 3; animation-delay: 0.3s;}
+    li:nth-child(5) { grid-area: 2 / 3 / 3 / 4; animation-delay: 1s;}
+    li:nth-child(6) { grid-area: 2 / 1 / 3 / 2; animation-delay: 0.2s;}
+    li:nth-child(n+7) { display: none; }
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: appear 0.5s both;
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
+        p {
+            display: none;
+        }
+        button {
+            display: none;
+        }
+    }
+    
 }
 
 .pokeball {
@@ -18,9 +390,10 @@
     overflow: hidden;
     left: calc(50% - 100px);
     top: calc(50% - 100px);
-    z-index: 10;
+    z-index: 11;
     transform: rotate(25deg);
     display: none;
+    pointer-events: none;
 
     .pokeball--top {
         position: absolute;
@@ -73,10 +446,11 @@
         transform: rotate(25deg);
         opacity: 1;
     }
+
     100% {
-        height: 1000px;
-        top: calc(50% - 500px);
-        transform: rotate(360deg);
+        height: 2000px;
+        top: calc(50% - 1000px);
+        transform: rotate(180deg);
         opacity: 0;
     }
 }
@@ -87,12 +461,39 @@
         width: 1px;
         margin-left: 0;
     }
+
     10% {
         width: 20px;
         margin-left: 0;
     }
+
     100% {
         width: 70px;
         margin-left: 65px;
+    }
+}
+
+
+/* The animation code */
+@keyframes appear {
+    0% {
+        margin-top: 10px;
+        opacity: 0;
+    }
+
+    100% {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+
+/* The animation code */
+@keyframes scalepokemon {
+    0% {
+        scale: .3
+    }
+
+    100% {
+        scale: 1
     }
 }
