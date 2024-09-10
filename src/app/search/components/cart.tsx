@@ -45,7 +45,7 @@ async function init() {
 }   
 
 
-export function Cart({ searchClient }: { searchClient: any }) {
+export function Cart() {
     
     useEffect(() => {
         init();
@@ -53,11 +53,9 @@ export function Cart({ searchClient }: { searchClient: any }) {
 
     return (
         <>
-            <h1>CART</h1>
-            <div>
-                <dlw-cf-cart-summary></dlw-cf-cart-summary>
+            <div className="cf-cart">
+                <dlw-cf-added-to-cart-popup></dlw-cf-added-to-cart-popup>
             </div>
-            <dlw-cf-added-to-cart-popup autoHide="true"></dlw-cf-added-to-cart-popup>
         </>
     );
 }

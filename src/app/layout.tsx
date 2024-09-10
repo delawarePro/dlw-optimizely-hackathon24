@@ -5,8 +5,6 @@ import "./globals.css";
 import "../../public/assets/css/pokemon.css";
 import "../../public/assets/css/cf.css";
 
-import Header from '@/components/header'
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -28,7 +26,6 @@ export default function RootLayout({
       <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
     </head>
     <body className={inter.className}>
-    <Header/>
     <main>
       {children}
     </main>

@@ -39,7 +39,7 @@ function Hit({ hit }: HitProps) {
     return (
         <>
             <div className="pokemon-card">
-                ${hit.name}
+                <p>${hit.name}</p>
                 {/* <img src={hit.image}></img> */}
                 <span className="pokeball">
                     <span className="pokeball--top"></span>
@@ -55,9 +55,13 @@ function Hit({ hit }: HitProps) {
 
 export function Search({ searchClient }: { searchClient: any }) {
     return (
-        <InstantSearch searchClient={searchClient} indexName="instant_search">
-            <SearchBox />
-            <Hits hitComponent={Hit} />
-        </InstantSearch>
+        <>
+            <div className="poke-search">
+                <InstantSearch searchClient={searchClient} indexName="instant_search">
+                    <SearchBox />
+                    <Hits hitComponent={Hit} />
+                </InstantSearch>
+            </div>
+        </>
     );
 }

@@ -124,3 +124,41 @@ button, input {
 .cf-cart-line-remove .cf-cart-line-remove__label {
     font-size: 12px;
 }
+
+
+/* custom card popup */
+.cf-cart {
+}
+
+.cf-toast-message {
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: rgb(145, 145, 255);
+    z-index: 999;
+    padding: 300px 50px 50px 50px;
+    color: white;
+    font-size: 50px;
+
+}
+
+.cf-toast-message__close {
+    display: none;
+}
+
+.cf-toast-message__cta-continue {
+    display: none;
+}
+
+.cf-toast-message__cta-add-to-cart {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border-inline: 10px solid blue;
+    border-block: 10px solid red;
+    display: block;
+    color: blue
+}
+
+@keyframes toastmessage {
+    
+}
