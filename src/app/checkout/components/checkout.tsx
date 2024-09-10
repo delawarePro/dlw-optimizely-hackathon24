@@ -3,7 +3,7 @@ import { Dlw_CommerceFlows } from '@delawarepro/dlw-commerce-flows';
 import "@delawarepro/dlw-commerce-flows/commerce-flow-all.css";
 
 let localizationconfig = {
-    translate: function (key, defaultValue) {
+    translate: function (key : any, defaultValue : any) {
         return key;
     }
 }
@@ -20,6 +20,7 @@ async function init() {
         { name: 'dlw-cf-checkout-address-section', component: checkoutAdressSection.Custom_CF_Checkout_Address_Section_Delivery },
     ]
 
+    const document : any = window.document;
     document.getCustomerId = () => localStorage.getItem("customerId");    
     document.cfApiBaseUrl = 'https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/';
 
