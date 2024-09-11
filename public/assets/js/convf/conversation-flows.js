@@ -39,12 +39,13 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
+  "Answer": () => (/* reexport */ Answer),
   "ChatEntry": () => (/* reexport */ ChatEntry),
   "ChatRequest": () => (/* reexport */ ChatRequest),
-  "ChatTypes": () => (/* reexport */ ChatTypes),
   "Dlw_AI_Api_Client": () => (/* reexport */ Dlw_AI_Api_Client),
   "Dlw_AI_Api_Client_Config": () => (/* reexport */ Dlw_AI_Api_Client_Config),
   "Dlw_Conversation_Flows": () => (/* reexport */ Dlw_Conversation_Flows),
+  "Question": () => (/* reexport */ Question),
   "html": () => (/* reexport */ x)
 });
 
@@ -179,7 +180,6 @@ const directive_t={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,EL
 //# sourceMappingURL=unsafe-html.js.map
 
 ;// CONCATENATED MODULE: ./src/API/Dlw_AI_Api_Client.ts
-// For the POC, re-use CommerceFlows message handler.
 
 class Dlw_AI_Api_Client {
     static get CHAT_REQUEST() { return "chatRequest"; }
@@ -242,17 +242,30 @@ class Dlw_AI_Api_Client_Config {
 }
 
 ;// CONCATENATED MODULE: ./src/Types/ChatEntry.ts
-var ChatTypes;
-(function (ChatTypes) {
-    ChatTypes["ANSWER"] = "answer";
-    ChatTypes["QUESTION"] = "question";
-})(ChatTypes || (ChatTypes = {}));
-;
 class ChatEntry {
-    constructor(type, text, correlationId) {
+    constructor(type, correlationId) {
         this.$type = type;
-        this.text = text;
         this.correlationId = correlationId;
+    }
+}
+;
+class Question extends ChatEntry {
+    constructor(question, correlationId) {
+        super("question", correlationId);
+        this.question = question;
+    }
+    toString() {
+        return this.question;
+    }
+}
+;
+class Answer extends ChatEntry {
+    constructor(answer, correlationId) {
+        super("answer", correlationId);
+        this.answer = answer;
+    }
+    toString() {
+        return this.answer;
     }
 }
 ;
@@ -295,7 +308,11 @@ let Dlw_Conversation_Flows = class Dlw_Conversation_Flows extends lit_element_s 
         this.history = this.history || [];
     }
     connectedCallback() {
-        //Only init the api client in connected callback, because properties are not set in the constructor.
+        // Init history with greeting.
+        if (this.greeting && this.greeting !== '') {
+            this.history.push(this.createAnswer(this.greeting, this.newGuid()));
+        }
+        // Only init the api client in connected callback, because properties are not set in the constructor.
         this.apiBaseUrl = this.validateApiBaseUrl(this.apiBaseUrl);
         this.apiClient = new Dlw_AI_Api_Client(new Dlw_AI_Api_Client_Config(this.scope, this.apiBaseUrl));
         super.connectedCallback();
@@ -329,7 +346,7 @@ let Dlw_Conversation_Flows = class Dlw_Conversation_Flows extends lit_element_s 
         this.messageHandler.register(Dlw_AI_Api_Client.CHAT_RESPONSE, (response) => this.onChatResponseReceived(response));
     }
     onChatResponseReceived(response) {
-        this.appendHistory(ChatTypes.ANSWER, response.answer, response.correlationId);
+        this.appendHistory(this.createAnswer(response.answer, response.correlationId));
         this.isTyping = false;
     }
     updateInputValue(event) {
@@ -342,45 +359,58 @@ let Dlw_Conversation_Flows = class Dlw_Conversation_Flows extends lit_element_s 
         this.respond();
     }
     submitSuggestion(suggestion) {
-        this.value = suggestion.text;
+        this.value = suggestion.toString();
         this.respond();
     }
     respond() {
         var _a;
         if (!this.value)
             return;
-        var correlationId = crypto.randomUUID();
+        var correlationId = this.newGuid();
         // Create request, which contains history without the current question.
         // We want to add the last `historySize` amount of items to the request.
         var startIndex = this.historySize > this.history.length ? 0 : this.history.length - this.historySize;
         var endIndex = this.history.length;
         var request = new ChatRequest(this.value, (_a = this.history) === null || _a === void 0 ? void 0 : _a.slice(startIndex, endIndex), correlationId);
         // Add question to check history in UI.
-        this.appendHistory(ChatTypes.QUESTION, this.value, correlationId);
+        this.appendHistory(this.createQuestion(this.value, correlationId));
         // Ask question to backend.
         this.messageHandler.sendMessage(Dlw_AI_Api_Client.CHAT_REQUEST, request);
         this.isTyping = true;
         this.value = "";
     }
-    async appendHistory(chatType, text, correlationId) {
-        this.history.push(new ChatEntry(chatType, text, correlationId));
+    // Factory method for Questions to you can easily overwrite with project specific implementations.
+    createQuestion(question, correlationId) {
+        return new Question(question, correlationId);
+    }
+    // Factory method for Answers to you can easily overwrite with project specific implementations.
+    createAnswer(answer, correlationId) {
+        return new Answer(answer, correlationId);
+    }
+    newGuid() {
+        return crypto.randomUUID();
+    }
+    async appendHistory(entry) {
+        this.history.push(entry);
         this.requestUpdate();
     }
     renderSuggestions() {
         if (!this.suggestions)
             return;
         return x `
-            <p class="conv-flows__description">
-                <!-- TODO: make configurable -->
-                We can help you find the right product, or inspire you, what are you looking for?
-            </p>
+            ${this.suggestionsTitle && this.suggestionsTitle !== ''
+            ? x `
+                <p class="conv-flows__description">
+                    ${this.suggestionsTitle}
+                </p>`
+            : x ``}
             <ul class="conv-flows__suggestions">
-                ${this.suggestions.map((suggestion) => x `
+                ${this.suggestions.map((suggestion, index) => x `
                         <li class="conv-flows__suggestion">
                             <button type="button"
-                                @click=${() => this.submitSuggestion(suggestion)}
+                                @click=${() => this.submitSuggestion(this.createQuestion(suggestion, this.newGuid()))}
                                 class="conv-flows__btn conv-flows__btn-button">
-                                    ${suggestion.text}
+                                    ${suggestion.toString()}
                             </button>
                         </li>
                     `)}
@@ -391,8 +421,7 @@ let Dlw_Conversation_Flows = class Dlw_Conversation_Flows extends lit_element_s 
         return x `
             <div class="conv-flows__title-container">
                 <h2 class="conv-flows__title">
-                    <!-- TODO: make configurable -->
-                    Hi, how can we help you today?
+                    ${this.title}
                 </h2>
             </div>
         `;
@@ -411,7 +440,7 @@ let Dlw_Conversation_Flows = class Dlw_Conversation_Flows extends lit_element_s 
         `;
     }
     renderChatEntry(entry) {
-        return x `${unsafe_html_o(entry.text)}`;
+        return x `${unsafe_html_o(entry.toString())}`;
     }
     renderTypingAnimation() {
         return x `
@@ -461,8 +490,14 @@ __decorate([
     property_n({ type: String })
 ], Dlw_Conversation_Flows.prototype, "scope", void 0);
 __decorate([
-    property_n({ type: (Array) })
-], Dlw_Conversation_Flows.prototype, "history", void 0);
+    property_n({ type: String })
+], Dlw_Conversation_Flows.prototype, "title", void 0);
+__decorate([
+    property_n({ type: String })
+], Dlw_Conversation_Flows.prototype, "greeting", void 0);
+__decorate([
+    property_n({ type: String })
+], Dlw_Conversation_Flows.prototype, "suggestionsTitle", void 0);
 __decorate([
     property_n({ type: (Array) })
 ], Dlw_Conversation_Flows.prototype, "suggestions", void 0);
