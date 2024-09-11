@@ -6,28 +6,38 @@ html {
 }
 
 /* generic button styling */
-.pixl-button {
+.pixl-button, 
+.cf a,
+.cf button {
     font-size: 25px;
     background-color: white;
     color: blue;
     clip-path: polygon(calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%, 0 0);
     position: relative;
     padding: 2px 20px;
+    cursor: pointer;
 }
 
-.pixl-button::after, .pixl-button::before {
+.pixl-button::after, .pixl-button::before,
+.cf a::after, .cf a::before,
+.cf button::after, .cf button::before {
     content: '';
     position: absolute;
-    width: 5px;
+    width: 10px;
     height: 100%;
 }
 
-.pixl-button::after{
+.pixl-button::after,
+.cf a::after,
+.cf button::after{
     background-color: blue;
-    inset: 0 0 0 5px;
+    inset: 0 0 0 10px;
+    width: 5px;
 }
 
-.pixl-button::before {
+.pixl-button::before,
+.cf a::before,
+.cf button::before {
     background-color: red;
     inset: 0;
 }

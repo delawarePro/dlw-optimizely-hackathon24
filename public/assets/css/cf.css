@@ -1,11 +1,11 @@
 
 :root {
     --brand-color-primary: rgb(239,70,60);
-    --brand-color-success: #2a9d8f;
+    --brand-color-success: blue;
     --brand-color-error: red;
     --brand-color-secondary: rgb(164,30,27);
-    --brand-color-background-light: #fffff7;
-    --brand-color-background: #f1f1f1;
+    --brand-color-background-light: rgb(227, 227, 255);
+    --brand-color-background: rgb(210, 210, 255);
     --brand-color-border: rgb(213, 213, 213);
     --brand-border-radius: 5px;
     --brand-spacing: 20px;
@@ -21,7 +21,7 @@
 :root {
     --cf-color-primary: var(--brand-color-primary);
     --cf-color-secondary: var(--brand-color-secondary);
-    --cf-color-text: black;
+    --cf-color-text: blue;
     --cf-color-text-inverted: white;
     --cf-color-text-light: #8b8b8b;
     --cf-color-background: var(--brand-color-background);
@@ -79,40 +79,113 @@
     font-size: 12px;
 }
 
-
-/* custom card popup */
+/* custom cart popup */
 .cf-cart {
+
+    .cf-toast-message {
+        position: absolute;
+        inset: 0 0 0 0;
+        background-color: rgb(145, 145, 255);
+        z-index: 999999;
+        padding: 20px;
+        color: white;
+        font-size: 30px;
+        animation: toastmessage .8s both;
+    }
+    
+    .cf-toast-message__content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .cf-toast-message__close {
+        display: none;
+    }
+
+    .cf-toast-message__cta-continue {
+        display: none;
+    }
+
+    .cf-toast-message__cta-add-to-cart {
+        display: block;
+        width: fit-content;
+        align-items: end;
+        clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100% ,0 100%, 0 0);
+        font-size: 40px;
+        animation: bouncebutton .5s infinite;
+    }
 }
 
-.cf-toast-message {
-    position: absolute;
-    inset: 0 0 0 0;
-    background-color: rgb(145, 145, 255);
-    z-index: 999999;
-    padding: 300px 50px 50px 50px;
-    color: white;
-    font-size: 50px;
-
+.cf {
+    .cf-checkout-proceed button{
+        margin: 20px;
+    }
 }
 
-.cf-toast-message__close {
-    display: none;
-}
-
-.cf-toast-message__cta-continue {
-    display: none;
-}
-
-.cf-toast-message__cta-add-to-cart {
-    width: 100%;
-    height: 100px;
-    background-color: white;
-    border-inline: 10px solid blue;
-    border-block: 10px solid red;
-    display: block;
-    color: blue
+.cf-custom-checkout {
+    animation: appear .5s 1s both;
 }
 
 @keyframes toastmessage {
-    
+    0% {
+        inset: 0 100dvw 0 -100dvw;
+    }
+    100% {
+        inset: 0;
+    }
+}
+
+@keyframes bouncebutton {
+    0% {
+        margin-left: calc(50% - 10px);
+    }
+    100% {
+        margin-left: calc(50% - 5px);
+    }
+}
+
+/* custom checkout css */
+.cf-checkout-breadcrumb:not(.is-active) {
+    .cf-checkout-breadcrumb__label {
+        display: none;
+    }
+}
+
+.cf-checkout-breadcrumb__label {
+    color: blue;
+    font-size: 21px;
+    line-height: 18px;
+}
+
+.cf-checkout-breadcrumb::after {
+    display: none !important;
+}
+
+.cf-checkout-steps {
+    padding: 5px 0;
+    background-color: transparent !important;
+}
+
+.cf-checkout-heading {
+    display: none;
+}
+
+.cf-checkout-reverse {
+    display: none;
+}
+
+.cf-checkout-step__delivery {
+    button {
+        font-size: 21px;
+        border-bottom: 2px solid blue;
+    }
+
+
+    button::before,
+    button::after {
+        display: none;
+    }
 }

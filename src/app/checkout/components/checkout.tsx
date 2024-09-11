@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react'
 import { Dlw_CommerceFlows } from '@delawarepro/dlw-commerce-flows';
 import "@delawarepro/dlw-commerce-flows/commerce-flow-all.css";
-
-let localizationconfig = {
-    translate: function (key : any, defaultValue : any) {
-        return key;
-    }
-}
+import { translationConfig } from '../../../components/translations/translations';
+import { Sause } from '../../search/components/sause';
 
 function serverNotAvailableErrorCallback() {
     console.error("The server can not be reached.");
@@ -30,7 +26,7 @@ async function init() {
         customerId: document.getCustomerId(),
         userId: document.getCustomerId(), // For now, should change when login is supported.
         // Localization global initialised in index.js
-        localization: localizationconfig,
+        localization: translationConfig,
         onServerError: serverNotAvailableErrorCallback,
         returnUrl: '/checkout',
         confirmationUrl: '/confirmation',
@@ -51,15 +47,18 @@ export function Checkout() {
 
     return (
         <>
-            <h1>Checkout</h1>
-            <div>
-                <dlw-cf-checkout-flow-breadcrumbs></dlw-cf-checkout-flow-breadcrumbs>
-                <dlw-cf-checkout-flow-step-heading></dlw-cf-checkout-flow-step-heading>
-            </div>
-            <div>
-                <dlw-cf-checkout-flow-steps></dlw-cf-checkout-flow-steps>
-                <dlw-cf-checkout-flow-reverse></dlw-cf-checkout-flow-reverse>
-                <dlw-cf-checkout-flow-proceed></dlw-cf-checkout-flow-proceed>
+            <div className="cf container ps-5 pe-5 flex flex-col gap-5">
+                <Sause />
+
+                <div className="cf-custom-checkout">
+                    <dlw-cf-checkout-flow-breadcrumbs></dlw-cf-checkout-flow-breadcrumbs>
+                    <dlw-cf-checkout-flow-step-heading></dlw-cf-checkout-flow-step-heading>
+                </div>
+                <div className="cf-custom-checkout container mx-auto">
+                    <dlw-cf-checkout-flow-steps></dlw-cf-checkout-flow-steps>
+                    <dlw-cf-checkout-flow-reverse></dlw-cf-checkout-flow-reverse>
+                    <dlw-cf-checkout-flow-proceed></dlw-cf-checkout-flow-proceed>
+                </div>
             </div>
         </>
     );
