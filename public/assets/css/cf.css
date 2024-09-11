@@ -88,7 +88,7 @@
     position: absolute;
     inset: 0 0 0 0;
     background-color: rgb(145, 145, 255);
-    z-index: 999;
+    z-index: 999999;
     padding: 300px 50px 50px 50px;
     color: white;
     font-size: 50px;

@@ -48,7 +48,7 @@ function Hit({ hit }: HitProps) {
                     <span className="pokeball--mid"></span>
                 </span>
                 <img src={hit.animation}></img>
-                <button onClick={() => addProduct(hit)}>CATCH!</button>
+                <button className="pixl-button" onClick={() => addProduct(hit)}>CATCH!</button>
             </div>
         </>
     );
