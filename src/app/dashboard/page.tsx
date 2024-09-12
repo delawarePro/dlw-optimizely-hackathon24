@@ -2,13 +2,14 @@
 
 import React from "react";
 
-import '@delawarepro/dlw-conversation-flows';
+import '../../../public/assets/js/convf/conversation-flows.js';
+import '../../../public/assets/css/conversation-flows.css';
 // import '@delawarepro/dlw-conversation-flows/conversation-flows.scss';
 
-export default async function DashboardPage() {
+export default function DashboardPage() {
     return (
         <>
-            <dlw-conversation-flows apiBaseUrl="https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/"
+            <dlw-conversation-flows apiBaseUrl="https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/api"
                                     title="How can we help you today?"
                                     greeting="Hi what kind of help are you looking for?"
                                     suggestionsTitle="We can help you find the right product, or inspire you, what are you looking for?"
