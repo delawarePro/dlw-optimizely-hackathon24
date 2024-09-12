@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@delawarepro/dlw-commerce-flows": "0.16.54890",
-    "@delawarepro/dlw-conversation-flows": "0.0.54068-dejonghee",
     "@remkoj/optimizely-cms-nextjs": "^2.0.1",
     "@remkoj/optimizely-cms-react": "^2.0.1",
     "@remkoj/optimizely-graph-client": "^2.0.1",

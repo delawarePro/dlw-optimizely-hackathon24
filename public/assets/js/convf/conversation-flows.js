@@ -1,3 +1,6 @@
+'use client';
+
+
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
@@ -287,13 +290,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
-
-
-
-
-
-
-
 let Dlw_Conversation_Flows = class Dlw_Conversation_Flows extends lit_element_s {
     createRenderRoot() {
         return this;
@@ -525,8 +521,9 @@ Dlw_Conversation_Flows = __decorate([
 // Export lit-html so custom components can render data on the page using the html directive.
 // If a custom component were to depend on lit-html themselves it wouldn't work because it's a different instance.
 
+let init = function(){
+    this["@delawarepro/dlw-conversation-flows"] = __webpack_exports__;
+}
 
-
-this["@delawarepro/dlw-conversation-flows"] = __webpack_exports__;
 /******/ })()
 ;

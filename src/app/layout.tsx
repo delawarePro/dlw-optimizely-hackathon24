@@ -20,12 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
     <head>
-      <link rel="stylesheet" href="/assets/css/main.css"/>
-      <link rel="stylesheet" href="/assets/css/cf.css"/>
       <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
       <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
-      {/*<Script type="module" src="/assets/js/convf/conversation-flows.js" strategy="lazyOnload"></Script>*/}
-      <script type="module" src="/assets/js/convf/conversation-flows.js"></script>
     </head>
     <body className={inter.className}>
     <main>

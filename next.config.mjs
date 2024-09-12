@@ -5,6 +5,7 @@
 const optimizelyCmsUrl = new URL(process.env.OPTIMIZELY_CMS_URL ?? 'http://localhost:3000')
 
 const nextConfig = {
+    reactStrictMode: false,
     images: {
         remotePatterns: [
             // Allow images from the configured Optimizely CMS URL
