@@ -23,7 +23,7 @@ export default function DashboardPage() {
             {
                 loaded ?
                     <>
-                        <div class="chat-container">
+                        <div className="chat-container">
                             <dlw-conversation-flows apiBaseUrl="https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/api"
                                 title="How can we help you today?"
                                 greeting="Hi what kind of help are you looking for?"
