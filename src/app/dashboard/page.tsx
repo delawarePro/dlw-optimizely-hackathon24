@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import '../../../public/assets/js/convf/conversation-flows.js';
+// import '../../../public/assets/js/convf/conversation-flows.js';
 import '../../../public/assets/css/conversation-flows.css';
 // import '@delawarepro/dlw-conversation-flows/conversation-flows.scss';
 
