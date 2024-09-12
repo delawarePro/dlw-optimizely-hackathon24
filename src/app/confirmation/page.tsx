@@ -6,7 +6,7 @@ import { Sause } from '../search/components/sause';
 export default async function SearchPage() {
     return (
         <>
-        <div className="container p-5 flex flex-col gap-5 flex-align-center justify-center grow">
+        <div className="container p-5 flex flex-col gap-5 flex-align-center justify-start grow">
             <Sause useplane={false} />
 
             <h1 className="text-3xl">Congrats!! <br /> You c(b)aught yourself a pokemon!</h1>
