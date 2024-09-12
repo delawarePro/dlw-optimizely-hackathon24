@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "../../public/assets/css/pokemon.css";
 import "../../public/assets/css/cf.css";
+import "../../public/assets/css/convf.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
     <head>
-      <link rel="stylesheet" href="/assets/css/main.css"/>
-      <link rel="stylesheet" href="/assets/css/cf.css"/>
       <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
       <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
     </head>
