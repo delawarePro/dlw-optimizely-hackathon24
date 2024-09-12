@@ -22,8 +22,8 @@ function addProduct(hit: AlgoliaHit) {
                     pricing: {
                         pcs: {
                             // todo: Get price from somewhere, maybe from back-end?
-                            salePrice: 1337.50,
-                            listPrice: 5000.50
+                            salePrice: 133.50,
+                            listPrice: 500.50
                         }
                     },
                     title: "Bulbasaur",

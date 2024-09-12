@@ -58,6 +58,7 @@ export function Checkout() {
                 <div className="cf-custom-checkout container mx-auto">
                     <dlw-cf-checkout-flow-steps></dlw-cf-checkout-flow-steps>
                     <dlw-cf-checkout-flow-reverse></dlw-cf-checkout-flow-reverse>
+                    <dlw-cf-checkout-flow-pricing></dlw-cf-checkout-flow-pricing>
                     <dlw-cf-checkout-flow-proceed></dlw-cf-checkout-flow-proceed>
                 </div>
             </div>
