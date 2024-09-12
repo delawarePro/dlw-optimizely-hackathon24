@@ -1,13 +1,535 @@
-﻿.ais-Hits-list > li:first-child {
-    background-color: orange;
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Pixelify+Sans:wght@600&display=swap');
+
+/* Use a mobile view at all times */
+html {
+    background-color: white;
 }
-.ais-Hits-list > li:only-child {
-    background-color: aqua;
+
+.backgroundAnimation {
+    position: fixed;
+    inset: 0 0 0 0;
+}
+
+/* generic button styling */
+.pixl-button, 
+.cf a,
+.cf button {
+    font-size: 18px;
+    background-color: white;
+    color: blue;
+    clip-path: polygon(calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%, 0 0);
+    position: relative;
+    padding: 2px 20px;
+    cursor: pointer;
+}
+
+.pixl-button::after, .pixl-button::before,
+.cf a::after, .cf a::before,
+.cf button::after, .cf button::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 100%;
+}
+
+.pixl-button::after,
+.cf a::after,
+.cf button::after{
+    background-color: blue;
+    inset: 0 0 0 10px;
+    width: 5px;
+}
+
+.pixl-button::before,
+.cf a::before,
+.cf button::before {
+    background-color: red;
+    inset: 0;
+}
+
+main {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    overflow: auto;
+
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    background-color: beige;
+    overflow: hidden;
+    position: relative;
+}
+
+/* pixels overlay */
+/* pixels overlay */
+/* pixels overlay */
+/* pixels overlay */
+/* pixels overlay */
+
+.pixel-overlay {
+    /* Change this color to change the overall feeling :D */
+    background-color: #999;
+    position: absolute;
+    inset: 0;
+    animation: pixelanimation 1s infinite both;
+    opacity: var(--pixel-overlay--opacity, 0);
+    pointer-events: none;
+    z-index: 10000000;
+}
+
+@keyframes pixelanimation {
+    0% {
+        background-image:
+            linear-gradient(180deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .2) 100%),
+            linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .4) 50%),
+            linear-gradient(180deg, transparent 50%, rgba(255, 255, 255, .2) 50%),
+            linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .2) 50%),
+            linear-gradient(-180deg, transparent 50%, rgba(255, 255, 255, .4) 50%),
+            linear-gradient(-90deg, transparent 50%, rgba(255, 255, 255, .4) 50%);
+        background-size:
+            4em 4em,
+            4em 4em,
+            2em 2em,
+            2em 2em,
+            1em 1em,
+            1em 1em;
+    }
+
+    100% {
+        background-color: #fff;
+        background-image:
+            linear-gradient(180deg, transparent 50%, rgba(255, 0, 0, .1) 50%),
+            linear-gradient(90deg, transparent 50%, rgba(255, 0, 0, .4) 50%),
+            linear-gradient(180deg, transparent 50%, rgba(0, 255, 0, .2) 50%),
+            linear-gradient(90deg, transparent 50%, rgba(0, 255, 0, .2) 50%),
+            linear-gradient(-180deg, transparent 50%, rgba(0, 0, 255, .4) 50%),
+            linear-gradient(-90deg, transparent 50%, rgba(0, 0, 255, .4) 50%);
+        background-size:
+            1em 1em,
+            1em 1em,
+            2em 2em,
+            2em 2em,
+            1em 1em,
+            1em 1em;
+    }
+}
+
+/* Background spinner */
+/* Background spinner */
+/* Background spinner */
+/* Background spinner */
+/* Background spinner */
+/* Background spinner */
+@view-transition {
+    navigation: auto;
+}
+.spin {
+    position: absolute;
+    inset: 0 0 0 0;
+    min-height: 600px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: white;
+    opacity: .2;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+.spin--dynamic {
+    background: var(--spin--bg-color);
+}
+
+.spin__center {
+    position: absolute;
+    inset: calc(50% - 50px) calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    background-color: var(--spin--bg-color, red);
+    border-radius: 50%;
+}
+
+.spin__effect {
+    width: 100%;
+    height: 100%;
+    perspective: 5px;
+}
+
+.spin__spinner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: spiningbackground linear infinite;
+    animation-duration: var(--spin--animation-time, 45s);
+}
+
+.spin__spinner>.spin__vane {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: rgb(255, 190, 69);
+}
+
+.spin__spinner>.spin__vane:nth-child(1) {
+    transform: translateX(50%) rotate(0deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(2) {
+    transform: translate(50%) rotate(36deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(3) {
+    transform: translate(50%) rotate(72deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(4) {
+    transform: translate(50%) rotate(108deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(5) {
+    transform: translate(50%) rotate(144deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(6) {
+    transform: translate(50%) rotate(180deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(7) {
+    transform: translate(50%) rotate(216deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(8) {
+    transform: translate(50%) rotate(252deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(9) {
+    transform: translate(50%) rotate(288deg) rotateX(90deg) translateZ(300px);
+}
+
+.spin__spinner>.spin__vane:nth-child(10) {
+    transform: translate(50%) rotate(324deg) rotateX(90deg) translateZ(300px);
+}
+
+@keyframes spiningbackground {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Hackathon header */
+/* Hackathon header */
+/* Hackathon header */
+/* Hackathon header */
+.opti-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    padding-inline: 15px;
+    
+    p {
+        color: blue;
+        animation: appear .5s 1s both;
+    }
+}
+
+.opti-title-image {
+    max-width: 250px;
+    max-height: 250px;
+    width: 100%;
+    aspect-ratio: 2/1;
+    position: relative;
+    z-index: 100000;
+
+    img {
+        position: absolute;
+        height: 100%;
+        animation: scalepokemon .5s both;
+    }
+    
+    img:nth-child(2){
+        animation: appear 1s .3s both;
+    }
+}
+
+.hackathon-box {
+    perspective: 200px;
+}
+
+.hackathon-box__inner {
+    width: 180px;
+    height: 30px;
+    transform-style: preserve-3d;
+    animation: zrotation 1s 1s both;
+}
+
+@keyframes zrotation {
+    0% {
+        transform: rotate3d(1, 0, 0, 0deg);
+    }
+    
+    100% {
+        transform: rotate3d(1, 0, 0, 25deg);
+    }
+}
+
+.hackathon-box__face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.hackathon-box__face--front {
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 100%;
+    line-height: 1;
+    padding: 5px 15px;
+    transform: translateZ(15px);
+}
+
+.hackathon-box__face--bottom {
+    background: blue;
+    transform: rotateX(-90deg) translateZ(15px);
+}
+
+
+/* poke search */
+.poke-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-inline: 20px;
+    animation: appear 0.2s 1.5s both;
+    z-index: 100001;
+
+    .ais-SearchBox {
+        padding: 10px;
+        border-inline: 5px solid blue;
+        border-block: 5px solid red;
+        width: 400px;
+        margin: 0 auto;
+        opacity: var(--poke-search--opacity);
+        background-color: white;
+
+        svg {
+            display: none;
+        }
+
+        input {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+body:has(.ais-Hits-list>li:only-child ) {
+    --pixel-overlay--opacity: .3;
+    --spin--animation-time: 3s;
+    --poke-search--opacity: 0;
+    --spin--bg-color: red;
+}
+
+.pokemon-plane {
+    width: 1000px;
+    height: 100px;
+    perspective: 20px;
+    position: absolute;
+    top: 350px;
+    left: calc(50% - 500px);
+    transform-style: preserve-3d;
+    z-index: 1002;
+    
+    .pokemon-plane__front {
+        color: rgb(78, 78, 255);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: inherit;
+        font-size: 100px;
+        background: blue;
+        animation: zrotationplane 1s both;
+    }
+}
+
+@keyframes zrotationplane {
+    0% {
+        transform: rotate3d(1, 0, 0, 2deg);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: rotate3d(1, 0, 0, 40deg);
+        opacity: 1;
+    }
+}
+
+.ais-Hits-list>li:only-child {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
 
     .pokeball {
         display: flex;
         animation: example2 2s 1s both;
     }
+
+    audio {
+        display: block;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    button,
+    img {
+        display: block;
+    }
+
+    img {
+        position: absolute;
+        z-index: 10;
+        inset: 200px 0;
+        width: 100%;
+        max-height: 250px;
+        object-fit: contain;
+        scale: .3;
+        animation: scalepokemon .2s 1.5s both;
+        pointer-events: none;
+    }
+
+    button {
+        z-index: 12;
+        animation: appear .5s both;
+        animation-delay: 2s;
+        position: absolute;
+        width: 410px;
+        top: 280px;
+        left: calc(50% + 50px);
+        text-align: left;
+    }
+    
+    .pokemon-card {
+        min-width: 300px;
+    }
+    
+    .pokemon-card__info {
+        z-index: 11;
+        inset: 200px 10px;
+        position: absolute;
+    }
+    
+    .pokemon-name {
+        font-style: italic;
+        color: blue;
+        font-size: 21px;  
+        z-index: 1000000;      
+    }
+
+    .pokemon-price {
+        position: relative;
+        margin-inline-end: 18px;
+        color: blue;
+        font-size: 30px;
+        line-height: 5px;
+        s {
+            color: red;
+            font-size: 21px;
+        }
+    }
+
+    .pokemon-price::after {
+        content: '';
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 19.31'%3E%3Cpath fill='%2300f' d='M14.03 2.1h-1.15V0H2.35L1.5.85v8.08H.85L0 9.78V17.36h1.5v1.95h4.27l.85-.85v-1.1h3.91l.85-.85v-5.99h.65l.85-.85V8.42h1.27l.85-.85V2.1h-.97z'/%3E%3Cpath fill='%23fcee21' d='M11.91 3.07V.97H3.32V9.9h-1.5v2.33h1.5v.99h-1.5v2.33h1.5v1.95h2.33v-1.95h4.76v-2.33H5.65v-.99h4.76V9.9H5.65V8.7h6.26V6.6h2.12V3.06h-2.12Zm-.23 3.31H5.65V3.3h6.03v3.08Z'/%3E%3C/svg%3E");
+        position: absolute;
+        top: calc(50% - 10px);
+        right: -18px;
+        width: 15px;
+        height: 19px;
+    }
+}
+
+ol.ais-Hits-list:has(li:nth-child(2)) {
+    position: absolute;
+    inset: 140px 10px 0 10px;
+    height: 750px;
+    z-index: 1001;
+    pointer-events: none;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 95px repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    
+    li:first-child { grid-area: 3 / 2 / 4 / 3; animation-delay: 0.3s; img {max-width: 90px;}}
+    li:nth-child(2) { grid-area: 1 / 3 / 2 / 4; animation-delay: 0.7s; img {max-width: 70px;} }
+    li:nth-child(3) { grid-area: 3 / 1 / 4 / 2; animation-delay: 0.1s; img {max-width: 65px;}}
+    li:nth-child(4) { grid-area: 1 / 1 / 2 / 2; animation-delay: 0.5s; img {max-width: 75px;}}
+    li:nth-child(5) { grid-area: 3 / 3 / 4 / 4; animation-delay: 1s; img {max-width: 45px;}}
+    li:nth-child(6) { grid-area: 4 / 3 / 5 / 4; animation-delay: 0.2s; img {max-width: 30px;}}
+    li:nth-child(7) { grid-area: 4 / 1 / 5 / 2; animation-delay: 0.8s; img {max-width: 50px;}}
+    li:nth-child(8) { grid-area: 4 / 2 / 5 / 3; animation-delay: 0.5s; img {max-width: 45px;}}
+    li:nth-child(9) { grid-area: 5 / 2 / 6 / 3; animation-delay: 0.5s; img {max-width: 30px;}}
+    li:nth-child(10) { grid-area: 5 / 1 / 6 / 2; animation-delay: 0.5s; img {max-width: 30px;}}
+    li:nth-child(11) { grid-area: 5 / 3 / 6 / 4; animation-delay: 0.5s; img {max-width: 30px;}}
+    li:nth-child(12) { grid-area: 6 / 2 / 7 / 3; animation-delay: 0.5s; img {max-width: 30px;}}
+    li:nth-child(13) { grid-area: 6 / 1 / 7 / 2; animation-delay: 0.5s; img {max-width: 30px;}}
+    li:nth-child(14) { grid-area: 6 / 3 / 7 / 4; animation-delay: 0.5s; img {max-width: 30px;}}
+
+    li:nth-child(n+15) { display: none; }
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: appear 0.5s both;
+
+        img {
+            height: auto;
+        }
+
+        p, button, audio {
+            display: none;
+            opacity: 0;
+        }
+    }
+    
 }
 
 .pokeball {
@@ -17,10 +539,11 @@
     border-radius: 100px;
     overflow: hidden;
     left: calc(50% - 100px);
-    top: calc(50% - 100px);
-    z-index: 10;
+    top: 250px;
+    z-index: 11;
     transform: rotate(25deg);
     display: none;
+    pointer-events: none;
 
     .pokeball--top {
         position: absolute;
@@ -66,6 +589,7 @@
     }
 }
 
+
 /* The animation code */
 @keyframes example2 {
     0% {
@@ -73,10 +597,11 @@
         transform: rotate(25deg);
         opacity: 1;
     }
+
     100% {
-        height: 1000px;
-        top: calc(50% - 500px);
-        transform: rotate(360deg);
+        height: 2000px;
+        top: calc(50% - 1000px);
+        transform: rotate(180deg);
         opacity: 0;
     }
 }
@@ -87,12 +612,39 @@
         width: 1px;
         margin-left: 0;
     }
+
     10% {
         width: 20px;
         margin-left: 0;
     }
+
     100% {
         width: 70px;
         margin-left: 65px;
+    }
+}
+
+
+/* The animation code */
+@keyframes appear {
+    0% {
+        margin-top: 10px;
+        opacity: 0;
+    }
+
+    100% {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+
+/* The animation code */
+@keyframes scalepokemon {
+    0% {
+        scale: .3
+    }
+
+    100% {
+        scale: 1
     }
 }

@@ -1,0 +1,48 @@
+body {
+    /* Custom colors for chat */
+    --conv-flows__chat--primary-color: blue;
+    --conv-flows__chat--header-bg-color: var(--conv-flows__chat--primary-color);
+    --conv-flows__chat--header-text-color: white;
+    --conv-flows__chat--text-color: black;
+    --conv-flows__max-width: 100dvw;
+    --conv-flows__min-height: 100dvh;
+    /* answer styling */
+    --conv-flows__answer--icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='Layer_1' viewBox='0 0 277.49 277.5'%3E%3Cdefs%3E%3Cstyle%3E.cls-2,.cls-3%7Bfill:%23fff%7D.cls-3%7Bopacity:.37%7D%3C/style%3E%3C/defs%3E%3Cpath d='M87.26 267.56c64.69 25.86 137.29-.43 171.31-58.89L3.75 106.81c-15.66 65.8 18.82 134.89 83.51 160.75Z' class='cls-2'/%3E%3Cpath fill='%23f92323' d='M190.23 9.95c-64.69-25.86-137.29.43-171.31 58.89L273.74 170.7c15.66-65.8-18.82-134.89-83.51-160.75Z'/%3E%3Cpath d='M187.22 136.11a48.54 48.54 0 0 0-81.76-32.68L18.92 68.84a139.07 139.07 0 0 0-15.17 37.97l86.53 34.59a48.54 48.54 0 0 0 81.76 32.68l86.53 34.59a139.07 139.07 0 0 0 15.17-37.97l-86.53-34.59Z'/%3E%3Ccircle cx='138.75' cy='138.75' r='25.16' class='cls-2'/%3E%3Ccircle cx='129.45' cy='41.47' r='36.96' class='cls-3'/%3E%3Ccircle cx='134.81' cy='111.7' r='20.77' class='cls-3'/%3E%3C/svg%3E");
+    --conv-flows__answer--icon-width: 21px;
+    --conv-flows__answer--icon-height: 21px;
+    --conv-flows__answer--background-color: blue;
+    --conv-flows__answer--text-color: white;
+    --conv-flows__answer--box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    --conv-flows__border-radius: 2px;
+    
+    --conv-flows__question--icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='Layer_1' viewBox='0 0 21 21'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23fff%7D.cls-2%7Bfill:%2372c4bf%7D%3C/style%3E%3C/defs%3E%3Cpath d='M10.5 0a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21Z' class='cls-2'/%3E%3Cpath d='M10.5 11.45a4.44 4.44 0 0 0 0-8.86 4.44 4.44 0 0 0 0 8.86Zm0-6.87a2.43 2.43 0 1 1 0 4.87 2.43 2.43 0 0 1 0-4.87ZM17.74 16.21c-1.27-2.4-4.11-3.95-7.24-3.95s-5.97 1.55-7.24 3.95l-.11.21.15.19c.25.32.5.6.75.85l.39.39.22-.51c.85-2 3.19-3.34 5.84-3.34s5 1.34 5.84 3.34l.22.51.39-.39c.25-.25.5-.53.75-.85l.15-.19-.11-.21Z' class='cls-1'/%3E%3C/svg%3E");
+    --conv-flows__question--icon-width: 21px;
+    --conv-flows__question--icon-height: 21px;
+    --conv-flows__question--background-color: #3C3C3C;
+    --conv-flows__question--text-color: #fff;
+
+    .chat-container {
+        padding: 0;
+        margin: 0;
+        display: block;
+        background-color: #cceeff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .conv-flows__suggestion {
+        color: red;
+    }
+
+    .conv-flows__suggestion::before {
+        content: '→';
+        color: red;
+    }
+    
+    .conv-flows__suggestions {
+        margin-bottom: 15px;
+    }
+
+    .conv-flows__btn--chat {
+        width: 25px;
+    }
+}

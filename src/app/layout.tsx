@@ -3,9 +3,6 @@ import Script from 'next/script';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "../../public/assets/css/pokemon.css";
-import "../../public/assets/css/pixels.css";
-
-import Header from '@/components/header'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,17 +18,33 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <head>
-      <link rel="stylesheet" href="/assets/css/main.css"/>
-      <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
-      <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
-    </head>
-    <body className={inter.className}>
-    <Header/>
-    <main>
-      {children}
-    </main>
-    </body>
+      <head>
+        <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
+        <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
+      </head>
+      <body className={inter.className}>
+        <div className="backgroundAnimation">
+          <div className="spin blurred">
+            <div className="spin__effect">
+              <div className="spin__spinner">
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+                <div className="spin__vane"></div>
+              </div>
+            </div>
+            <div className="spin__center"></div>
+          </div>    </div>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

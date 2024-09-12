@@ -1,0 +1,212 @@
+
+:root {
+    --brand-color-primary: rgb(239,70,60);
+    --brand-color-success: blue;
+    --brand-color-error: red;
+    --brand-color-secondary: rgb(164,30,27);
+    --brand-color-background-light: rgb(227, 227, 255);
+    --brand-color-background: rgb(210, 210, 255);
+    --brand-color-border: rgb(213, 213, 213);
+    --brand-border-radius: 5px;
+    --brand-spacing: 20px;
+    --brand-spacing-large: 40px;
+    --brand-spacing-small: 10px;
+    --brand-spacing-tiny: 5px;
+    --brand-logo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 724 242'%3E%3Cpath fill='%233c3c3c' d='M157.3 168.7c11.5 0 19.8-5.3 24-12.2l12.3 7a42 42 0 0 1-36.6 18.8 42.4 42.4 0 0 1-44.6-43.8A42.3 42.3 0 0 1 156 94.7c25.1 0 41.5 20.6 41.5 44 0 2.2-.2 4.3-.5 6.5h-69.8c2.8 15 14.6 23.5 30.1 23.5zm-30.2-36.2h55.6c-2.5-16.5-14.3-24.1-26.8-24.1a27.7 27.7 0 0 0-28.8 24.1zM214 50.6h14.5v129.6H214V50.6zm120.1 46.3v83.3h-14.5v-14.3a36 36 0 0 1-31.5 16.5c-23.1 0-42.1-19.1-42.1-43.8s19-43.8 42.1-43.8a36 36 0 0 1 31.5 16.5V97l14.5-.1zm-14.5 41.6a29 29 0 0 0-29.6-29.8 29 29 0 0 0-29.5 29.8 29 29 0 0 0 29.5 29.8 29 29 0 0 0 29.6-29.8zm149.7-41.6-25.8 83.3h-14.8l-19.5-61.6-19.5 61.6h-14.8l-25.8-83.3h15.2l18.3 63.3 19.6-63.3h14l19.6 63.4 18.3-63.4h15.2zm95.1 0v83.3h-14.5v-14.3a36 36 0 0 1-31.5 16.5c-23.1 0-42.1-19.1-42.1-43.8s19-43.8 42.1-43.8a36 36 0 0 1 31.5 16.5V97l14.5-.1zm-14.5 41.6a29 29 0 0 0-29.6-29.8 29 29 0 0 0-29.5 29.8 29 29 0 0 0 29.5 29.8 29 29 0 0 0 29.6-29.8zm76.9-43.1v15.2c-12.5-.5-26 5.8-26 25.5v44.1h-14.5V96.9h14.5v14c5.3-11.7 15.5-15.5 26-15.5zm49.9 73.3c11.5 0 19.8-5.3 24-12.2l12.3 7a42 42 0 0 1-36.6 18.8 42.4 42.4 0 0 1-44.6-43.8 42.3 42.3 0 0 1 43.6-43.8c25.1 0 41.5 20.6 41.5 44 0 2.2-.2 4.3-.5 6.5h-69.8c2.8 15 14.7 23.5 30.1 23.5zm-30.1-36.2h55.6c-2.5-16.5-14.3-24.1-26.8-24.1a27.6 27.6 0 0 0-28.8 24.1zM95 50.6v87.9a44.1 44.1 0 0 1-46 43.8c-23.1 0-42.1-19.1-42.1-43.8s19-43.8 42.1-43.8a36 36 0 0 1 31.5 16.5V50.6H95zm-14.5 87.9a29 29 0 0 0-29.6-29.8 29 29 0 0 0-29.5 29.8 29 29 0 0 0 29.5 29.8 29 29 0 0 0 29.6-29.8z'/%3E%3Cpath fill='%23ef463c' d='M80.5 138.5a29 29 0 0 0-29.6-29.8 29 29 0 0 0-29.5 29.8 29 29 0 0 0 29.5 29.8 29 29 0 0 0 29.6-29.8z'/%3E%3C/svg%3E");
+    --brand-logo-width: 200px;
+}
+
+/* ============================== */
+
+:root {
+    --cf-color-primary: var(--brand-color-primary);
+    --cf-color-secondary: var(--brand-color-secondary);
+    --cf-color-text: blue;
+    --cf-color-text-inverted: white;
+    --cf-color-text-light: #8b8b8b;
+    --cf-color-background: var(--brand-color-background);
+    --cf-color-background-light: var(--brand-color-background-light);
+    --cf-color-border: var(--brand-color-border);
+    --cf-color-success: var(--brand-color-success);
+    --cf-color-error: var(--brand-color-error);
+    --cf-color-hover: black;
+    --cf-font-size: 16px;
+    --cf-font-size-small: 14px;
+    --cf-font-size-tiny: 12px;
+    --cf-spacing: var(--brand-spacing);
+    --cf-spacing-large: var(--brand-spacing-large);
+    --cf-spacing-small: var(--brand-spacing-small);
+    --cf-spacing-tiny: var(--brand-spacing-tiny);
+    --cf-border: 1px solid var(--cf-color-border);
+    --cf-border-succes: 1px solid var(--cf-color-success);
+    --cf-border-error: 1px solid var(--cf-color-error);
+    --cf-border-focus: 1px solid var(--cf-color-hover);
+    --cf-border-radius: var(--brand-border-radius);
+    --cf-image--close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m11.46 10 8.24-8.24c.4-.4.4-1.06 0-1.46s-1.06-.4-1.46 0L10 8.54 1.76.3C1.36-.1.71-.1.3.3s-.4 1.06 0 1.46L8.54 10 .3 18.24c-.4.4-.4 1.06 0 1.46a1.04 1.04 0 0 0 1.46 0L10 11.46l8.24 8.24a1.04 1.04 0 0 0 1.46 0c.4-.4.4-1.06 0-1.46L11.46 10Z'/%3E%3C/svg%3E");
+}
+
+.cf-price {
+    color: var(--cf-color-text);
+}
+.cf-price--free {
+    color: var(--cf-color-success);
+}
+
+.cf-price--old {
+    font-size: var(--cf-font-size-small);
+    color: var(--cf-color-text-light);
+}
+
+
+/* Skeleton specific overwrites */
+.cf-btn--qty {
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+}
+
+.cf-cart-line-item-quantifier button,
+.cf-cart-line-item-quantifier input {
+    /* margin: 0; */
+}
+
+.cf-cart-line-remove {
+    /* margin: 0; */
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+}
+
+.cf-cart-line-remove .cf-cart-line-remove__label {
+    font-size: 12px;
+}
+
+/* custom cart popup */
+.cf-cart {
+
+    .cf-toast-message {
+        position: absolute;
+        inset: 0 0 0 0;
+        background-color: rgb(145, 145, 255);
+        z-index: 999999;
+        padding: 20px;
+        color: white;
+        font-size: 30px;
+        animation: toastmessage .8s both;
+    }
+    
+    .cf-toast-message__content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .cf-toast-message__close {
+        display: none;
+    }
+
+    .cf-toast-message__cta-continue {
+        display: none;
+    }
+
+    .cf-toast-message__cta-add-to-cart {
+        display: block;
+        width: fit-content;
+        align-items: end;
+        clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100% ,0 100%, 0 0);
+        font-size: 30px;
+        animation: bouncebutton .5s infinite;
+    }
+}
+
+.cf {
+    .cf-checkout-proceed button{
+        margin: 20px;
+    }
+}
+
+.cf-custom-checkout {
+    animation: appear .5s 1s both;
+}
+
+@keyframes toastmessage {
+    0% {
+        inset: 0 100dvw 0 -100dvw;
+    }
+    100% {
+        inset: 0;
+    }
+}
+
+@keyframes bouncebutton {
+    0% {
+        margin-left: calc(50% - 10px);
+    }
+    100% {
+        margin-left: calc(50% - 5px);
+    }
+}
+
+/* custom checkout css */
+.cf-checkout-breadcrumb {
+    max-width: 60px;
+    align-items: flex-start;
+
+    span {
+        text-align: left;
+    }
+}
+
+.cf-checkout-breadcrumb:not(.is-active) {
+    .cf-checkout-breadcrumb__label {
+        display: none;
+    }
+}
+
+.cf-checkout-breadcrumb__label {
+    color: blue;
+    font-size: 21px;
+    line-height: 18px;
+}
+
+.cf-checkout-breadcrumb::after {
+    display: none !important;
+}
+
+.cf-checkout-steps {
+    padding: 5px 0;
+    background-color: transparent !important;
+}
+
+.cf-checkout-steps--empty {
+    text-align: center;
+    font-size: 21px;
+    color: blue;
+}
+
+.cf-checkout-heading {
+    display: none;
+}
+
+.cf-checkout-reverse {
+    display: none;
+}
+
+.cf-checkout-address-section__location {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "city countryCode";
+}
+
+.cf-checkout-step__delivery {
+    button {
+        font-size: 21px;
+        border-bottom: 2px solid blue;
+    }
+
+
+    button::before,
+    button::after {
+        display: none;
+    }
+}
