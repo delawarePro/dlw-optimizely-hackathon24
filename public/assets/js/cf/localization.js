@@ -70,10 +70,7 @@ var translationsEn = {
     'addedToCartPopUpContinueShopping': 'continue shopping',
     'addedToCartPopUpOrderCart': 'Order',
 
-    'wishlist-addedToCartPopUpTitle': 'The product has been added to your wishlist',
-    'wishlist-addedToCartPopUpContinueShopping': 'continue shopping',
-    'wishlist-addedToCartPopUpOrderCart': 'View wishlist',
-    'loadingCheckout': 'The checkout flow is being loaded.',
+    'loadingCheckout': 'Your pokemon transport is being processed. Please wait for the confirmation...',
     'checkoutStep-cart': 'Cart',
     'checkoutStep-login': 'Login',
     'checkoutStep-contact': 'Contact information',
@@ -170,17 +167,9 @@ var translationsEn = {
     'confirmationStepTitle': 'Your order has been placed!',
     'confirmationStepOrderNumberIs': 'The ordernumber is ',
 
-    'confirmationStepOrderLinesHeading': 'This is what you ordered',
-    'loadingCheckout': 'The checkout flow is being loaded.',
-    'checkoutStep-cart': 'Cart',
-    'checkoutStep-login': 'Login',
-    'checkoutStep-contact': 'Contact information',
-    'checkoutStep-delivery': 'Delivery method',
-    'checkoutStep-payment': 'Payment method',
-    'checkoutStep-paymentredirect': 'Payment',
-    'checkoutStep-confirmationredirect': 'Confirmation',
 
-    'loadingCart': 'Your cart is being loaded.',
+
+    'loadingCart': 'Your cart is being loaded...',
     'emptyCart': 'Your cart is empty!',
 
     'checkoutStep-cart': 'Cart',

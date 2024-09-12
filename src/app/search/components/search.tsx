@@ -41,7 +41,6 @@ function Hit({ hit }: HitProps) {
         <>
             <div className="pokemon-card">
                 <p>${hit.name}</p>
-                {/* <img src={hit.image}></img> */}
                 <span className="pokeball">
                     <span className="pokeball--top"></span>
                     <span className="pokeball--bottom"></span>

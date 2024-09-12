@@ -178,6 +178,12 @@
     background-color: transparent !important;
 }
 
+.cf-checkout-steps--empty {
+    text-align: center;
+    font-size: 21px;
+    color: blue;
+}
+
 .cf-checkout-heading {
     display: none;
 }

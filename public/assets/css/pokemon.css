@@ -397,6 +397,12 @@ body:has(.ais-Hits-list>li:only-child ) {
         animation: example2 2s 1s both;
     }
 
+    audio {
+        display: block;
+        pointer-events: none;
+        opacity: 0;
+    }
+
     button,
     img {
         display: block;
@@ -460,11 +466,9 @@ ol.ais-Hits-list:has(li:nth-child(2)) {
             height: auto;
         }
 
-        p {
+        p, button, audio {
             display: none;
-        }
-        button {
-            display: none;
+            opacity: 0;
         }
     }
     
