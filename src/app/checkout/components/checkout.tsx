@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Dlw_CommerceFlows } from '@delawarepro/dlw-commerce-flows';
 import "@delawarepro/dlw-commerce-flows/commerce-flow-all.css";
+import "../../../../public/assets/css/cf.css";
 import { translationConfig } from '../../../components/translations/translations';
 import { Sause } from '../../search/components/sause';
 

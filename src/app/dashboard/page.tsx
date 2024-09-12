@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 
 import '../../../public/assets/css/conversation-flows.css';
+import "../../../public/assets/css/convf.css";
 
 
 export default function DashboardPage() {

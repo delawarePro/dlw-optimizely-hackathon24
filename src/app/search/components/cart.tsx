@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Dlw_CommerceFlows } from '@delawarepro/dlw-commerce-flows';
 import { translationConfig } from '../../../components/translations/translations';
+import "../../../../public/assets/css/cf.css";
 
 function serverNotAvailableErrorCallback() {
     console.error("The server can not be reached.");
