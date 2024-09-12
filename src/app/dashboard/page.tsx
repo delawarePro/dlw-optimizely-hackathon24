@@ -22,12 +22,16 @@ export default function DashboardPage() {
         <>
             {
                 loaded ?
-                    <dlw-conversation-flows apiBaseUrl="https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/api"
-                        title="How can we help you today?"
-                        greeting="Hi what kind of help are you looking for?"
-                        suggestionsTitle="We can help you find the right product, or inspire you, what are you looking for?"
-                        suggestions="[&quot;Where can I find files about X?&quot;,&quot;How are you today?&quot;]">
-                    </dlw-conversation-flows>
+                    <>
+                        <div class="chat-container">
+                            <dlw-conversation-flows apiBaseUrl="https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/api"
+                                title="How can we help you today?"
+                                greeting="Hi what kind of help are you looking for?"
+                                suggestionsTitle="We can help you find the right product, or inspire you, what are you looking for?"
+                                suggestions="[&quot;Where can I find files about X?&quot;,&quot;How are you today?&quot;]">
+                            </dlw-conversation-flows>
+                        </div>
+                    </>
                     : <><p>Loading...</p></>
             }
         </>

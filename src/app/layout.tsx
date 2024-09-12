@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "../../public/assets/css/pokemon.css";
 import "../../public/assets/css/cf.css";
+import "../../public/assets/css/convf.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
