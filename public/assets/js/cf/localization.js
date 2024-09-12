@@ -28,15 +28,8 @@ document.localization.config = {
 };
 
 document.localization.numberFormattingConfig = {
-    initializer: (callback) => { 
-        let toggles = document.querySelectorAll(".js-toggleLanguage");
-        if (!toggles || toggles.length == 0)
-            return;
-            
-        toggles.forEach(toggle => toggle.addEventListener('click', e => {
-            document.localization.locale = e.target.getAttribute('data-lang');
-            callback();
-        }));
+    initializer: () => { 
+        return;
     },
     format: (number, currency, formatString) => {
         let culture = document.localization.locale === 'nl' ? 'nl-BE' : 'en-US';
@@ -44,7 +37,6 @@ document.localization.numberFormattingConfig = {
         return html`<span>${formatterNumber}</span>`;
     }
 };
-
 
 var translationsEn = {
     'specify': 'Specify',

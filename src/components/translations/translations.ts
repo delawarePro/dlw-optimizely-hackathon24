@@ -214,18 +214,11 @@ export const translationConfig = {
 };
 
 export const numberFormattingConfig = {
-    initializer: (callback) => { 
-        let toggles = document.querySelectorAll(".js-toggleLanguage");
-        if (!toggles || toggles.length == 0)
-            return;
-            
-        toggles.forEach(toggle => toggle.addEventListener('click', e => {
-            document.localization.locale = e.target.getAttribute('data-lang');
-            callback();
-        }));
+    initializer: (callback: any) => {
+        return;
     },
-    format: (number, currency, formatString) => {
-        return html`<span class="pokemon-price pokemon-price--small"></span>`;
+    format: (number: any, currency: any, formatString: any) => {
+        return `${number}`;
     }
 };
 
