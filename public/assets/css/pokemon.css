@@ -434,7 +434,7 @@ body:has(.ais-Hits-list>li:only-child ) {
     }
 
     button {
-        z-index: 51;
+        z-index: 12;
         animation: appear .5s both;
         animation-delay: 2s;
         position: absolute;
@@ -449,7 +449,7 @@ body:has(.ais-Hits-list>li:only-child ) {
     }
     
     .pokemon-card__info {
-        z-index: 10000;
+        z-index: 11;
         inset: 200px 10px;
         position: absolute;
     }

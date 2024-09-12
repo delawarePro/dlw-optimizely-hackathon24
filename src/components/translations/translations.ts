@@ -117,7 +117,8 @@ export const translationConfig = {
         
             'stepHeading-delivery': 'Delivery options',
             'stepTitle-delivery': 'Where can we deliver?',
-            'stepDescription-delivery': 'Description about delivery',
+            'stepDescription-delivery': ' ',
+            'stepDescription-payment': ' ',
         
             'delivery.details.methodCode-homeDelivery': 'Deliver to address',
             'delivery.details.methodCode-pickUpPoint': 'Pick-up in store',
