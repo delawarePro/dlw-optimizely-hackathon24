@@ -7,7 +7,7 @@ export function Sause({ useplane }: { useplane: boolean }) {
             <div className="pixel-overlay"></div>
             {
                 useplane && <>
-                    <div className="spin">
+                    <div className="spin spin--dynamic">
                         <div className="spin__effect">
                             <div className="spin__spinner">
                                 <div className="spin__vane"></div>

@@ -106,7 +106,7 @@ export const translationConfig = {
             'address.countryCode-BE': 'Belgium',
             'address.countryCode-EN': 'United Kingdom',
             'address.countryCode-NL': 'Netherlands, the',
-            'address.countryCode-noValue': ' -- select an option -- ',
+            'address.countryCode-noValue': ' - ',
             'address.changeSelectedAddressClosed': 'More options',
             'address.changeSelectedAddressOpened': 'Done',
             'address.otherAddress': 'Other address',
