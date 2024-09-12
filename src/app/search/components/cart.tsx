@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Dlw_CommerceFlows } from '@delawarepro/dlw-commerce-flows';
+import { translationConfig } from '../../../components/translations/translations';
 
 function serverNotAvailableErrorCallback() {
     console.error("The server can not be reached.");
@@ -7,11 +8,11 @@ function serverNotAvailableErrorCallback() {
 
 let cfConfig: any;
 
-let localizationconfig = {
-    translate: function (key : any, defaultValue : any) {
-        return key;
-    }
-}
+// let localizationconfig = {
+//     translate: function (key : any, defaultValue : any) {
+//         return key;
+//     }
+// }
 
 async function init() {
     
@@ -33,7 +34,7 @@ async function init() {
         customerId: document.getCustomerId(),
         userId: document.getCustomerId(), // For now, should change when login is supported.
         // Localization global initialised in index.js
-        localization: localizationconfig,
+        localization: translationConfig,
         onServerError: serverNotAvailableErrorCallback,
         returnUrl: '/',
         confirmationUrl: '/',
@@ -55,7 +56,7 @@ export function Cart() {
 
     return (
         <>
-            <div className="cf-cart">
+            <div className="cf cf-cart">
                 <dlw-cf-added-to-cart-popup></dlw-cf-added-to-cart-popup>
             </div>
         </>

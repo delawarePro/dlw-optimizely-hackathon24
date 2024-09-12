@@ -5,6 +5,43 @@ html {
     background-color: white;
 }
 
+/* generic button styling */
+.pixl-button, 
+.cf a,
+.cf button {
+    font-size: 25px;
+    background-color: white;
+    color: blue;
+    clip-path: polygon(calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%, 0 0);
+    position: relative;
+    padding: 2px 20px;
+    cursor: pointer;
+}
+
+.pixl-button::after, .pixl-button::before,
+.cf a::after, .cf a::before,
+.cf button::after, .cf button::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 100%;
+}
+
+.pixl-button::after,
+.cf a::after,
+.cf button::after{
+    background-color: blue;
+    inset: 0 0 0 10px;
+    width: 5px;
+}
+
+.pixl-button::before,
+.cf a::before,
+.cf button::before {
+    background-color: red;
+    inset: 0;
+}
+
 main {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
@@ -26,6 +63,10 @@ main {
 }
 
 /* pixels overlay */
+/* pixels overlay */
+/* pixels overlay */
+/* pixels overlay */
+/* pixels overlay */
 
 .pixel-overlay {
     /* Change this color to change the overall feeling :D */
@@ -33,9 +74,9 @@ main {
     position: absolute;
     inset: 0;
     animation: pixelanimation 1s infinite both;
-    opacity: var(--pixel-overlay--opacity, .1);
+    opacity: var(--pixel-overlay--opacity, 0);
     pointer-events: none;
-    z-index: 1000;
+    z-index: 10000000;
 }
 
 @keyframes pixelanimation {
@@ -75,114 +116,17 @@ main {
     }
 }
 
-/* Hackathon text part */
-.hackathon-box {
-    perspective: 400px;
-    position: absolute;
-    bottom: 65px;
-    z-index: 100;
-}
-
-.hackathon-box__inner {
-    width: 300px;
-    height: 50px;
-    transform-style: preserve-3d;
-    animation: zrotation 1s 1s both;
-}
-
-@keyframes zrotation {
-    0% {
-        transform: rotate3d(1, 0, 0, 0deg);
-    }
-    
-    100% {
-        transform: rotate3d(1, 0, 0, 15deg);
-    }
-}
-
-/* poke search */
-.poke-search {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-
-    .ais-SearchBox {
-        position: absolute;
-        bottom: 50%;
-        padding: 10px;
-        border-inline: 5px solid blue;
-        border-block: 5px solid red;
-        width: 400px;
-        margin: 0 auto;
-        opacity: var(--poke-search--opacity);
-        background-color: white;
-
-        svg {
-            display: none;
-        }
-
-        input {
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-        }
-    }
-}
-
-
-
-
-
-.hackathon-box__face {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: inherit;
-    font-size: 60px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.hackathon-box__face--front {
-    background-color: red;
-    color: white;
-    text-align: center;
-    font-size: 50px;
-    width: 100%;
-    line-height: 1;
-    padding: 5px 15px;
-    transform: translateZ(25px);
-}
-
-.hackathon-box__face--bottom {
-    background: blue;
-    transform: rotateX(-90deg) translateZ(25px);
-}
-
-
-.face {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: inherit;
-    font-size: 60px;
-    color: #fff;
-}
-
+/* Background spinner */
+/* Background spinner */
+/* Background spinner */
+/* Background spinner */
+/* Background spinner */
 /* Background spinner */
 
 .spin {
     position: absolute;
     inset: 0 0 0 0;
+    min-height: 600px;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -200,7 +144,7 @@ main {
     inset: calc(50% - 50px) calc(50% - 50px);
     width: 100px;
     height: 100px;
-    background-color: var(--spin--bg-color, white);
+    background-color: var(--spin--bg-color, red);
     border-radius: 50%;
 }
 
@@ -225,7 +169,7 @@ main {
     left: 50%;
     width: 100px;
     height: 100px;
-    background: #FFFDAB;
+    background: rgb(255, 190, 69);
 }
 
 .spin__spinner>.spin__vane:nth-child(1) {
@@ -279,6 +223,127 @@ main {
 }
 
 
+/* Hackathon header */
+/* Hackathon header */
+/* Hackathon header */
+/* Hackathon header */
+.opti-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    padding-inline: 15px;
+    
+    p {
+        color: blue;
+        animation: appear .5s 1s both;
+    }
+}
+
+.opti-title-image {
+    max-width: 250px;
+    max-height: 250px;
+    width: 100%;
+    aspect-ratio: 2/1;
+    position: relative;
+    z-index: 100000;
+
+    img {
+        position: absolute;
+        height: 100%;
+        animation: scalepokemon .5s both;
+    }
+    
+    img:nth-child(2){
+        animation: appear 1s .3s both;
+    }
+}
+
+.hackathon-box {
+    perspective: 200px;
+}
+
+.hackathon-box__inner {
+    width: 180px;
+    height: 30px;
+    transform-style: preserve-3d;
+    animation: zrotation 1s 1s both;
+}
+
+@keyframes zrotation {
+    0% {
+        transform: rotate3d(1, 0, 0, 0deg);
+    }
+    
+    100% {
+        transform: rotate3d(1, 0, 0, 25deg);
+    }
+}
+
+.hackathon-box__face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.hackathon-box__face--front {
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 100%;
+    line-height: 1;
+    padding: 5px 15px;
+    transform: translateZ(15px);
+}
+
+.hackathon-box__face--bottom {
+    background: blue;
+    transform: rotateX(-90deg) translateZ(15px);
+}
+
+
+/* poke search */
+.poke-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-inline: 20px;
+    animation: appear 0.2s 1.5s both;
+    z-index: 100001;
+
+    .ais-SearchBox {
+        padding: 10px;
+        border-inline: 5px solid blue;
+        border-block: 5px solid red;
+        width: 400px;
+        margin: 0 auto;
+        opacity: var(--poke-search--opacity);
+        background-color: white;
+
+        svg {
+            display: none;
+        }
+
+        input {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
 body:has(.ais-Hits-list>li:only-child ) {
     --pixel-overlay--opacity: .3;
     --spin--animation-time: 3s;
@@ -286,16 +351,40 @@ body:has(.ais-Hits-list>li:only-child ) {
     --spin--bg-color: red;
 }
 
-.opti-title-image {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    z-index: 100000;
-
-    img {
+.pokemon-plane {
+    width: 1000px;
+    height: 100px;
+    perspective: 20px;
+    position: absolute;
+    top: 350px;
+    left: calc(50% - 500px);
+    transform-style: preserve-3d;
+    z-index: 1002;
+    
+    .pokemon-plane__front {
+        color: rgb(78, 78, 255);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
         position: absolute;
-        inset: 0 0 50px 0;
-        animation: scalepokemon .5s both;
+        backface-visibility: inherit;
+        font-size: 100px;
+        background: blue;
+        animation: zrotationplane 1s both;
+    }
+}
+
+@keyframes zrotationplane {
+    0% {
+        transform: rotate3d(1, 0, 0, 2deg);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: rotate3d(1, 0, 0, 40deg);
+        opacity: 1;
     }
 }
 
@@ -316,50 +405,50 @@ body:has(.ais-Hits-list>li:only-child ) {
     img {
         position: absolute;
         z-index: 10;
-        inset: calc(50% - 125px);
-        width: 250px;
-        height: auto;
+        inset: 200px 0;
+        width: 100%;
+        max-height: 250px;
+        object-fit: contain;
         scale: .3;
         animation: scalepokemon .2s 1.5s both;
+        pointer-events: none;
     }
 
     button {
-        position: absolute;
-        z-index: 100;
-        top: calc(50% + 250px);
-        left: calc(50% - 150px);
-        width: 300px;
-        height: auto;
-        border: 10px solid red;
-        padding: 10px;
+        z-index: 51;
         animation: appear .5s both;
         animation-delay: 2s;
-        font-size: 70px;
-        background-color: blue;
-        color: white;
+        position: absolute;
+        width: 410px;
+        top: 280px;
+        left: calc(50% + 50px);
+        text-align: left;
     }
 }
 
 ol.ais-Hits-list:has(li:nth-child(2)) {
-
-
     position: absolute;
-    inset: 250px 50px;
+    inset: 10px;
+    height: 700px;
+    z-index: 1001;
+    pointer-events: none;
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0px;
-    grid-row-gap: 150px;
-    z-index: 1;
-    pointer-events: none;
+    grid-row-gap: 0px;
     
-    li:first-child { grid-area: 1 / 1 / 2 / 2; animation-delay: 0.5s;}
-    li:nth-child(2) { grid-area: 2 / 2 / 3 / 3; animation-delay: 0.8s;}
-    li:nth-child(3) { grid-area: 1 / 3 / 2 / 4; animation-delay: 0.1s;}
-    li:nth-child(4) { grid-area: 1 / 2 / 2 / 3; animation-delay: 0.3s;}
-    li:nth-child(5) { grid-area: 2 / 3 / 3 / 4; animation-delay: 1s;}
-    li:nth-child(6) { grid-area: 2 / 1 / 3 / 2; animation-delay: 0.2s;}
-    li:nth-child(n+7) { display: none; }
+    li:first-child { grid-area: 1 / 2 / 2 / 3; animation-delay: 0.3s; img {max-width: 60px;}}
+    li:nth-child(2) { grid-area: 2 / 1 / 3 / 2; animation-delay: 0.7s; img {max-width: 50px;} }
+    li:nth-child(3) { grid-area: 2 / 3 / 3 / 4; animation-delay: 0.1s; img {max-width: 25px;}}
+    li:nth-child(4) { grid-area: 1 / 1 / 2 / 2; animation-delay: 0.5s; img {max-width: 35px;}}
+    li:nth-child(5) { grid-area: 2 / 2 / 3 / 3; animation-delay: 0.5s; img {max-width: 45px;}}
+    li:nth-child(6) { grid-area: 1 / 3 / 2 / 4; animation-delay: 1s; img {max-width: 25px;}}
+    li:nth-child(7) { grid-area: 3 / 1 / 4 / 2; animation-delay: 0.2s; img {max-width: 30px;}}
+    li:nth-child(8) { grid-area: 3 / 2 / 4 / 3; animation-delay: 0.8s; img {max-width: 50px;}}
+    li:nth-child(9) { grid-area: 3 / 3 / 4 / 4; animation-delay: 0.5s; img {max-width: 30px;}}
+    li:nth-child(n+10) { display: none; }
 
     li {
         display: flex;
@@ -368,8 +457,7 @@ ol.ais-Hits-list:has(li:nth-child(2)) {
         animation: appear 0.5s both;
 
         img {
-            max-width: 50px;
-            max-height: 50px;
+            height: auto;
         }
 
         p {
@@ -389,7 +477,7 @@ ol.ais-Hits-list:has(li:nth-child(2)) {
     border-radius: 100px;
     overflow: hidden;
     left: calc(50% - 100px);
-    top: calc(50% - 100px);
+    top: 250px;
     z-index: 11;
     transform: rotate(25deg);
     display: none;
