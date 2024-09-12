@@ -210,8 +210,15 @@ export const translationConfig = {
         }
 
         return tr;
+    }
+};
 
-        return tr;
+export const numberFormattingConfig = {
+    initializer: (callback: any) => {
+        return;
+    },
+    format: (number: any, currency: any, formatString: any) => {
+        return `${number}`;
     }
 };
 
