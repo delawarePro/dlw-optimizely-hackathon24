@@ -13,7 +13,16 @@ const nextConfig = {
                 pathname: '/globalassets/**',
             }
         ],
-    }
+    },
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/search',
+                permanent: false,
+            }
+        ]
+    },
 };
 
 export default nextConfig;
