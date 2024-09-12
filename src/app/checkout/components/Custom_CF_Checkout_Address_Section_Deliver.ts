@@ -31,8 +31,8 @@ export class Custom_CF_Checkout_Address_Section_Delivery extends Dlw_CF_Checkout
                     Location
                 </legend>
                 <div class="cf-checkout-address-section__location">
-                    ${this.renderField("city", "address-level2")}
-                    ${this.renderField("countryCode", "country")}
+                    ${super.renderField("city", "address-level2")}
+                    ${super.renderField("countryCode", "country")}
                 </div>
             </fieldset>
             `;
