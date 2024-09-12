@@ -9,7 +9,7 @@ html {
 .pixl-button, 
 .cf a,
 .cf button {
-    font-size: 25px;
+    font-size: 18px;
     background-color: white;
     color: blue;
     clip-path: polygon(calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%, 0 0);

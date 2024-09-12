@@ -149,7 +149,7 @@
 
 /* custom checkout css */
 .cf-checkout-breadcrumb {
-    max-width: 40px;
+    max-width: 60px;
     align-items: flex-start;
 
     span {
@@ -190,6 +190,12 @@
 
 .cf-checkout-reverse {
     display: none;
+}
+
+.cf-checkout-address-section__location {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "city countryCode";
 }
 
 .cf-checkout-step__delivery {
