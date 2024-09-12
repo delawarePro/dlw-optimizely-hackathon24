@@ -48,7 +48,7 @@ export function Checkout() {
     return (
         <>
             <div className="cf container ps-5 pe-5 flex flex-col gap-5">
-                <Sause />
+                <Sause useplane={false} />
 
                 <div className="cf-custom-checkout">
                     <dlw-cf-checkout-flow-breadcrumbs></dlw-cf-checkout-flow-breadcrumbs>

@@ -11,7 +11,7 @@ export default async function SearchPage() {
     return (
         <>
             <Cart />
-            <Sause />
+            <Sause useplane={true} />
             <Search searchClient={stubbedSearchClient}/>
         </>
     );

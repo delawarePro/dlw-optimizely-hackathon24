@@ -1,27 +1,31 @@
 import React from "react";
 import Image from 'next/image'
 
-export function Sause() {
+export function Sause({ useplane }: { useplane: boolean }) {
     return (
         <>
             <div className="pixel-overlay"></div>
-            <div className="spin">
-                <div className="spin__effect">
-                    <div className="spin__spinner">
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
-                        <div className="spin__vane"></div>
+            {
+                useplane && <>
+                    <div className="spin">
+                        <div className="spin__effect">
+                            <div className="spin__spinner">
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                                <div className="spin__vane"></div>
+                            </div>
+                        </div>
+                        <div className="spin__center"></div>
                     </div>
-                </div>
-                <div className="spin__center"></div>
-            </div>
+                </>
+            }
 
             <div className="opti-title">
                 <div className="opti-title-image">
@@ -48,6 +52,13 @@ export function Sause() {
                 </div>
                 <p>by DELAWARE</p>
             </div>
+            {
+                useplane && <>
+                    <div className="pokemon-plane">
+                        <div className="pokemon-plane__front">SOLID GROUND</div>
+                    </div>
+                </>
+            }
         </>
     );
 }

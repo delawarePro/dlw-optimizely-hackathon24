@@ -114,7 +114,7 @@
         width: fit-content;
         align-items: end;
         clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100% ,0 100%, 0 0);
-        font-size: 40px;
+        font-size: 30px;
         animation: bouncebutton .5s infinite;
     }
 }
@@ -148,6 +148,15 @@
 }
 
 /* custom checkout css */
+.cf-checkout-breadcrumb {
+    max-width: 40px;
+    align-items: flex-start;
+
+    span {
+        text-align: left;
+    }
+}
+
 .cf-checkout-breadcrumb:not(.is-active) {
     .cf-checkout-breadcrumb__label {
         display: none;

@@ -74,7 +74,7 @@ main {
     position: absolute;
     inset: 0;
     animation: pixelanimation 1s infinite both;
-    opacity: var(--pixel-overlay--opacity, .1);
+    opacity: var(--pixel-overlay--opacity, 0);
     pointer-events: none;
     z-index: 10000000;
 }
@@ -126,6 +126,7 @@ main {
 .spin {
     position: absolute;
     inset: 0 0 0 0;
+    min-height: 600px;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -143,7 +144,7 @@ main {
     inset: calc(50% - 50px) calc(50% - 50px);
     width: 100px;
     height: 100px;
-    background-color: var(--spin--bg-color, white);
+    background-color: var(--spin--bg-color, red);
     border-radius: 50%;
 }
 
@@ -168,7 +169,7 @@ main {
     left: 50%;
     width: 100px;
     height: 100px;
-    background: #FFFDAB;
+    background: rgb(255, 190, 69);
 }
 
 .spin__spinner>.spin__vane:nth-child(1) {
@@ -350,6 +351,43 @@ body:has(.ais-Hits-list>li:only-child ) {
     --spin--bg-color: red;
 }
 
+.pokemon-plane {
+    width: 1000px;
+    height: 100px;
+    perspective: 20px;
+    position: absolute;
+    top: 350px;
+    left: calc(50% - 500px);
+    transform-style: preserve-3d;
+    z-index: 1002;
+    
+    .pokemon-plane__front {
+        color: rgb(78, 78, 255);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: inherit;
+        font-size: 100px;
+        background: blue;
+        animation: zrotationplane 1s both;
+    }
+}
+
+@keyframes zrotationplane {
+    0% {
+        transform: rotate3d(1, 0, 0, 2deg);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: rotate3d(1, 0, 0, 40deg);
+        opacity: 1;
+    }
+}
+
 .ais-Hits-list>li:only-child {
     display: flex;
     flex-direction: column;
@@ -367,7 +405,7 @@ body:has(.ais-Hits-list>li:only-child ) {
     img {
         position: absolute;
         z-index: 10;
-        inset: calc(50% - 110px) 0;
+        inset: 200px 0;
         width: 100%;
         max-height: 250px;
         object-fit: contain;
@@ -377,13 +415,14 @@ body:has(.ais-Hits-list>li:only-child ) {
     }
 
     button {
-        z-index: 1;
+        z-index: 51;
         animation: appear .5s both;
         animation-delay: 2s;
         position: absolute;
-        width: 150px;
-        top: calc(50% + 150px);
-        left: calc(50% - 70px);
+        width: 410px;
+        top: 280px;
+        left: calc(50% + 50px);
+        text-align: left;
     }
 }
 
@@ -438,7 +477,7 @@ ol.ais-Hits-list:has(li:nth-child(2)) {
     border-radius: 100px;
     overflow: hidden;
     left: calc(50% - 100px);
-    top: calc(50% - 100px);
+    top: 250px;
     z-index: 11;
     transform: rotate(25deg);
     display: none;
