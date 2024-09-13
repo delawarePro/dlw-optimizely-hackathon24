@@ -9,6 +9,8 @@ type HitProps = {
         listPrice: number;
         salePrice: number;
         animation: string;
+        // Temporary backwards compatibility with stub.
+        price: number;
     }>;
 };
 
