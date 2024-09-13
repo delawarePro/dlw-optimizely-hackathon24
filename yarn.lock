@@ -3356,7 +3356,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001579, caniuse-lite@npm:^1.0.30001587":
+"caniuse-lite@npm:^1.0.30001579":
+  version: 1.0.30001660
+  resolution: "caniuse-lite@npm:1.0.30001660"
+  checksum: 10c0/d28900b56c597176d515c3175ca75c454f2d30cb2c09a44d7bdb009bb0c4d8a2557905adb77642889bbe9feb85fbfe9d974c8b8e53521fb4b50ee16ab246104e
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001587":
   version: 1.0.30001623
   resolution: "caniuse-lite@npm:1.0.30001623"
   checksum: 10c0/bf4fdae0cc9ec9282741e2c2dd3d35d853049ad69b33115cc39ee2d74fcbe03319aec27932b3480b626a4524e715c5b148c60d4d29ddd709db9008505ccf1a85
@@ -6893,6 +6900,7 @@ __metadata:
     "@graphql-codegen/typescript": "npm:^4.0.8"
     "@graphql-codegen/typescript-operations": "npm:^4.2.2"
     "@graphql-typed-document-node/core": "npm:^3.2.0"
+    "@optimizely/optimizely-sdk": "npm:^5.3.4"
     "@optimizely/react-sdk": "npm:^3.2.2"
     "@remkoj/optimizely-cms-api": "npm:^2.0.1"
     "@remkoj/optimizely-cms-cli": "npm:^2.0.1"

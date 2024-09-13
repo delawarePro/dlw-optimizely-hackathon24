@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@delawarepro/dlw-commerce-flows": "0.16.54890",
+    "@optimizely/optimizely-sdk": "^5.3.4",
     "@optimizely/react-sdk": "^3.2.2",
     "@remkoj/optimizely-cms-nextjs": "^2.0.1",
     "@remkoj/optimizely-cms-react": "^2.0.1",
