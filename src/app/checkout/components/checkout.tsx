@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Dlw_CommerceFlows } from '@delawarepro/dlw-commerce-flows';
 import "@delawarepro/dlw-commerce-flows/commerce-flow-all.css";
 import "../../../../public/assets/css/cf.css";
-import { translationConfig } from '../../../components/translations/translations';
+import { translationConfig, numberFormattingConfig } from '../../../components/translations/translations';
 import { Sause } from '../../search/components/sause';
 
 function serverNotAvailableErrorCallback() {
@@ -27,6 +27,7 @@ async function init() {
         customerId: document.getCustomerId(),
         userId: document.getCustomerId(), // For now, should change when login is supported.
         // Localization global initialised in index.js
+        numberFormatting: numberFormattingConfig,
         localization: translationConfig,
         onServerError: serverNotAvailableErrorCallback,
         returnUrl: '/checkout',
@@ -58,6 +59,7 @@ export function Checkout() {
                 <div className="cf-custom-checkout container mx-auto">
                     <dlw-cf-checkout-flow-steps></dlw-cf-checkout-flow-steps>
                     <dlw-cf-checkout-flow-reverse></dlw-cf-checkout-flow-reverse>
+                    <dlw-cf-checkout-flow-pricing></dlw-cf-checkout-flow-pricing>
                     <dlw-cf-checkout-flow-proceed></dlw-cf-checkout-flow-proceed>
                 </div>
             </div>
