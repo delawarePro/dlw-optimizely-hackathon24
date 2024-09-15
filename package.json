@@ -15,7 +15,7 @@
     "webhook:list": "opti-graph webhook:list"
   },
   "dependencies": {
-    "@delawarepro/dlw-commerce-flows": "0.16.54890",
+    "@delawarepro/dlw-commerce-flows": "0.16.56098-view-transitions",
     "@remkoj/optimizely-cms-nextjs": "^2.0.1",
     "@remkoj/optimizely-cms-react": "^2.0.1",
     "@remkoj/optimizely-graph-client": "^2.0.1",
