@@ -17,7 +17,7 @@
   "mayContainTypes": [],
   "mediaFileExtensions": [],
   "created": "2024-08-08T15:08:48.186971+00:00",
-  "lastModified": "2024-09-04T10:25:23.6026626+00:00",
+  "lastModified": "2024-09-15T07:14:52.8004875+00:00",
   "lastModifiedBy": "bob.maes@delaware.pro",
   "properties": {
     "Author": {
@@ -43,18 +43,15 @@
       "editorSettings": {}
     },
     "Image": {
-      "type": "contentReference",
+      "type": "url",
+      "format": "ImageUrl",
       "displayName": "Image",
       "description": "",
       "localized": false,
       "required": false,
       "group": "Information",
       "sortOrder": 200,
-      "editorSettings": {},
-      "allowedTypes": [
-        "Image"
-      ],
-      "restrictedTypes": []
+      "editorSettings": {}
     }
   }
 }

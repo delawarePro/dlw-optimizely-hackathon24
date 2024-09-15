@@ -10,7 +10,11 @@ export const WebEssentialRichTextElement : CmsComponent<WebEssentialRichTextData
     const content = data?.Content?.html || "";
     
     return (
-        <WeRichText content={content}></WeRichText>
+        <div className="px-6 py-24 sm:py-32 lg:px-8">
+            <div className="mx-auto max-w-2xl">
+                <p className="mt-6 leading-8 text-gray-600" dangerouslySetInnerHTML={{__html: content}}></p>
+            </div>
+        </div>
     )
 }
 WebEssentialRichTextElement.displayName = "Rich Text - Web Essential (Element/WebEssentialRichText)"
