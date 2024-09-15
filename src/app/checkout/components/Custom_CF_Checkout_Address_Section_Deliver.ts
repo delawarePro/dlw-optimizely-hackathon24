@@ -26,8 +26,15 @@ export class Custom_CF_Checkout_Address_Section_Delivery extends Dlw_CF_Checkout
                     ${super.renderField("companyName", "organization")}
                 </div>
             </fieldset>
-            <hr>
-            ${super.renderLocationFields()}
+            <fieldset class="cf-checkout-address-section__fieldset">
+                <legend class="cf-checkout-address-section__legend">
+                    Location
+                </legend>
+                <div class="cf-checkout-address-section__location">
+                    ${super.renderField("city", "address-level2")}
+                    ${super.renderField("countryCode", "country")}
+                </div>
+            </fieldset>
             `;
     }
 }

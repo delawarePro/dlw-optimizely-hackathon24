@@ -149,7 +149,7 @@
 
 /* custom checkout css */
 .cf-checkout-breadcrumb {
-    max-width: 40px;
+    max-width: 60px;
     align-items: flex-start;
 
     span {
@@ -192,6 +192,12 @@
     display: none;
 }
 
+.cf-checkout-address-section__location {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "city countryCode";
+}
+
 .cf-checkout-step__delivery {
     button {
         font-size: 21px;
@@ -203,4 +209,47 @@
     button::after {
         display: none;
     }
+}
+
+input[type="radio"]{
+    visibility:hidden;
+    width: 0;
+    margin: 0;
+}
+
+.cf-checkout-home-delivery {
+    padding: 0;
+}
+
+.cf-cart-totals {
+    background: none;
+    padding: 0;
+}
+
+.cf-cart-totals__line {
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.cf-cart-totals__line--grand-total {
+    color: blue;
+    font-size: 14px;
+    background: none;
+
+    .cf-cart-totals__label {
+        display: none;
+    }
+}
+
+.cf-price, .cf-cart-totals__value {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.cf-cart-totals__note {
+    display: none;
+}
+
+dlw-cf-checkout-flow-pricing {
+    width: 100px;
 }

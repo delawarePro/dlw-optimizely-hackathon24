@@ -106,7 +106,7 @@ export const translationConfig = {
             'address.countryCode-BE': 'Belgium',
             'address.countryCode-EN': 'United Kingdom',
             'address.countryCode-NL': 'Netherlands, the',
-            'address.countryCode-noValue': ' -- select an option -- ',
+            'address.countryCode-noValue': ' - ',
             'address.changeSelectedAddressClosed': 'More options',
             'address.changeSelectedAddressOpened': 'Done',
             'address.otherAddress': 'Other address',
@@ -117,7 +117,8 @@ export const translationConfig = {
         
             'stepHeading-delivery': 'Delivery options',
             'stepTitle-delivery': 'Where can we deliver?',
-            'stepDescription-delivery': 'Description about delivery',
+            'stepDescription-delivery': ' ',
+            'stepDescription-payment': ' ',
         
             'delivery.details.methodCode-homeDelivery': 'Deliver to address',
             'delivery.details.methodCode-pickUpPoint': 'Pick-up in store',
@@ -209,8 +210,15 @@ export const translationConfig = {
         }
 
         return tr;
+    }
+};
 
-        return tr;
+export const numberFormattingConfig = {
+    initializer: (callback: any) => {
+        return;
+    },
+    format: (number: any, currency: any, formatString: any) => {
+        return `${number}`;
     }
 };
 

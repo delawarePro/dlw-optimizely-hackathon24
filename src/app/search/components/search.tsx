@@ -22,8 +22,8 @@ function addProduct(hit: AlgoliaHit) {
                     pricing: {
                         pcs: {
                             // todo: Get price from somewhere, maybe from back-end?
-                            salePrice: 1337.50,
-                            listPrice: 5000.50
+                            salePrice: 133.50,
+                            listPrice: 500.50
                         }
                     },
                     title: "Bulbasaur",
@@ -37,10 +37,26 @@ function addProduct(hit: AlgoliaHit) {
 }
 
 function Hit({ hit }: HitProps) {
+    const salePrice = 10;
+    const listPrice = 100;
+
     return (
         <>
             <div className="pokemon-card">
-                <p>${hit.name}</p>
+                <p className="pokemon-card__info">
+                    <b className="pokemon-name">{hit.name}</b>
+                    <br />
+                    <span className="pokemon-price">
+                        {
+                            salePrice ? <>
+                                <s>{listPrice}</s> <b>{salePrice}</b>
+                            </>
+                            : <>
+                                {listPrice}
+                            </>
+                        }
+                    </span>
+                </p>
                 <span className="pokeball">
                     <span className="pokeball--top"></span>
                     <span className="pokeball--bottom"></span>

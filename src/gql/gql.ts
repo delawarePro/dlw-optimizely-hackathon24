@@ -31,9 +31,9 @@ const documents = {
     "fragment WebEssentialBannerData on WebEssentialBanner {\n  Title\n  Description {\n    json\n    html\n  }\n}": types.WebEssentialBannerDataFragmentDoc,
     "fragment WebEssentialCallToActionData on WebEssentialCallToAction {\n  Label\n  Link {\n    ...LinkData\n  }\n}": types.WebEssentialCallToActionDataFragmentDoc,
     "fragment WebEssentialImageData on WebEssentialImage {\n  Image {\n    ...LinkData\n  }\n}": types.WebEssentialImageDataFragmentDoc,
-    "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}": types.WebEssentialQuoteDataFragmentDoc,
+    "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...LinkData\n  }\n}": types.WebEssentialQuoteDataFragmentDoc,
     "fragment WebEssentialRichTextData on WebEssentialRichText {\n  Content {\n    json\n    html\n  }\n}": types.WebEssentialRichTextDataFragmentDoc,
-    "fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...ReferenceData\n  }\n}": types.WebEssentialRichTextMediaDataFragmentDoc,
+    "fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...LinkData\n  }\n}": types.WebEssentialRichTextMediaDataFragmentDoc,
     "fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}": types.BlankExperienceDataFragmentDoc,
     "fragment CampaignPageData on CampaignPage {\n  Title\n  Content {\n    ...BlockData\n  }\n  ...ExperienceData\n}": types.CampaignPageDataFragmentDoc,
     "fragment HomePageData on HomePage {\n  ...ExperienceData\n}": types.HomePageDataFragmentDoc,
@@ -128,7 +128,7 @@ export function gql(source: "fragment WebEssentialImageData on WebEssentialImage
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}"): (typeof documents)["fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...ReferenceData\n  }\n}"];
+export function gql(source: "fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment WebEssentialQuoteData on WebEssentialQuote {\n  Author\n  Text {\n    json\n    html\n  }\n  Image {\n    ...LinkData\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -136,7 +136,7 @@ export function gql(source: "fragment WebEssentialRichTextData on WebEssentialRi
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...ReferenceData\n  }\n}"): (typeof documents)["fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...ReferenceData\n  }\n}"];
+export function gql(source: "fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {\n  Content {\n    json\n    html\n  }\n  Media {\n    ...LinkData\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
