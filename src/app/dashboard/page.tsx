@@ -28,8 +28,8 @@ export default function DashboardPage() {
                             <dlw-conversation-flows apiBaseUrl="https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/api"
                                 title="How can we help you today?"
                                 greeting="Hi what kind of help are you looking for?"
-                                suggestionsTitle="We can help you find the right product, or inspire you, what are you looking for?"
-                                suggestions="[&quot;Where can I find files about X?&quot;,&quot;How are you today?&quot;]">
+                                suggestionsTitle="We can help you find info about orders."
+                                suggestions="[&quot;Can you provide me some information about order X?&quot;,&quot;What is the most sold product?&quot;]">
                             </dlw-conversation-flows>
                         </div>
                     </>
