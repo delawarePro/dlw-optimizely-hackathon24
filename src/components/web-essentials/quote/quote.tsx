@@ -3,6 +3,7 @@ import Image from "@/components/shared/cms-image";
 
 interface WeQuoteProps extends React.HTMLAttributes<HTMLElement> {
     author: string;
+    image: any;
     quote: string;
 }
 
