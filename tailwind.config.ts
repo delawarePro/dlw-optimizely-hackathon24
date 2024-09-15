@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
 
 const config: Config = {
   content: [
@@ -11,7 +12,7 @@ const config: Config = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    function({ addBase }) {
+    function({ addBase }: PluginAPI) {
       addBase({
         'h1': {
           '@apply mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl': {},
