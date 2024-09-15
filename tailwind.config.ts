@@ -7,7 +7,17 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    function({ addBase }) {
+      addBase({
+        'h1': {
+          '@apply mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl': {},
+        },
+      });
+    },
+  ]
 };
 export default config;
