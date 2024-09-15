@@ -1,7 +1,7 @@
 ﻿import { Hit as AlgoliaHit } from "instantsearch.js";
 import { gql, GraphQLClient } from 'graphql-request';
 
-const optiGraphSingleKey = process.env.OPTIMIZELY_GRAPH_SINGLE_KEY;
+const optiGraphSingleKey = process.env.NEXT_PUBLIC_OPTIMIZELY_GRAPH_SINGLE_KEY;
 const endpoint = 'https://cg.optimizely.com/content/v2?auth=' + optiGraphSingleKey;
 
 export const graphQLClient = new GraphQLClient(endpoint);
