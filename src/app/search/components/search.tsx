@@ -19,6 +19,11 @@ function addProduct(hit: AlgoliaHit) {
     const listPrice = hit.listPrice ?? hit.price;
     const salePrice = hit.salePrice ?? hit.price;
 
+    document.dispatchEvent(new CustomEvent("clearcart", {
+        bubbles: true,
+        detail: {},
+    }));
+
     document.dispatchEvent(new CustomEvent("additemtocart", {
         bubbles: true,
         detail: {

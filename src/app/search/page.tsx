@@ -10,10 +10,10 @@ import { optiSearchClient } from "./components/optiSearchClient";
 
 export default async function SearchPage() {
     return (
-        <>
+        <div className="pokemon-container">
             <Cart />
             <Sause useplane={true} />
             <Search searchClient={optiSearchClient}/>
-        </>
+        </div>
     );
 }

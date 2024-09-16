@@ -16,18 +16,16 @@ let cfConfig: any;
 // }
 
 async function init() {
-    
-    var document : any = window.document;
+
+    var document: any = window.document;
     document.getCustomerId = () => localStorage.getItem("customerId");
-    
     document.cfApiBaseUrl = 'https://dlw-dev-optimizely-hackathon24-asphead-web.azurewebsites.net/';
-    
-    // TODO: clear card with dom event: CLEAR_CART
-    if(!document.getCustomerId()) {
-        let customerId : string = Math.round(Math.random() * 10000).toString();
+
+    if (!document.getCustomerId()) {
+        let customerId: string = Math.round(Math.random() * 1000000).toString();
         localStorage.setItem("customerId", customerId);
     }
-    
+
 
     cfConfig = {
         apiBaseUrl: document.cfApiBaseUrl,
@@ -42,15 +40,15 @@ async function init() {
         includeCheckout: true,
         manualInitializeComponents: true
     }
-    
+
     // Wait for the components to be defined before initializing the commerce flows.
     // await Dlw_CommerceFlows.initializeCartSummaryComponents();
     Dlw_CommerceFlows.initialize(cfConfig, null);
-}   
+}
 
 
 export function Cart() {
-    
+
     useEffect(() => {
         init();
     }, [])
