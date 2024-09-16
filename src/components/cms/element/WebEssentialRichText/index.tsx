@@ -19,9 +19,7 @@ export const WebEssentialRichTextElement : CmsComponent<WebEssentialRichTextData
         <CmsEditable cmsId={contentLink.key}>
             <div className="px-6 py-24 sm:py-32 lg:px-8">
                 <div className="mx-auto max-w-2xl">
-                    <RichText as="div"
-                              className="mt-6 leading-8 text-gray-600"
-                              cmsFieldName={"Content"}
+                    <RichText className="mt-6 leading-8 text-gray-600"
                               text={data?.Content?.json} factory={factory}/>
                 </div>
             </div>
