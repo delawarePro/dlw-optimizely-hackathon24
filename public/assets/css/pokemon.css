@@ -328,6 +328,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
     width: 100%;
     height: 100%;
     padding-inline: 20px;
@@ -335,20 +336,18 @@ main {
     z-index: 100001;
 
     .ais-SearchBox {
-        padding: 10px;
         border-inline: 5px solid blue;
         border-block: 5px solid red;
         width: 400px;
         margin: 0 auto;
-        opacity: var(--poke-search--opacity);
         background-color: white;
-
+        
         svg {
             display: none;
         }
-
+        
         input {
-            padding: 0;
+            padding: 10px;
             margin: 0;
             width: 100%;
             height: 100%;
@@ -356,10 +355,9 @@ main {
     }
 }
 
-body:has(.ais-Hits-list>li:only-child ) {
+body:has(.single-result) {
     --pixel-overlay--opacity: .3;
     --spin--animation-time: 3s;
-    --poke-search--opacity: 0;
     --spin--bg-color: red;
 }
 
@@ -400,20 +398,26 @@ body:has(.ais-Hits-list>li:only-child ) {
     }
 }
 
-.ais-Hits-list>li:only-child {
+/* Hide search field if a result is found */
+.single-result {
+    .ais-SearchBox {
+        display: none !important;
+    }
+}
+
+textarea:focus, input:focus{
+    outline: 2px solid rgba(0,0,255,.2);
+}
+
+.single-result {
     display: flex;
     flex-direction: column;
     text-align: right;
 
+
     .pokeball {
         display: flex;
         animation: example2 2s 1s both;
-    }
-
-    audio {
-        display: block;
-        pointer-events: none;
-        opacity: 0;
     }
 
     button,
