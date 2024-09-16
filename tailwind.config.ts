@@ -8,15 +8,23 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
   },
   plugins: [
     require('@tailwindcss/typography'),
     function({ addBase }: PluginAPI) {
       addBase({
         'h1': {
-          '@apply mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl': {},
+          '@apply mt-2 text-3xl font-semibold tracking-tight sm:text-4xl': {},
         },
+        'h2': {
+          '@apply mt-2 text-2xl font-semibold tracking-tight sm:text-xl': {},
+        },
+        'h3': {
+          '@apply mt-2 text-xl font-semibold tracking-tight sm:text-lg': {},
+        },
+        'h4': {
+          '@apply font-bold tracking-tight sm:text-base': {},
+        }
       });
     },
   ]

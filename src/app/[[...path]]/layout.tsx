@@ -3,6 +3,7 @@ import Script from 'next/script';
 import {Inter} from "next/font/google";
 import "./../globals.css";
 import "../../../public/assets/css/pokemon.css";
+import Spin from "../../components/spin/Spin"
 
 import { Sause } from "./../search/components/sause";
 
@@ -24,12 +25,12 @@ export default function MainLayout({
                 <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
             </head>
             <body className={inter.className}>
+                <Spin />
+                <main className="medium">
+                    <Sause useplane={false} />
 
-            <main className="medium">
-                <Sause useplane={false} />
-
-                {children}
-            </main>
+                    {children}
+                </main>
             </body>
         </html>
     );
