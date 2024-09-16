@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Script from 'next/script';
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "../../public/assets/css/pokemon.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Spin from "../components/spin/Spin"
 
 export const metadata: Metadata = {
   title: "Optimizely CMS Boilerplate - Create Next App",
@@ -22,25 +20,8 @@ export default function RootLayout({
         <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
         <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
       </head>
-      <body className={inter.className}>
-        <div className="backgroundAnimation">
-          <div className="spin blurred">
-            <div className="spin__effect">
-              <div className="spin__spinner">
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-                <div className="spin__vane"></div>
-              </div>
-            </div>
-            <div className="spin__center"></div>
-          </div>    </div>
+      <body>
+        <Spin></Spin>
         <main className="small">
           {children}
         </main>

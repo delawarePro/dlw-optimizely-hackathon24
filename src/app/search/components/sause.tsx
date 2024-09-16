@@ -55,7 +55,7 @@ export function Sause({ useplane }: { useplane: boolean }) {
             {
                 useplane && <>
                     <div className="pokemon-plane">
-                        <div className="pokemon-plane__front">SOLID GROUND</div>
+                        <div className="pokemon-plane__front">delaware</div>
                     </div>
                 </>
             }
