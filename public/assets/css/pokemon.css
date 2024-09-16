@@ -648,3 +648,14 @@ ol.ais-Hits-list:has(li:nth-child(2)) {
         scale: 1
     }
 }
+
+
+::view-transition-new(heading),
+::view-transition-new(step) {
+    animation: appear .5s 1s both;
+}
+
+::view-transition-old(heading),  
+::view-transition-old(step) {
+    animation-duration: 0.3s; /* Avoid crossfade animation, resize instantly */
+}
