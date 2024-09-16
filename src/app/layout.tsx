@@ -41,7 +41,7 @@ export default function RootLayout({
             </div>
             <div className="spin__center"></div>
           </div>    </div>
-        <main>
+        <main className="small">
           {children}
         </main>
       </body>

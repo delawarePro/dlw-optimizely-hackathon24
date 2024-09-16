@@ -60,12 +60,20 @@ main {
     gap: 20px;
     overflow: auto;
 
-    max-width: 500px;
+    max-width: var(--main-width);
     margin: 0 auto;
     min-height: 100dvh;
     background-color: beige;
     overflow: hidden;
     position: relative;
+}
+
+main.small {
+    --main-width: 500px;
+}
+
+main.medium {
+    --main-width: 1000px;
 }
 
 /* pixels overlay */
