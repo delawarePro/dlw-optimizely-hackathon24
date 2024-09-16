@@ -5,6 +5,7 @@ import { Hit as AlgoliaHit } from "instantsearch.js";
 
 type HitProps = {
     hit: AlgoliaHit<{
+        key: string;
         name: string;
         listPrice: number;
         salePrice: number;
@@ -23,7 +24,7 @@ function addProduct(hit: AlgoliaHit) {
         detail: {
             message: {
                 item: {
-                    itemId: "001",
+                    itemId: hit.key,
                     pricing: {
                         pcs: {
                             salePrice: salePrice,
