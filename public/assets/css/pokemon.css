@@ -47,6 +47,26 @@ html {
     inset: 0;
 }
 
+.cf-checkout-checkbox-field {
+    align-items: baseline !important;
+}
+
+.cf-checkout-breadcrumb__label {
+    width: 300px !important;
+}
+
+.cf-checkout-breadcrumb__marker:before {
+    transition: background-color 0.2s ease;
+}
+
+.cf-checkout-steps__heading {
+    margin-block-end: 10px !important;
+}
+
+.cf-checkout-delivery-methods__list {
+    margin-block-start: 0px !important;
+}
+
 main {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
@@ -68,10 +88,6 @@ main {
     position: relative;
 }
 
-/* pixels overlay */
-/* pixels overlay */
-/* pixels overlay */
-/* pixels overlay */
 /* pixels overlay */
 
 .pixel-overlay {
@@ -123,14 +139,6 @@ main {
 }
 
 /* Background spinner */
-/* Background spinner */
-/* Background spinner */
-/* Background spinner */
-/* Background spinner */
-/* Background spinner */
-@view-transition {
-    navigation: auto;
-}
 .spin {
     position: absolute;
     inset: 0 0 0 0;
@@ -235,9 +243,6 @@ main {
 }
 
 
-/* Hackathon header */
-/* Hackathon header */
-/* Hackathon header */
 /* Hackathon header */
 .opti-title {
     display: flex;
@@ -649,13 +654,18 @@ ol.ais-Hits-list:has(li:nth-child(2)) {
     }
 }
 
+/* Enable MPA view transitions */
+@view-transition {
+    navigation: auto;
+}
 
+/* Hook into view transitions for step navigation (triggered by CF) */
 ::view-transition-new(heading),
 ::view-transition-new(step) {
-    animation: appear .5s 1s both;
+    animation: appear .5s 0.2s both;
 }
 
 ::view-transition-old(heading),  
 ::view-transition-old(step) {
-    animation-duration: 0.3s; /* Avoid crossfade animation, resize instantly */
+    animation-duration: 0.2s;
 }
