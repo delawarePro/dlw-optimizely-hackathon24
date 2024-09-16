@@ -14,8 +14,6 @@ interface WeQuoteProps extends React.HTMLAttributes<HTMLElement> {
     quote?: any | null;
 }
 
-const { factory } = getServerContext();
-
 const WeQuote: React.FC<WeQuoteProps> = ({ className = "o-wrapper", contentLink, author, image, quote, ...props }) => {
     return React.createElement(
         'we-quote',
@@ -28,7 +26,7 @@ const WeQuote: React.FC<WeQuoteProps> = ({ className = "o-wrapper", contentLink,
                     <figure className="grid grid-cols-1 items-center gap-x-6 gap-y-8 lg:gap-x-10">
                         <div className="relative col-span-2 lg:col-start-1 lg:row-start-2">
                             <RichText as="blockquote" className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9"
-                                      text={quote?.json} factory={factory} cmsFieldName={"Text"} />
+                                      text={quote?.json} />
                         </div>
                         <div className="col-end-1 w-16 lg:row-span-4 lg:w-72">
                             <Image src={ image } height={100} width={100} alt={""} className="rounded-xl bg-indigo-50 lg:rounded-3xl" />
