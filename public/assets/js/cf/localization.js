@@ -20,7 +20,7 @@ document.localization.config = {
             }
 
             console.log(key);
-            return `<${key}>`;
+            return ``;
         }
 
         return tr;
@@ -151,7 +151,7 @@ var translationsEn = {
     'payment.details.needsInvoice-true': 'Yes',
     'paymentChangeBillingAddress': 'Change billing address',
 
-    'proceedToStep-paymentredirect': 'Proceed to PaymentRedirect',
+    'proceedToStep-paymentredirect': 'Confirm your payment',
     'reverseToStep-delivery': 'Return to delivery options',
 
     'loadingPaymentRedirect': 'You will be redirected shortly.',
