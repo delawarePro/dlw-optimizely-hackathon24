@@ -7,7 +7,7 @@ import { LinkDataFragment } from "@/gql/graphql";
  * 
  */
 export const WebEssentialCallToActionElement : CmsComponent<WebEssentialCallToActionDataFragment> = ({ data, children }) => {
-    const url = (data?.Link as LinkDataFragment)?.default;
+    const url = (data?.Link as LinkDataFragment)?.default || "#";
     
     return (
         <div className="m-10">
