@@ -55,7 +55,7 @@ html {
 
 .cf {
     .cf-checkout-checkbox-field {
-        align-items: baseline;
+        align-items: center;
     }
     
     .cf-checkout-breadcrumb__label {
