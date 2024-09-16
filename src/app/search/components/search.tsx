@@ -1,5 +1,5 @@
-﻿import React from "react";
-import { InstantSearch, Hits, SearchBox } from "react-instantsearch";
+﻿import React, { useEffect } from 'react'
+import { InstantSearch, Hits, SearchBox, useStats } from "react-instantsearch";
 import { Hit as AlgoliaHit } from "instantsearch.js";
 // import { Dlw_DOM_Message_Handler } from '@delawarepro/dlw-commerce-flows';
 
@@ -40,6 +40,19 @@ function addProduct(hit: AlgoliaHit) {
     }));
 }
 
+function CustomStats() {
+    const {
+      nbHits
+    } = useStats();
+
+    return <>
+        <div className={nbHits == 1 ? "poke-search single-result" : "poke-search"}>
+            <SearchBox />
+            <Hits hitComponent={Hit} />
+        </div>
+    </>;
+  }
+
 function Hit({ hit }: HitProps) {
     const listPrice = hit.listPrice ?? hit.price;
     const salePrice = hit.salePrice ?? hit.price;
@@ -76,12 +89,9 @@ function Hit({ hit }: HitProps) {
 export function Search({ searchClient }: { searchClient: any }) {
     return (
         <>
-            <div className="poke-search">
-                <InstantSearch searchClient={searchClient} indexName="instant_search">
-                    <SearchBox />
-                    <Hits hitComponent={Hit} />
-                </InstantSearch>
-            </div>
+            <InstantSearch searchClient={searchClient} indexName="instant_search">
+                <CustomStats />
+            </InstantSearch>
         </>
     );
 }
