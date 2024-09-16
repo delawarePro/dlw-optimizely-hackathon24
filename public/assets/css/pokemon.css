@@ -23,6 +23,12 @@ html {
     cursor: pointer;
 }
 
+.pixl-button--lg {
+    width: fit-content;
+    font-size: 30px;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100% ,0 100%, 0 0);
+}
+
 .pixl-button::after, .pixl-button::before,
 .cf a::after, .cf a::before,
 .cf button::after, .cf button::before {
