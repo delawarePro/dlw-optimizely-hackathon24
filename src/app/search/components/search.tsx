@@ -5,6 +5,7 @@ import { Hit as AlgoliaHit } from "instantsearch.js";
 
 type HitProps = {
     hit: AlgoliaHit<{
+        key: string;
         name: string;
         listPrice: number;
         salePrice: number;
@@ -23,7 +24,7 @@ function addProduct(hit: AlgoliaHit) {
         detail: {
             message: {
                 item: {
-                    itemId: "001",
+                    itemId: hit.key,
                     pricing: {
                         pcs: {
                             salePrice: salePrice,
@@ -57,6 +58,8 @@ function Hit({ hit }: HitProps) {
     const listPrice = hit.listPrice ?? hit.price;
     const salePrice = hit.salePrice ?? hit.price;
 
+    var caught = localStorage.getItem("productId") === hit.key;
+
     return (
         <>
             <div className="pokemon-card">
@@ -80,6 +83,7 @@ function Hit({ hit }: HitProps) {
                     <span className="pokeball--mid"></span>
                 </span>
                 <img src={hit.animation}></img>
+                { caught ? `CAUGHT` : null}
                 <button className="pixl-button" onClick={() => addProduct(hit)}>CATCH!</button>
             </div>
         </>

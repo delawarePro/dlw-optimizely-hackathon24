@@ -1,9 +1,30 @@
 ﻿'use client';
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Sause } from '../search/components/sause';
 
-export default async function SearchPage() {
+async function init(){
+    
+    var state = window["optimizely"]?.get("state");
+    var pageStates = state?.getPageStates();
+    var pageEntries = pageStates ? Object.values(pageStates) : null;
+
+    if (pageEntries){
+        pageEntries.forEach(p => {
+            var id = p.metadata?.product_id;
+    
+            if (id) {
+                localStorage.setItem('productId', id)
+            }
+        });
+    }
+}
+
+export default function SearchPage() {
+    useEffect(() => {
+        init();
+    }, [])
+
     return (
         <>
         <div className="container p-5 flex flex-col gap-5 flex-align-center justify-start grow">
