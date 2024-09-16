@@ -70,6 +70,7 @@ html {
         margin-block-end: 10px;
     }
     
+    .cf-checkout-payment-methods__list,
     .cf-checkout-delivery-methods__list {
         margin-block-start: 0px;
     }
