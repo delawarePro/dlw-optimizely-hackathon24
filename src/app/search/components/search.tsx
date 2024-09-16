@@ -5,13 +5,19 @@ import { Hit as AlgoliaHit } from "instantsearch.js";
 
 type HitProps = {
     hit: AlgoliaHit<{
+        key: string;
         name: string;
-        price: number;
+        listPrice: number;
+        salePrice: number;
         animation: string;
+        // Temporary backwards compatibility with stub.
+        price: number;
     }>;
 };
 
 function addProduct(hit: AlgoliaHit) {
+    const listPrice = hit.listPrice ?? hit.price;
+    const salePrice = hit.salePrice ?? hit.price;
 
     document.dispatchEvent(new CustomEvent("clearcart", {
         bubbles: true,
@@ -23,12 +29,11 @@ function addProduct(hit: AlgoliaHit) {
         detail: {
             message: {
                 item: {
-                    itemId: "001",
+                    itemId: hit.key,
                     pricing: {
                         pcs: {
-                            // todo: Get price from somewhere, maybe from back-end?
-                            salePrice: 133.50,
-                            listPrice: 500.50
+                            salePrice: salePrice,
+                            listPrice: listPrice
                         }
                     },
                     title: "Bulbasaur",
@@ -55,8 +60,8 @@ function CustomStats() {
   }
 
 function Hit({ hit }: HitProps) {
-    const salePrice = 10;
-    const listPrice = 100;
+    const listPrice = hit.listPrice ?? hit.price;
+    const salePrice = hit.salePrice ?? hit.price;
 
     return (
         <>

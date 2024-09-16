@@ -19,6 +19,7 @@ export default function RootLayout({
       <head>
         <Script type="module" src="/assets/js/vendor.mjs" strategy="lazyOnload"></Script>
         <Script type="module" src="/assets/js/main.mjs" strategy="lazyOnload"></Script>
+        <Script src="https://cdn.optimizely.com/js/30438670436.js"></Script>
       </head>
       <body>
         <Spin></Spin>
