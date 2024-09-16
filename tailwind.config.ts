@@ -24,6 +24,15 @@ const config: Config = {
         },
         'h4': {
           '@apply font-bold tracking-tight sm:text-base': {},
+        },
+        'ul': {
+          '@apply list-disc list-inside': {},
+        },
+        'ol': {
+          '@apply list-decimal list-inside': {},
+        },
+        'li': {
+          '@apply mb-2': {},
         }
       });
     },
