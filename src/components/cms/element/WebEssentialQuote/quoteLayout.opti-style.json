@@ -2,11 +2,11 @@
   "key": "quoteLayout",
   "displayName": "Layout",
   "contentType": "WebEssentialQuote",
-  "isDefault": false,
+  "isDefault": true,
   "created": "2024-09-05T11:47:45.6098991+00:00",
   "createdBy": "postman",
-  "lastModified": "2024-09-05T11:47:45.6098991+00:00",
-  "lastModifiedBy": "postman",
+  "lastModified": "2024-09-06T07:53:07.035318+00:00",
+  "lastModifiedBy": "local",
   "settings": {
     "isReverse": {
       "displayName": "Reverse",
