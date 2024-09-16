@@ -66,14 +66,6 @@ export const WebEssentialImageDataFragmentDoc = /*#__PURE__*/ gql`
   }
 }
     `;
-export const ReferenceDataFragmentDoc = /*#__PURE__*/ gql`
-    fragment ReferenceData on ContentReference {
-  key
-  url {
-    ...LinkData
-  }
-}
-    `;
 export const WebEssentialQuoteDataFragmentDoc = /*#__PURE__*/ gql`
     fragment WebEssentialQuoteData on WebEssentialQuote {
   Author
@@ -82,7 +74,7 @@ export const WebEssentialQuoteDataFragmentDoc = /*#__PURE__*/ gql`
     html
   }
   Image {
-    ...ReferenceData
+    ...LinkData
   }
 }
     `;
@@ -101,7 +93,7 @@ export const WebEssentialRichTextMediaDataFragmentDoc = /*#__PURE__*/ gql`
     html
   }
   Media {
-    ...ReferenceData
+    ...LinkData
   }
 }
     `;
@@ -149,6 +141,14 @@ export const ExperienceDataFragmentDoc = /*#__PURE__*/ gql`
 export const BlankExperienceDataFragmentDoc = /*#__PURE__*/ gql`
     fragment BlankExperienceData on BlankExperience {
   ...ExperienceData
+}
+    `;
+export const ReferenceDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment ReferenceData on ContentReference {
+  key
+  url {
+    ...LinkData
+  }
 }
     `;
 export const PokemonDataFragmentDoc = /*#__PURE__*/ gql`
@@ -268,12 +268,12 @@ ${WebEssentialBannerDataFragmentDoc}
 ${WebEssentialCallToActionDataFragmentDoc}
 ${WebEssentialImageDataFragmentDoc}
 ${WebEssentialQuoteDataFragmentDoc}
-${ReferenceDataFragmentDoc}
 ${WebEssentialRichTextDataFragmentDoc}
 ${WebEssentialRichTextMediaDataFragmentDoc}
 ${CampaignPageDataFragmentDoc}
 ${BlockDataFragmentDoc}
 ${PokemonDataFragmentDoc}
+${ReferenceDataFragmentDoc}
 ${HomePageDataFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
