@@ -3,6 +3,8 @@ import { InstantSearch, Hits, SearchBox, useStats } from "react-instantsearch";
 import { Hit as AlgoliaHit } from "instantsearch.js";
 // import { Dlw_DOM_Message_Handler } from '@delawarepro/dlw-commerce-flows';
 
+import { useShowSalePrice } from './../ShowSalePriceContext';
+
 type HitProps = {
     hit: AlgoliaHit<{
         name: string;
@@ -57,6 +59,8 @@ function Hit({ hit }: HitProps) {
     const listPrice = hit.listPrice ?? hit.price;
     const salePrice = hit.salePrice ?? hit.price;
 
+    const showSalePrice = useShowSalePrice();
+    
     return (
         <>
             <div className="pokemon-card">
@@ -65,7 +69,7 @@ function Hit({ hit }: HitProps) {
                     <br />
                     <span className="pokemon-price">
                         {
-                            salePrice ? <>
+                            showSalePrice && salePrice ? <>
                                 <s>{listPrice}</s> <b>{salePrice}</b>
                             </>
                             : <>

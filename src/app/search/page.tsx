@@ -10,6 +10,8 @@ import { getServerData } from "./searchPageServer";
 import { stubbedSearchClient } from "./components/stubbedSearchClient";
 import { optiSearchClient } from "./components/optiSearchClient";
 
+import { ShowSalePriceProvider } from './ShowSalePriceContext';
+
 const SearchPage: React.FC = () => {
     const [isSalePriceEnabled, setIsSalePriceEnabled] = useState(false);
 
@@ -28,8 +30,9 @@ const SearchPage: React.FC = () => {
         <>
             <Cart />
             <Sause useplane={true} />
-            <Search searchClient={stubbedSearchClient} />
-            {isSalePriceEnabled && <span>dummy</span>}
+            <ShowSalePriceProvider value={isSalePriceEnabled}>
+                <Search searchClient={stubbedSearchClient} />
+            </ShowSalePriceProvider>
         </>
     );
 };
