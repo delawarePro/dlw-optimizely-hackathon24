@@ -1,13 +1,9 @@
-﻿'use client';
-
-import React from 'react'
-import { useSearchParams } from 'next/navigation'
+﻿import React, { Suspense } from 'react'
 
 import { Sause } from '../search/components/sause';
+import { SearchParam } from "./components/searchParam";
 
 export default async function SearchPage() {
-    const searchParams = useSearchParams();
-    const orderID = searchParams.get('orderNr');
 
     return (
         <>
@@ -15,7 +11,11 @@ export default async function SearchPage() {
             <Sause useplane={false} />
             <h1 className="text-3xl">Congrats!! <br /> You c(b)aught yourself a pokemon!</h1>
             <h2 className="text-xl">Your order id:<br />
-                <span className="text-blue-600">{orderID}</span>
+                <span className="text-blue-600">
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <SearchParam param={"orderNr"} />
+                    </Suspense>
+                </span>
             </h2>
 
             <p className="text-xl">Go catch a new one trainer!</p>
