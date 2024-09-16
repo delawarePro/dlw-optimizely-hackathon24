@@ -49,11 +49,10 @@ html {
 
 main {
     overflow: auto;
-
-    max-width: var(--main-width, 1000px);
+    max-width: var(--main-width);
     margin: 0 auto;
     min-height: 100dvh;
-    background-color: beige;
+    background-color: rgba(232, 232, 138, 0.5);
     overflow: hidden;
     position: relative;
 }
