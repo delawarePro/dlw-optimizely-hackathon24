@@ -48,14 +48,9 @@ html {
 }
 
 main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
     overflow: auto;
 
-    max-width: var(--main-width);
+    max-width: var(--main-width, 1000px);
     margin: 0 auto;
     min-height: 100dvh;
     background-color: beige;
@@ -63,7 +58,16 @@ main {
     position: relative;
 }
 
-h1, h2, h3, h4, h5, .opti-title, .pokemon-plane, .pokemon-name, .pixl-button, .ais-SearchBox-reset {
+.pokemon-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, .opti-title, .pokemon-plane, .pokemon-name, .pixl-button, .ais-SearchBox-reset, .cf-btn {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -71,12 +75,8 @@ h1, h2, h3, h4, h5, .opti-title, .pokemon-plane, .pokemon-name, .pixl-button, .a
     text-transform: uppercase;
 }
 
-main.small {
+main:has(.pokemon-container) {
     --main-width: 500px;
-}
-
-main.medium {
-    --main-width: 1000px;
 }
 
 /* pixels overlay */

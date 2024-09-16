@@ -22,7 +22,7 @@ export default function RootLayout({
       </head>
       <body>
         <Spin></Spin>
-        <main className="small">
+        <main>
           {children}
         </main>
       </body>

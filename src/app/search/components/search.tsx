@@ -13,6 +13,11 @@ type HitProps = {
 
 function addProduct(hit: AlgoliaHit) {
 
+    document.dispatchEvent(new CustomEvent("clearcart", {
+        bubbles: true,
+        detail: {},
+    }));
+
     document.dispatchEvent(new CustomEvent("additemtocart", {
         bubbles: true,
         detail: {
