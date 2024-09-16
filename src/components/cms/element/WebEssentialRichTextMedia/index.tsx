@@ -23,7 +23,7 @@ export const WebEssentialRichTextMediaElement: CmsComponent<WebEssentialRichText
                 <div className="relative">
                     <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
                         <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
-                            <button popovertarget={randomID} className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+                            <button popoverTarget={randomID} className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
                                 <Image src={data?.Media} fill alt={""} className="object-cover" />
                             </button>
                         </div>
@@ -40,10 +40,10 @@ export const WebEssentialRichTextMediaElement: CmsComponent<WebEssentialRichText
                 </div>
 
 
-                <div popover="true" className="show-lightbox" id={randomID}>
+                <div popover="" className="show-lightbox" id={randomID}>
                     <div className="lightbox-container">
                         <Image src={data?.Media} fill alt={""} className="object-cover" />
-                        <button popovertarget={randomID} popovertargetaction="hide">Close</button>
+                        <button popoverTarget={randomID} popoverTargetAction="hide">Close</button>
                     </div>
                 </div>
             </>
