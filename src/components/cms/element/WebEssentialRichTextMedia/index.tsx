@@ -1,19 +1,45 @@
 import { CmsComponent } from "@remkoj/optimizely-cms-react";
 import { WebEssentialRichTextMediaDataFragmentDoc, type WebEssentialRichTextMediaDataFragment } from "@/gql/graphql";
 
+import { getServerContext } from '@remkoj/optimizely-cms-react/rsc'
+import { CmsEditable } from '@remkoj/optimizely-cms-react/rsc'
+import { RichText } from '@remkoj/optimizely-cms-react/components'
+import Image from "@/components/shared/cms-image";
+
 /**
  * Rich Text Media - Web Essential
- * 
+ *
  */
-export const WebEssentialRichTextMediaElement : CmsComponent<WebEssentialRichTextMediaDataFragment> = ({ data, children }) => {
-    const componentName = 'Rich Text Media - Web Essential'
-    const componentInfo = ''
-    return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">
-        <div className="font-bold italic">{ componentName }</div>
-        <div>{ componentInfo }</div>
-        { Object.getOwnPropertyNames(data).length > 0 && <pre className="w-full overflow-x-hidden font-mono text-sm bg-slate-200 p-2 rounded-sm border border-solid border-slate-900 text-slate-900">{ JSON.stringify(data, undefined, 4) }</pre> }
-        { children && <div className="mt-4 mx-4 flex flex-col">{ children }</div>}
-    </div>
+
+const { factory } = getServerContext();
+
+export const WebEssentialRichTextMediaElement : CmsComponent<WebEssentialRichTextMediaDataFragment> = ({ data, contentLink, children }) => {
+
+    return (
+        <CmsEditable cmsId={contentLink.key}>
+            <div className="relative">
+                <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
+                    <div
+                        className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+                        <div className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+                            <Image src={data?.Media} fill alt={""} className="object-cover"/>
+                        </div>
+                    </div>
+                    <div className="px-6 lg:contents">
+                        <div
+                            className="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
+                            <div className="mt-6 text-xl leading-8 text-gray-700">
+                                <RichText as="div"
+                                          className="mt-6 leading-8 text-gray-600"
+                                          cmsFieldName={"Content"}
+                                          text={data?.Content?.json} factory={factory}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </CmsEditable>
+    )
 }
 WebEssentialRichTextMediaElement.displayName = "Rich Text Media - Web Essential (Element/WebEssentialRichTextMedia)"
 WebEssentialRichTextMediaElement.getDataFragment = () => ['WebEssentialRichTextMediaData', WebEssentialRichTextMediaDataFragmentDoc]
