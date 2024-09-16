@@ -24,10 +24,13 @@ export const optiSearchClient = {
 };
 
 async function queryOptiGraph(searchString: string): Promise<AlgoliaHit[]> {
+
+    // Ordering by semantic returns too many results when searching for now.
+    // Disabling for now for hackathon demo.
+    // orderBy: { _ranking: SEMANTIC }
     const POKEMONS_QUERY = gql`
         query PokemonsQueryAlt($searchQuery: String!)  {
             Pokemon(
-                orderBy: { _ranking: SEMANTIC }
                 where: { _fulltext: { match: $searchQuery } }
             ) {
                 items{
