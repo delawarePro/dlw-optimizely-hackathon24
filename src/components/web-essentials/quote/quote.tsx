@@ -11,7 +11,7 @@ interface WeQuoteProps extends React.HTMLAttributes<HTMLElement> {
     contentLink: ContentLinkWithLocale | InlineContentLinkWithLocale;
     author: string;
     image: any;
-    quote: string;
+    quote?: any | null;
 }
 
 const { factory } = getServerContext();
