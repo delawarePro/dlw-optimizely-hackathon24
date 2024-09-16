@@ -3,7 +3,6 @@ import { WebEssentialRichTextDataFragmentDoc, type WebEssentialRichTextDataFragm
 import WeRichText from "@/components/web-essentials/richtext/richtext";
 import Image from "@/components/shared/cms-image";
 
-import { getServerContext } from '@remkoj/optimizely-cms-react/rsc'
 import { CmsEditable } from '@remkoj/optimizely-cms-react/rsc'
 import { RichText } from '@remkoj/optimizely-cms-react/components'
 
@@ -12,15 +11,13 @@ import { RichText } from '@remkoj/optimizely-cms-react/components'
  * 
  */
 
-const { factory } = getServerContext();
-
 export const WebEssentialRichTextElement : CmsComponent<WebEssentialRichTextDataFragment> = ({ data, contentLink, children }) => {
     return (
         <CmsEditable cmsId={contentLink.key}>
             <div className="px-6 py-24 sm:py-32 lg:px-8">
                 <div className="mx-auto max-w-2xl">
                     <RichText className="mt-6 leading-8 text-gray-600"
-                              text={data?.Content?.json} factory={factory}/>
+                              text={data?.Content?.json} />
                 </div>
             </div>
         </CmsEditable>
