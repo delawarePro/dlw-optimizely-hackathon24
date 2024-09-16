@@ -58,8 +58,6 @@ function Hit({ hit }: HitProps) {
     const listPrice = hit.listPrice ?? hit.price;
     const salePrice = hit.salePrice ?? hit.price;
 
-    var caught = localStorage.getItem("productId") === hit.key;
-
     return (
         <>
             <div className="pokemon-card">
@@ -83,7 +81,6 @@ function Hit({ hit }: HitProps) {
                     <span className="pokeball--mid"></span>
                 </span>
                 <img src={hit.animation}></img>
-                { caught ? `CAUGHT` : null}
                 <button className="pixl-button" onClick={() => addProduct(hit)}>CATCH!</button>
             </div>
         </>
