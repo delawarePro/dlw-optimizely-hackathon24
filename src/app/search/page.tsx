@@ -8,6 +8,7 @@ import { Sause } from "./components/sause";
 
 import { getServerData } from "./searchPageServer";
 import { stubbedSearchClient } from "./components/stubbedSearchClient";
+import { optiSearchClient } from "./components/optiSearchClient";
 
 const SearchPage: React.FC = () => {
     const [isSalePriceEnabled, setIsSalePriceEnabled] = useState(false);

@@ -123,6 +123,11 @@
     .cf-checkout-proceed button{
         margin: 20px;
     }
+
+    input, textarea, select {
+        padding: 5px;
+        min-height: 34px;
+    }
 }
 
 .cf-custom-checkout {

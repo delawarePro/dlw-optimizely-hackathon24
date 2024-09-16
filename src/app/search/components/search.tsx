@@ -1,17 +1,22 @@
-﻿import React from "react";
-import { InstantSearch, Hits, SearchBox } from "react-instantsearch";
+﻿import React, { useEffect } from 'react'
+import { InstantSearch, Hits, SearchBox, useStats } from "react-instantsearch";
 import { Hit as AlgoliaHit } from "instantsearch.js";
 // import { Dlw_DOM_Message_Handler } from '@delawarepro/dlw-commerce-flows';
 
 type HitProps = {
     hit: AlgoliaHit<{
         name: string;
-        price: number;
+        listPrice: number;
+        salePrice: number;
         animation: string;
+        // Temporary backwards compatibility with stub.
+        price: number;
     }>;
 };
 
 function addProduct(hit: AlgoliaHit) {
+    const listPrice = hit.listPrice ?? hit.price;
+    const salePrice = hit.salePrice ?? hit.price;
 
     document.dispatchEvent(new CustomEvent("additemtocart", {
         bubbles: true,
@@ -21,9 +26,8 @@ function addProduct(hit: AlgoliaHit) {
                     itemId: "001",
                     pricing: {
                         pcs: {
-                            // todo: Get price from somewhere, maybe from back-end?
-                            salePrice: 133.50,
-                            listPrice: 500.50
+                            salePrice: salePrice,
+                            listPrice: listPrice
                         }
                     },
                     title: "Bulbasaur",
@@ -36,9 +40,22 @@ function addProduct(hit: AlgoliaHit) {
     }));
 }
 
+function CustomStats() {
+    const {
+      nbHits
+    } = useStats();
+
+    return <>
+        <div className={nbHits == 1 ? "poke-search single-result" : "poke-search"}>
+            <SearchBox />
+            <Hits hitComponent={Hit} />
+        </div>
+    </>;
+  }
+
 function Hit({ hit }: HitProps) {
-    const salePrice = 10;
-    const listPrice = 100;
+    const listPrice = hit.listPrice ?? hit.price;
+    const salePrice = hit.salePrice ?? hit.price;
 
     return (
         <>
@@ -72,12 +89,9 @@ function Hit({ hit }: HitProps) {
 export function Search({ searchClient }: { searchClient: any }) {
     return (
         <>
-            <div className="poke-search">
-                <InstantSearch searchClient={searchClient} indexName="instant_search">
-                    <SearchBox />
-                    <Hits hitComponent={Hit} />
-                </InstantSearch>
-            </div>
+            <InstantSearch searchClient={searchClient} indexName="instant_search">
+                <CustomStats />
+            </InstantSearch>
         </>
     );
 }
