@@ -124,8 +124,9 @@
         margin: 20px;
     }
 
-    input, textarea {
+    input, textarea, select {
         padding: 5px;
+        min-height: 34px;
     }
 }
 
