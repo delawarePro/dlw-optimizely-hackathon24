@@ -96,7 +96,7 @@ main {
     min-height: 100%;
 }
 
-h1, h2, h3, h4, h5, .opti-title, .pokemon-plane, .pokemon-name, .pixl-button, .ais-SearchBox-reset, .cf-btn {
+h1, h2, h3, h4, h5, .opti-title, .pokemon-plane, .pokemon-name, .pixl-button, .ais-SearchBox-reset, .cf-btn, .pxl-font {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
