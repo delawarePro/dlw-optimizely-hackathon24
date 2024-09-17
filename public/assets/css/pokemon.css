@@ -351,6 +351,11 @@ main:has(.pokemon-container) {
 
 /* poke search */
 .poke-search {
+
+    ol {
+        list-style: none;
+    }
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -387,6 +392,10 @@ main:has(.pokemon-container) {
 
         .ais-SearchBox-reset {
             display: var(--search-reset--display, none);
+        }
+
+        .ais-SearchBox-loadingIndicator {
+            display: none;
         }
     }
 }
