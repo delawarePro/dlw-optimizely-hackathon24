@@ -36,8 +36,8 @@ function addProduct(hit: AlgoliaHit) {
                             listPrice: listPrice
                         }
                     },
-                    title: "Bulbasaur",
-                    description: "grass pokemon that evolves into Venesaur"
+                    title: hit.name,
+                    description: `you caught a ${hit.name}!`
                 },
                 unit: "pcs",
                 quantity: 1,

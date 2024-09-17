@@ -45,9 +45,9 @@ export const translationConfig = {
             'cart': 'Cart',
             'wishlist-cart': 'Wishlist',
         
-            'addedToCartPopUpTitle': 'Complete your catch!',
+            'addedToCartPopUpTitle': 'Good job trainer!',
             'addedToCartPopUpContinueShopping': 'continue shopping',
-            'addedToCartPopUpOrderCart': 'Order →',
+            'addedToCartPopUpOrderCart': 'Proceed →',
         
             'wishlist-addedToCartPopUpTitle': 'The product has been added to your wishlist',
             'wishlist-addedToCartPopUpContinueShopping': 'continue shopping',
