@@ -1,4 +1,5 @@
 fragment WebEssentialRichTextMediaData on WebEssentialRichTextMedia {
   Content { json, html }
   Media { ...LinkData }
+  Reverse
 }
