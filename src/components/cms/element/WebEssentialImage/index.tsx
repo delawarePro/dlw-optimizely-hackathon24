@@ -7,11 +7,10 @@ import Image from '@/components/shared/cms-image'
  * 
  */
 export const WebEssentialImageElement : CmsComponent<WebEssentialImageDataFragment> = ({ data, children }) => {
-    
-    return <div>
-        <Image src={ data.Image } fill alt={""} className="object-cover" />
-    </div>
+
+    return <Image src={data.Image} height={300} width={300} alt={""} className="object-cover"/>
 }
+
 WebEssentialImageElement.displayName = "Image - Web Essential (Element/WebEssentialImage)"
 WebEssentialImageElement.getDataFragment = () => ['WebEssentialImageData', WebEssentialImageDataFragmentDoc]
 

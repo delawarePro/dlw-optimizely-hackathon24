@@ -1,7 +1,6 @@
 import { CmsComponent } from "@remkoj/optimizely-cms-react";
 import { WebEssentialBannerDataFragmentDoc, type WebEssentialBannerDataFragment } from "@/gql/graphql";
 
-import { getServerContext } from '@remkoj/optimizely-cms-react/rsc'
 import { CmsEditable } from '@remkoj/optimizely-cms-react/rsc'
 import { RichText } from '@remkoj/optimizely-cms-react/components'
 
@@ -9,8 +8,6 @@ import { RichText } from '@remkoj/optimizely-cms-react/components'
  * Banner - Web Essential
  *
  */
-
-const { factory } = getServerContext();
 
 export const WebEssentialBannerElement : CmsComponent<WebEssentialBannerDataFragment> = ({ data, contentLink, children }) => {
     const title = data?.Title || "";
@@ -24,7 +21,7 @@ export const WebEssentialBannerElement : CmsComponent<WebEssentialBannerDataFrag
                     <RichText as="div"
                               className="mt-6 text-lg leading-8 text-gray-600"
                               cmsFieldName={"Description"}
-                              text={data?.Description?.json} factory={factory}/>
+                              text={data?.Description?.json}/>
                 </div>
             </div>
         </CmsEditable>

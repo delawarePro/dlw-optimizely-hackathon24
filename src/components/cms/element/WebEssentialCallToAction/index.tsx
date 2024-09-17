@@ -1,13 +1,21 @@
 import { CmsComponent } from "@remkoj/optimizely-cms-react";
 import { WebEssentialCallToActionDataFragmentDoc, type WebEssentialCallToActionDataFragment } from "@/gql/graphql";
+import { LinkDataFragment } from "@/gql/graphql";
 
 /**
  * CTA - Web Essential
  * 
  */
 export const WebEssentialCallToActionElement : CmsComponent<WebEssentialCallToActionDataFragment> = ({ data, children }) => {
+    const url = (data?.Link as LinkDataFragment)?.default || "#";
+    
     return (
-        <a href="{ data.Url }" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{ data.Label }</a>
+        <div className="m-20">
+            <a href={url}
+               className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                {data.Label}
+            </a>
+        </div>
     )
 }
 WebEssentialCallToActionElement.displayName = "CTA - Web Essential (Element/WebEssentialCallToAction)"
