@@ -95,6 +95,7 @@ export const WebEssentialRichTextMediaDataFragmentDoc = /*#__PURE__*/ gql`
   Media {
     ...LinkData
   }
+  Reverse
 }
     `;
 export const ElementDataFragmentDoc = /*#__PURE__*/ gql`
@@ -275,6 +276,40 @@ ${BlockDataFragmentDoc}
 ${PokemonDataFragmentDoc}
 ${ReferenceDataFragmentDoc}
 ${HomePageDataFragmentDoc}`;
+export const PokemonsQueryAltDocument = /*#__PURE__*/ gql`
+    query PokemonsQueryAlt($searchQuery: String!) {
+  Pokemon(where: {_fulltext: {match: $searchQuery}}) {
+    items {
+      Identifier
+      Name
+      Types
+      Species
+      Thumbnail {
+        url {
+          base
+          internal
+          hierarchical
+          default
+          type
+        }
+      }
+      _metadata {
+        key
+        displayName
+      }
+      _link {
+        Price {
+          items {
+            parentIdentifier
+            listPrice
+            salePrice
+          }
+        }
+      }
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -291,6 +326,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getContentByPath(variables: Schema.getContentByPathQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.getContentByPathQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<Schema.getContentByPathQuery>(getContentByPathDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContentByPath', 'query', variables);
+    },
+    PokemonsQueryAlt(variables: Schema.PokemonsQueryAltQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.PokemonsQueryAltQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Schema.PokemonsQueryAltQuery>(PokemonsQueryAltDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'PokemonsQueryAlt', 'query', variables);
     }
   };
 }
