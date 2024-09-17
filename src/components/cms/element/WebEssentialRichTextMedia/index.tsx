@@ -22,7 +22,7 @@ export const WebEssentialRichTextMediaElement: CmsComponent<WebEssentialRichText
                     <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
                         <div className={`${isReverse ? 'lg:order-2' : 'lg:order-1'} lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2 c-rich-text__img-container`}>
                             <button popoverTarget={randomID} className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0 lightbox-open-button">
-                                <Image src={data?.Media} fill alt={""} className="object-cover" />
+                                <Image src={data?.Media} fill alt={""} />
                             </button>
                         </div>
                         <div className={`${isReverse ? 'lg:order-1' : 'lg:order-2'} px-6 lg:contents`}>
