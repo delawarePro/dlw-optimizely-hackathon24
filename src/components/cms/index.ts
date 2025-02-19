@@ -1,15 +1,12 @@
 // Auto generated dictionary
 import { ComponentTypeDictionary } from "@remkoj/optimizely-cms-react";
 import componentDictionary from "./component";
-import elementDictionary from "./element";
 import experienceDictionary from "./experience";
 import nodesDictionary from "./nodes";
 import nodeComponent from "./node";
 
 // Prefix entries - if needed
 prefixDictionaryEntries(componentDictionary, "Component");
-prefixDictionaryEntries(elementDictionary, "Element");
-prefixDictionaryEntries(elementDictionary, "Component");
 prefixDictionaryEntries(experienceDictionary, "Experience");
 prefixDictionaryEntries(experienceDictionary, "Page");
 prefixDictionaryEntries(nodesDictionary, "Nodes");
@@ -17,7 +14,6 @@ prefixDictionaryEntries(nodesDictionary, "Nodes");
 // Build dictionary
 export const cmsDictionary : ComponentTypeDictionary = [
     ...componentDictionary,
-    ...elementDictionary,
     ...experienceDictionary,
     ...nodesDictionary,
     { 
