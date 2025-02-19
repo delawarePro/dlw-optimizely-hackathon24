@@ -93,8 +93,8 @@ async function queryOptiGraph(searchString: string): Promise<AlgoliaHit[]> {
         const price = item._link?.Price?.items?.length > 0
          ? item._link.Price.items[0] : null;
 
-        const listPrice = price ? price.listPrice : null;
-        const salePrice = price ? price.salePrice : null;
+        const listPrice = price ? price.listPrice : 100;
+        const salePrice = price ? price.salePrice : 90;
 
         // use github for animation & thumbnails for now.
         // as we can't seem to find an API to uploaded asset binaries to SaaS CMS.
