@@ -21,100 +21,6 @@ export type Scalars = {
   JSON: { input: any; output: any; }
 };
 
-export type Address = {
-  __typename?: 'Address';
-  city?: Maybe<Scalars['String']['output']>;
-  country?: Maybe<Scalars['String']['output']>;
-  firstName?: Maybe<Scalars['String']['output']>;
-  lastName?: Maybe<Scalars['String']['output']>;
-};
-
-export type AddressAutocomplete = {
-  __typename?: 'AddressAutocomplete';
-  city?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  country?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  firstName?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  lastName?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-};
-
-
-export type AddressAutocompletecityArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type AddressAutocompletecountryArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type AddressAutocompletefirstNameArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type AddressAutocompletelastNameArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-export type AddressFacet = {
-  __typename?: 'AddressFacet';
-  city?: Maybe<Array<Maybe<StringFacet>>>;
-  country?: Maybe<Array<Maybe<StringFacet>>>;
-  firstName?: Maybe<Array<Maybe<StringFacet>>>;
-  lastName?: Maybe<Array<Maybe<StringFacet>>>;
-};
-
-
-export type AddressFacetcityArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type AddressFacetcountryArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type AddressFacetfirstNameArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type AddressFacetlastNameArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-export type AddressOrderByInput = {
-  city?: InputMaybe<OrderBy>;
-  country?: InputMaybe<OrderBy>;
-  firstName?: InputMaybe<OrderBy>;
-  lastName?: InputMaybe<OrderBy>;
-};
-
-export type AddressWhereInput = {
-  city?: InputMaybe<StringFilterInput>;
-  country?: InputMaybe<StringFilterInput>;
-  firstName?: InputMaybe<StringFilterInput>;
-  lastName?: InputMaybe<StringFilterInput>;
-};
-
 export type BlankExperience = IData & _IContent & _IExperience & _IPage & {
   __typename?: 'BlankExperience';
   /** @deprecated Use `_link` field instead */
@@ -156,6 +62,8 @@ export type BlankExperienceOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
   composition?: InputMaybe<CompositionStructureNodeOrderByInput>;
 };
 
@@ -224,6 +132,8 @@ export type BlankSectionOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
   composition?: InputMaybe<CompositionStructureNodeOrderByInput>;
 };
 
@@ -297,6 +207,8 @@ export type CampaignPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
   composition?: InputMaybe<CompositionStructureNodeOrderByInput>;
 };
 
@@ -323,6 +235,17 @@ export type CampaignPageWhereInput = {
   _not?: InputMaybe<Array<InputMaybe<CampaignPageWhereInput>>>;
   _or?: InputMaybe<Array<InputMaybe<CampaignPageWhereInput>>>;
   composition?: InputMaybe<CompositionStructureNodeWhereInput>;
+};
+
+export type CompositionComponentNode = ICompositionComponentNode & ICompositionNode & {
+  __typename?: 'CompositionComponentNode';
+  component?: Maybe<_IComponent>;
+  displayName?: Maybe<Scalars['String']['output']>;
+  displaySettings?: Maybe<Array<Maybe<CompositionDisplaySetting>>>;
+  displayTemplateKey?: Maybe<Scalars['String']['output']>;
+  key?: Maybe<Scalars['String']['output']>;
+  nodeType?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
 };
 
 export type CompositionDisplaySetting = {
@@ -379,17 +302,6 @@ export type CompositionDisplaySettingOrderByInput = {
 export type CompositionDisplaySettingWhereInput = {
   key?: InputMaybe<StringFilterInput>;
   value?: InputMaybe<StringFilterInput>;
-};
-
-export type CompositionElementNode = ICompositionElementNode & ICompositionNode & {
-  __typename?: 'CompositionElementNode';
-  displayName?: Maybe<Scalars['String']['output']>;
-  displaySettings?: Maybe<Array<Maybe<CompositionDisplaySetting>>>;
-  displayTemplateKey?: Maybe<Scalars['String']['output']>;
-  element?: Maybe<_IElement>;
-  key?: Maybe<Scalars['String']['output']>;
-  nodeType?: Maybe<Scalars['String']['output']>;
-  type?: Maybe<Scalars['String']['output']>;
 };
 
 export type CompositionNode = ICompositionNode & {
@@ -527,8 +439,10 @@ export type CompositionStructureNodeWhereInput = {
 
 export type ContentMetadata = IContentMetadata & {
   __typename?: 'ContentMetadata';
+  changeset?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
@@ -542,6 +456,84 @@ export type ContentMetadata = IContentMetadata & {
 
 export type ContentMetadatadisplayNameArgs = {
   highlight?: InputMaybe<HighlightOptions>;
+};
+
+export type ContentPage = IData & _IContent & _IPage & {
+  __typename?: 'ContentPage';
+  Seo?: Maybe<SEOProperty>;
+  Title?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children?: Maybe<QueryRef>;
+  _deleted?: Maybe<Scalars['Bool']['output']>;
+  _fulltext?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id?: Maybe<Scalars['String']['output']>;
+  _link?: Maybe<QueryRef>;
+  _metadata?: Maybe<IContentMetadata>;
+  _modified?: Maybe<Scalars['Date']['output']>;
+  _score?: Maybe<Scalars['Float']['output']>;
+};
+
+
+export type ContentPage_fulltextArgs = {
+  highlight?: InputMaybe<HighlightOptions>;
+};
+
+
+export type ContentPage_linkArgs = {
+  type?: InputMaybe<LinkTypes>;
+};
+
+export type ContentPageAutocomplete = {
+  __typename?: 'ContentPageAutocomplete';
+  _metadata?: Maybe<IContentMetadataAutocomplete>;
+};
+
+export type ContentPageFacet = {
+  __typename?: 'ContentPageFacet';
+  Seo?: Maybe<Array<Maybe<StringFacet>>>;
+  _metadata?: Maybe<IContentMetadataFacet>;
+};
+
+
+export type ContentPageFacetSeoArgs = {
+  filters?: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type ContentPageOrderByInput = {
+  Seo?: InputMaybe<OrderBy>;
+  _metadata?: InputMaybe<IContentMetadataOrderByInput>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ContentPageOutput = {
+  __typename?: 'ContentPageOutput';
+  autocomplete?: Maybe<ContentPageAutocomplete>;
+  cursor?: Maybe<Scalars['String']['output']>;
+  facets?: Maybe<ContentPageFacet>;
+  items?: Maybe<Array<Maybe<ContentPage>>>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type ContentPageOutputtotalArgs = {
+  all?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ContentPageWhereInput = {
+  Seo?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<ContentPageWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _metadata?: InputMaybe<IContentMetadataWhereInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<ContentPageWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<ContentPageWhereInput>>>;
 };
 
 export type ContentReference = {
@@ -725,6 +717,8 @@ export type DataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DataOutput = {
@@ -765,6 +759,8 @@ export enum DateFacetUnit {
 export type DateFilterInput = {
   /** `boost` influences the weight of a field by boosting a match with a number (default: 1) — counts more towards the eventual relevance score which can be projected with `_score` — at query time. Note that `boost` cannot be a negative number. */
   boost?: InputMaybe<Scalars['Int']['input']>;
+  /** `decay` influences the weight of the score with a decay function. For example, results that have a more recent datetime will be ranked higher. The `origin` will be `now()` in case not specified. The `scale` is by default 10. The `rate` must be in the range `[0..1]`. */
+  decay?: InputMaybe<Decay>;
   /** `eq` matches on an exact value, but the value is case-insensitive. */
   eq?: InputMaybe<Scalars['Date']['input']>;
   /** `exist` matches results that have this field. */
@@ -781,27 +777,11 @@ export type DateFilterInput = {
   notEq?: InputMaybe<Scalars['Date']['input']>;
 };
 
-export type FloatFilterInput = {
-  /** `boost` influences the weight of a field by boosting a match with a number (default: 1) — counts more towards the eventual relevance score which can be projected with `_score` — at query time. Note that `boost` cannot be a negative number. */
-  boost?: InputMaybe<Scalars['Float']['input']>;
-  /** `eq` matches on an exact value, but the value is case-insensitive. */
-  eq?: InputMaybe<Scalars['Float']['input']>;
-  /** `exist` matches results that have this field. */
-  exist?: InputMaybe<Scalars['Boolean']['input']>;
-  /** `gt` retrieves results with matches that have a value which is `greater than` it. */
-  gt?: InputMaybe<Scalars['Float']['input']>;
-  /** `gte` retrieves results with matches that have a value which is `greater than or equal to` it. */
-  gte?: InputMaybe<Scalars['Float']['input']>;
-  /** `in` matches with 1 or more exact values in a list. Example: `in: ["word1", "word2", "this is a phrase"]` */
-  in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
-  /** `lt` retrieves results with matches that have a value which is `lower than` it. */
-  lt?: InputMaybe<Scalars['Float']['input']>;
-  /** `lte` retrieves results with matches that have a value which is `lower than or equal to` it. */
-  lte?: InputMaybe<Scalars['Float']['input']>;
-  /** `not_eq` retrieves results not matching with an exact (but case-insensitive) value. */
-  notEq?: InputMaybe<Scalars['Float']['input']>;
-  /** `not_in` returns results that do not match with 1 or more exact values in a list. Example: `not_in: ["word1", "word2", "this is a phrase"]` */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
+/** Decay influences the weight of the score based on field values with a decay function */
+export type Decay = {
+  origin?: InputMaybe<Scalars['Date']['input']>;
+  rate?: InputMaybe<Scalars['Float']['input']>;
+  scale?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type GenericMedia = IData & _IContent & _IMedia & {
@@ -842,6 +822,8 @@ export type GenericMediaOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GenericMediaOutput = {
@@ -915,6 +897,8 @@ export type HomePageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
   composition?: InputMaybe<CompositionStructureNodeOrderByInput>;
 };
 
@@ -942,11 +926,11 @@ export type HomePageWhereInput = {
   composition?: InputMaybe<CompositionStructureNodeWhereInput>;
 };
 
-export type ICompositionElementNode = {
+export type ICompositionComponentNode = {
+  component?: Maybe<_IComponent>;
   displayName?: Maybe<Scalars['String']['output']>;
   displaySettings?: Maybe<Array<Maybe<CompositionDisplaySetting>>>;
   displayTemplateKey?: Maybe<Scalars['String']['output']>;
-  element?: Maybe<_IElement>;
   key?: Maybe<Scalars['String']['output']>;
   nodeType?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
@@ -1080,8 +1064,10 @@ export type ICompositionStructureNode = {
 };
 
 export type IContentMetadata = {
+  changeset?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
@@ -1099,12 +1085,26 @@ export type IContentMetadatadisplayNameArgs = {
 
 export type IContentMetadataAutocomplete = {
   __typename?: 'IContentMetadataAutocomplete';
+  changeset?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  fallbackForLocale?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   key?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   locale?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   status?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   types?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   url?: Maybe<ContentUrlAutocomplete>;
   version?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type IContentMetadataAutocompletechangesetArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IContentMetadataAutocompletefallbackForLocaleArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
 };
 
 
@@ -1139,8 +1139,10 @@ export type IContentMetadataAutocompleteversionArgs = {
 
 export type IContentMetadataFacet = {
   __typename?: 'IContentMetadataFacet';
+  changeset?: Maybe<Array<Maybe<StringFacet>>>;
   created?: Maybe<Array<Maybe<DateFacet>>>;
   displayName?: Maybe<Array<Maybe<StringFacet>>>;
+  fallbackForLocale?: Maybe<Array<Maybe<StringFacet>>>;
   key?: Maybe<Array<Maybe<StringFacet>>>;
   lastModified?: Maybe<Array<Maybe<DateFacet>>>;
   locale?: Maybe<Array<Maybe<StringFacet>>>;
@@ -1152,6 +1154,14 @@ export type IContentMetadataFacet = {
 };
 
 
+export type IContentMetadataFacetchangesetArgs = {
+  filters?: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
 export type IContentMetadataFacetcreatedArgs = {
   unit?: InputMaybe<DateFacetUnit>;
   value?: InputMaybe<Scalars['Int']['input']>;
@@ -1159,6 +1169,14 @@ export type IContentMetadataFacetcreatedArgs = {
 
 
 export type IContentMetadataFacetdisplayNameArgs = {
+  filters?: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IContentMetadataFacetfallbackForLocaleArgs = {
   filters?: InputMaybe<Array<Scalars['String']['input']>>;
   limit?: Scalars['Int']['input'];
   orderBy?: InputMaybe<OrderBy>;
@@ -1218,8 +1236,10 @@ export type IContentMetadataFacetversionArgs = {
 };
 
 export type IContentMetadataOrderByInput = {
+  changeset?: InputMaybe<OrderBy>;
   created?: InputMaybe<OrderBy>;
   displayName?: InputMaybe<OrderBy>;
+  fallbackForLocale?: InputMaybe<OrderBy>;
   key?: InputMaybe<OrderBy>;
   lastModified?: InputMaybe<OrderBy>;
   locale?: InputMaybe<OrderBy>;
@@ -1231,8 +1251,10 @@ export type IContentMetadataOrderByInput = {
 };
 
 export type IContentMetadataWhereInput = {
+  changeset?: InputMaybe<StringFilterInput>;
   created?: InputMaybe<DateFilterInput>;
   displayName?: InputMaybe<SearchableStringFilterInput>;
+  fallbackForLocale?: InputMaybe<StringFilterInput>;
   key?: InputMaybe<StringFilterInput>;
   lastModified?: InputMaybe<DateFilterInput>;
   locale?: InputMaybe<StringFilterInput>;
@@ -1265,11 +1287,13 @@ export type IData_linkArgs = {
 };
 
 export type IInstanceMetadata = {
+  changeset?: Maybe<Scalars['String']['output']>;
   container?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   createdBy?: Maybe<Scalars['String']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   expired?: Maybe<Scalars['DateTime']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   lastModifiedBy?: Maybe<Scalars['String']['output']>;
@@ -1291,9 +1315,11 @@ export type IInstanceMetadatadisplayNameArgs = {
 };
 
 export type IItemMetadata = {
+  changeset?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   displayOption?: Maybe<Scalars['String']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
@@ -1310,12 +1336,14 @@ export type IItemMetadatadisplayNameArgs = {
 };
 
 export type IMediaMetadata = {
+  changeset?: Maybe<Scalars['String']['output']>;
   container?: Maybe<Scalars['String']['output']>;
   content?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   createdBy?: Maybe<Scalars['String']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   expired?: Maybe<Scalars['DateTime']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   lastModifiedBy?: Maybe<Scalars['String']['output']>;
@@ -1381,6 +1409,8 @@ export type ImageMediaOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ImageMediaOutput = {
@@ -1408,11 +1438,13 @@ export type ImageMediaWhereInput = {
 
 export type InstanceMetadata = IContentMetadata & IInstanceMetadata & {
   __typename?: 'InstanceMetadata';
+  changeset?: Maybe<Scalars['String']['output']>;
   container?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   createdBy?: Maybe<Scalars['String']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   expired?: Maybe<Scalars['DateTime']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   lastModifiedBy?: Maybe<Scalars['String']['output']>;
@@ -1433,34 +1465,13 @@ export type InstanceMetadatadisplayNameArgs = {
   highlight?: InputMaybe<HighlightOptions>;
 };
 
-export type IntFilterInput = {
-  /** `boost` influences the weight of a field by boosting a match with a number (default: 1) — counts more towards the eventual relevance score which can be projected with `_score` — at query time. Note that `boost` cannot be a negative number. */
-  boost?: InputMaybe<Scalars['Int']['input']>;
-  /** `eq` matches on an exact value, but the value is case-insensitive. */
-  eq?: InputMaybe<Scalars['Int']['input']>;
-  /** `exist` matches results that have this field. */
-  exist?: InputMaybe<Scalars['Boolean']['input']>;
-  /** `gt` retrieves results with matches that have a value which is `greater than` it. */
-  gt?: InputMaybe<Scalars['Int']['input']>;
-  /** `gte` retrieves results with matches that have a value which is `greater than or equal to` it. */
-  gte?: InputMaybe<Scalars['Int']['input']>;
-  /** `in` matches with 1 or more exact values in a list. Example: `in: ["word1", "word2", "this is a phrase"]` */
-  in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-  /** `lt` retrieves results with matches that have a value which is `lower than` it. */
-  lt?: InputMaybe<Scalars['Int']['input']>;
-  /** `lte` retrieves results with matches that have a value which is `lower than or equal to` it. */
-  lte?: InputMaybe<Scalars['Int']['input']>;
-  /** `not_eq` retrieves results not matching with an exact (but case-insensitive) value. */
-  notEq?: InputMaybe<Scalars['Int']['input']>;
-  /** `not_in` returns results that do not match with 1 or more exact values in a list. Example: `not_in: ["word1", "word2", "this is a phrase"]` */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-};
-
 export type ItemMetadata = IContentMetadata & IItemMetadata & {
   __typename?: 'ItemMetadata';
+  changeset?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   displayOption?: Maybe<Scalars['String']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
@@ -1482,9 +1493,37 @@ export type LinkConfig = {
 };
 
 export enum LinkTypes {
+  /**
+   *
+   * | *Direction* | &nbsp; | *Field*     |
+   * | ----------: | ------ | :---------- |
+   * | *from*      |        | `_metadata.key` |
+   * | *to*        |        | `_metadata.owner`   |
+   */
   ASSETS = 'ASSETS',
+  /**
+   *
+   * | *Direction* | &nbsp; | *Field*     |
+   * | ----------: | ------ | :---------- |
+   * | *from*      |        | `_metadata.key` |
+   * | *to*        |        | `_metadata.container`   |
+   */
   DEFAULT = 'DEFAULT',
+  /**
+   *
+   * | *Direction* | &nbsp; | *Field*     |
+   * | ----------: | ------ | :---------- |
+   * | *from*      |        | `_metadata.key` |
+   * | *to*        |        | `_metadata.container`   |
+   */
   ITEMS = 'ITEMS',
+  /**
+   *
+   * | *Direction* | &nbsp; | *Field*     |
+   * | ----------: | ------ | :---------- |
+   * | *from*      |        | `_metadata.path` |
+   * | *to*        |        | `_metadata.key`   |
+   */
   PATH = 'PATH'
 }
 
@@ -1496,12 +1535,14 @@ export enum Locales {
 
 export type MediaMetadata = IContentMetadata & IInstanceMetadata & IMediaMetadata & {
   __typename?: 'MediaMetadata';
+  changeset?: Maybe<Scalars['String']['output']>;
   container?: Maybe<Scalars['String']['output']>;
   content?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   createdBy?: Maybe<Scalars['String']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   expired?: Maybe<Scalars['DateTime']['output']>;
+  fallbackForLocale?: Maybe<Scalars['String']['output']>;
   key?: Maybe<Scalars['String']['output']>;
   lastModified?: Maybe<Scalars['DateTime']['output']>;
   lastModifiedBy?: Maybe<Scalars['String']['output']>;
@@ -1529,54 +1570,81 @@ export type MediaMetadatadisplayNameArgs = {
   highlight?: InputMaybe<HighlightOptions>;
 };
 
-export type NumberFacet = {
-  __typename?: 'NumberFacet';
-  count?: Maybe<Scalars['Int']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
-};
-
-export type Order = IData & {
-  __typename?: 'Order';
+export type NewsPage = IData & _IContent & _IPage & {
+  __typename?: 'NewsPage';
+  Seo?: Maybe<SEOProperty>;
   /** @deprecated Use `_link` field instead */
   _children?: Maybe<QueryRef>;
   _deleted?: Maybe<Scalars['Bool']['output']>;
   _fulltext?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   _id?: Maybe<Scalars['String']['output']>;
   _link?: Maybe<QueryRef>;
+  _metadata?: Maybe<IContentMetadata>;
   _modified?: Maybe<Scalars['Date']['output']>;
   _score?: Maybe<Scalars['Float']['output']>;
-  billing?: Maybe<Address>;
-  contact?: Maybe<Address>;
-  delivery?: Maybe<Address>;
-  lineItems?: Maybe<Array<Maybe<OrderLineItem>>>;
-  orderDate?: Maybe<Scalars['Date']['output']>;
-  orderNumber?: Maybe<Scalars['String']['output']>;
-  totalPrice?: Maybe<Scalars['Float']['output']>;
 };
 
 
-export type Order_fulltextArgs = {
+export type NewsPage_fulltextArgs = {
   highlight?: InputMaybe<HighlightOptions>;
 };
 
 
-export type Order_linkArgs = {
+export type NewsPage_linkArgs = {
   type?: InputMaybe<LinkTypes>;
 };
 
-export type OrderAutocomplete = {
-  __typename?: 'OrderAutocomplete';
-  billing?: Maybe<AddressAutocomplete>;
-  contact?: Maybe<AddressAutocomplete>;
-  delivery?: Maybe<AddressAutocomplete>;
-  lineItems?: Maybe<OrderLineItemAutocomplete>;
-  orderNumber?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+export type NewsPageAutocomplete = {
+  __typename?: 'NewsPageAutocomplete';
+  _metadata?: Maybe<IContentMetadataAutocomplete>;
+};
+
+export type NewsPageFacet = {
+  __typename?: 'NewsPageFacet';
+  Seo?: Maybe<Array<Maybe<StringFacet>>>;
+  _metadata?: Maybe<IContentMetadataFacet>;
 };
 
 
-export type OrderAutocompleteorderNumberArgs = {
+export type NewsPageFacetSeoArgs = {
+  filters?: InputMaybe<Array<Scalars['String']['input']>>;
   limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type NewsPageOrderByInput = {
+  Seo?: InputMaybe<OrderBy>;
+  _metadata?: InputMaybe<IContentMetadataOrderByInput>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type NewsPageOutput = {
+  __typename?: 'NewsPageOutput';
+  autocomplete?: Maybe<NewsPageAutocomplete>;
+  cursor?: Maybe<Scalars['String']['output']>;
+  facets?: Maybe<NewsPageFacet>;
+  items?: Maybe<Array<Maybe<NewsPage>>>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type NewsPageOutputtotalArgs = {
+  all?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type NewsPageWhereInput = {
+  Seo?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<NewsPageWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _metadata?: InputMaybe<IContentMetadataWhereInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<NewsPageWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<NewsPageWhereInput>>>;
 };
 
 export enum OrderBy {
@@ -1589,193 +1657,13 @@ export enum OrderByFacetType {
   VALUE = 'VALUE'
 }
 
-export type OrderFacet = {
-  __typename?: 'OrderFacet';
-  billing?: Maybe<AddressFacet>;
-  contact?: Maybe<AddressFacet>;
-  delivery?: Maybe<AddressFacet>;
-  lineItems?: Maybe<OrderLineItemFacet>;
-  orderDate?: Maybe<Array<Maybe<DateFacet>>>;
-  orderNumber?: Maybe<Array<Maybe<StringFacet>>>;
-  totalPrice?: Maybe<Array<Maybe<NumberFacet>>>;
-};
-
-
-export type OrderFacetorderDateArgs = {
-  unit?: InputMaybe<DateFacetUnit>;
-  value?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type OrderFacetorderNumberArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type OrderFacettotalPriceArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-  ranges?: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
-};
-
-export type OrderLineItem = {
-  __typename?: 'OrderLineItem';
-  description?: Maybe<Scalars['String']['output']>;
-  quantity?: Maybe<Scalars['Int']['output']>;
-  sku?: Maybe<Scalars['String']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  totalPrice?: Maybe<Scalars['Float']['output']>;
-};
-
-export type OrderLineItemAutocomplete = {
-  __typename?: 'OrderLineItemAutocomplete';
-  description?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  sku?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  title?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-};
-
-
-export type OrderLineItemAutocompletedescriptionArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type OrderLineItemAutocompleteskuArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type OrderLineItemAutocompletetitleArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-export type OrderLineItemFacet = {
-  __typename?: 'OrderLineItemFacet';
-  description?: Maybe<Array<Maybe<StringFacet>>>;
-  quantity?: Maybe<Array<Maybe<NumberFacet>>>;
-  sku?: Maybe<Array<Maybe<StringFacet>>>;
-  title?: Maybe<Array<Maybe<StringFacet>>>;
-  totalPrice?: Maybe<Array<Maybe<NumberFacet>>>;
-};
-
-
-export type OrderLineItemFacetdescriptionArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type OrderLineItemFacetquantityArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-  ranges?: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
-};
-
-
-export type OrderLineItemFacetskuArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type OrderLineItemFacettitleArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type OrderLineItemFacettotalPriceArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-  ranges?: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
-};
-
-export type OrderLineItemOrderByInput = {
-  description?: InputMaybe<OrderBy>;
-  quantity?: InputMaybe<OrderBy>;
-  sku?: InputMaybe<OrderBy>;
-  title?: InputMaybe<OrderBy>;
-  totalPrice?: InputMaybe<OrderBy>;
-};
-
-export type OrderLineItemWhereInput = {
-  description?: InputMaybe<StringFilterInput>;
-  quantity?: InputMaybe<IntFilterInput>;
-  sku?: InputMaybe<StringFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-  totalPrice?: InputMaybe<FloatFilterInput>;
-};
-
-export type OrderOrderByInput = {
-  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
-  _modified?: InputMaybe<OrderBy>;
-  _ranking?: InputMaybe<Ranking>;
-  billing?: InputMaybe<AddressOrderByInput>;
-  contact?: InputMaybe<AddressOrderByInput>;
-  delivery?: InputMaybe<AddressOrderByInput>;
-  lineItems?: InputMaybe<OrderLineItemOrderByInput>;
-  orderDate?: InputMaybe<OrderBy>;
-  orderNumber?: InputMaybe<OrderBy>;
-  totalPrice?: InputMaybe<OrderBy>;
-};
-
-export type OrderOutput = {
-  __typename?: 'OrderOutput';
-  autocomplete?: Maybe<OrderAutocomplete>;
-  cursor?: Maybe<Scalars['String']['output']>;
-  facets?: Maybe<OrderFacet>;
-  items?: Maybe<Array<Maybe<Order>>>;
-  total?: Maybe<Scalars['Int']['output']>;
-};
-
-
-export type OrderOutputtotalArgs = {
-  all?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type OrderWhereInput = {
-  _and?: InputMaybe<Array<InputMaybe<OrderWhereInput>>>;
-  _fulltext?: InputMaybe<SearchableStringFilterInput>;
-  _modified?: InputMaybe<DateFilterInput>;
-  _not?: InputMaybe<Array<InputMaybe<OrderWhereInput>>>;
-  _or?: InputMaybe<Array<InputMaybe<OrderWhereInput>>>;
-  billing?: InputMaybe<AddressWhereInput>;
-  contact?: InputMaybe<AddressWhereInput>;
-  delivery?: InputMaybe<AddressWhereInput>;
-  lineItems?: InputMaybe<OrderLineItemWhereInput>;
-  orderDate?: InputMaybe<DateFilterInput>;
-  orderNumber?: InputMaybe<StringFilterInput>;
-  totalPrice?: InputMaybe<FloatFilterInput>;
-};
-
 export type Pokemon = IData & _IComponent & _IContent & {
   __typename?: 'Pokemon';
-  Animation?: Maybe<ContentReference>;
   Attack?: Maybe<Scalars['Int']['output']>;
   CdnAnimation?: Maybe<Scalars['String']['output']>;
   CdnCry?: Maybe<Scalars['String']['output']>;
   CdnThumbnail?: Maybe<Scalars['String']['output']>;
-  Cry?: Maybe<ContentReference>;
   Defense?: Maybe<Scalars['Int']['output']>;
-  Dummy?: Maybe<Scalars['String']['output']>;
   HP?: Maybe<Scalars['Int']['output']>;
   Height?: Maybe<Scalars['Int']['output']>;
   Identifier?: Maybe<Scalars['String']['output']>;
@@ -1808,45 +1696,24 @@ export type Pokemon_linkArgs = {
 
 export type PokemonAutocomplete = {
   __typename?: 'PokemonAutocomplete';
-  Animation?: Maybe<ContentReferenceAutocomplete>;
-  Cry?: Maybe<ContentReferenceAutocomplete>;
-  Identifier?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Thumbnail?: Maybe<ContentReferenceAutocomplete>;
   _metadata?: Maybe<IContentMetadataAutocomplete>;
 };
 
-
-export type PokemonAutocompleteIdentifierArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
 export type PokemonFacet = {
   __typename?: 'PokemonFacet';
-  Animation?: Maybe<ContentReferenceFacet>;
-  Cry?: Maybe<ContentReferenceFacet>;
-  Identifier?: Maybe<Array<Maybe<StringFacet>>>;
   Thumbnail?: Maybe<ContentReferenceFacet>;
   _metadata?: Maybe<IContentMetadataFacet>;
 };
 
-
-export type PokemonFacetIdentifierArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
 export type PokemonOrderByInput = {
-  Animation?: InputMaybe<ContentReferenceOrderByInput>;
-  Cry?: InputMaybe<ContentReferenceOrderByInput>;
-  Identifier?: InputMaybe<OrderBy>;
   Thumbnail?: InputMaybe<ContentReferenceOrderByInput>;
   _metadata?: InputMaybe<IContentMetadataOrderByInput>;
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PokemonOutput = {
@@ -1864,9 +1731,6 @@ export type PokemonOutputtotalArgs = {
 };
 
 export type PokemonWhereInput = {
-  Animation?: InputMaybe<ContentReferenceWhereInput>;
-  Cry?: InputMaybe<ContentReferenceWhereInput>;
-  Identifier?: InputMaybe<StringFilterInput>;
   Thumbnail?: InputMaybe<ContentReferenceWhereInput>;
   _and?: InputMaybe<Array<InputMaybe<PokemonWhereInput>>>;
   _fulltext?: InputMaybe<SearchableStringFilterInput>;
@@ -1876,121 +1740,19 @@ export type PokemonWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<PokemonWhereInput>>>;
 };
 
-export type Price = IData & {
-  __typename?: 'Price';
-  /** @deprecated Use `_link` field instead */
-  _children?: Maybe<QueryRef>;
-  _deleted?: Maybe<Scalars['Bool']['output']>;
-  _fulltext?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  _id?: Maybe<Scalars['String']['output']>;
-  _link?: Maybe<QueryRef>;
-  _modified?: Maybe<Scalars['Date']['output']>;
-  _score?: Maybe<Scalars['Float']['output']>;
-  listPrice?: Maybe<Scalars['Float']['output']>;
-  parentIdentifier?: Maybe<Scalars['String']['output']>;
-  salePrice?: Maybe<Scalars['Float']['output']>;
-};
-
-
-export type Price_fulltextArgs = {
-  highlight?: InputMaybe<HighlightOptions>;
-};
-
-
-export type Price_linkArgs = {
-  type?: InputMaybe<LinkTypes>;
-};
-
-export type PriceAutocomplete = {
-  __typename?: 'PriceAutocomplete';
-  parentIdentifier?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-};
-
-
-export type PriceAutocompleteparentIdentifierArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-export type PriceFacet = {
-  __typename?: 'PriceFacet';
-  listPrice?: Maybe<Array<Maybe<NumberFacet>>>;
-  parentIdentifier?: Maybe<Array<Maybe<StringFacet>>>;
-  salePrice?: Maybe<Array<Maybe<NumberFacet>>>;
-};
-
-
-export type PriceFacetlistPriceArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-  ranges?: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
-};
-
-
-export type PriceFacetparentIdentifierArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type PriceFacetsalePriceArgs = {
-  filters?: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-  ranges?: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
-};
-
-export type PriceOrderByInput = {
-  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
-  _modified?: InputMaybe<OrderBy>;
-  _ranking?: InputMaybe<Ranking>;
-  listPrice?: InputMaybe<OrderBy>;
-  parentIdentifier?: InputMaybe<OrderBy>;
-  salePrice?: InputMaybe<OrderBy>;
-};
-
-export type PriceOutput = {
-  __typename?: 'PriceOutput';
-  autocomplete?: Maybe<PriceAutocomplete>;
-  cursor?: Maybe<Scalars['String']['output']>;
-  facets?: Maybe<PriceFacet>;
-  items?: Maybe<Array<Maybe<Price>>>;
-  total?: Maybe<Scalars['Int']['output']>;
-};
-
-
-export type PriceOutputtotalArgs = {
-  all?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type PriceWhereInput = {
-  _and?: InputMaybe<Array<InputMaybe<PriceWhereInput>>>;
-  _fulltext?: InputMaybe<SearchableStringFilterInput>;
-  _modified?: InputMaybe<DateFilterInput>;
-  _not?: InputMaybe<Array<InputMaybe<PriceWhereInput>>>;
-  _or?: InputMaybe<Array<InputMaybe<PriceWhereInput>>>;
-  listPrice?: InputMaybe<FloatFilterInput>;
-  parentIdentifier?: InputMaybe<StringFilterInput>;
-  salePrice?: InputMaybe<FloatFilterInput>;
-};
-
 export type Query = {
   __typename?: 'Query';
   BlankExperience?: Maybe<BlankExperienceOutput>;
   BlankSection?: Maybe<BlankSectionOutput>;
   CampaignPage?: Maybe<CampaignPageOutput>;
+  ContentPage?: Maybe<ContentPageOutput>;
   Data?: Maybe<DataOutput>;
   GenericMedia?: Maybe<GenericMediaOutput>;
   HomePage?: Maybe<HomePageOutput>;
   ImageMedia?: Maybe<ImageMediaOutput>;
-  Order?: Maybe<OrderOutput>;
+  NewsPage?: Maybe<NewsPageOutput>;
   Pokemon?: Maybe<PokemonOutput>;
-  Price?: Maybe<PriceOutput>;
+  SEO?: Maybe<SEOOutput>;
   SysContentFolder?: Maybe<SysContentFolderOutput>;
   VideoMedia?: Maybe<VideoMediaOutput>;
   WebEssentialBanner?: Maybe<WebEssentialBannerOutput>;
@@ -2001,7 +1763,6 @@ export type Query = {
   WebEssentialRichTextMedia?: Maybe<WebEssentialRichTextMediaOutput>;
   _Component?: Maybe<_ComponentOutput>;
   _Content?: Maybe<_ContentOutput>;
-  _Element?: Maybe<_ElementOutput>;
   _Experience?: Maybe<_ExperienceOutput>;
   _Folder?: Maybe<_FolderOutput>;
   _Image?: Maybe<_ImageOutput>;
@@ -2009,6 +1770,7 @@ export type Query = {
   _Page?: Maybe<_PageOutput>;
   _Section?: Maybe<_SectionOutput>;
   _Video?: Maybe<_VideoOutput>;
+  site_config?: Maybe<site_configOutput>;
 };
 
 
@@ -2042,6 +1804,17 @@ export type QueryCampaignPageArgs = {
   orderBy?: InputMaybe<CampaignPageOrderByInput>;
   skip?: Scalars['Int']['input'];
   where?: InputMaybe<CampaignPageWhereInput>;
+};
+
+
+export type QueryContentPageArgs = {
+  cursor?: InputMaybe<Scalars['String']['input']>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<ContentPageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  where?: InputMaybe<ContentPageWhereInput>;
 };
 
 
@@ -2089,14 +1862,14 @@ export type QueryImageMediaArgs = {
 };
 
 
-export type QueryOrderArgs = {
+export type QueryNewsPageArgs = {
   cursor?: InputMaybe<Scalars['String']['input']>;
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   limit?: Scalars['Int']['input'];
-  locale?: InputMaybe<Array<InputMaybe<dlw_Locales>>>;
-  orderBy?: InputMaybe<OrderOrderByInput>;
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<NewsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
-  where?: InputMaybe<OrderWhereInput>;
+  where?: InputMaybe<NewsPageWhereInput>;
 };
 
 
@@ -2111,14 +1884,14 @@ export type QueryPokemonArgs = {
 };
 
 
-export type QueryPriceArgs = {
+export type QuerySEOArgs = {
   cursor?: InputMaybe<Scalars['String']['input']>;
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   limit?: Scalars['Int']['input'];
-  locale?: InputMaybe<Array<InputMaybe<dlw_Locales>>>;
-  orderBy?: InputMaybe<PriceOrderByInput>;
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<SEOOrderByInput>;
   skip?: Scalars['Int']['input'];
-  where?: InputMaybe<PriceWhereInput>;
+  where?: InputMaybe<SEOWhereInput>;
 };
 
 
@@ -2232,17 +2005,6 @@ export type Query_ContentArgs = {
 };
 
 
-export type Query_ElementArgs = {
-  cursor?: InputMaybe<Scalars['String']['input']>;
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  limit?: Scalars['Int']['input'];
-  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
-  orderBy?: InputMaybe<_ElementOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  where?: InputMaybe<_ElementWhereInput>;
-};
-
-
 export type Query_ExperienceArgs = {
   cursor?: InputMaybe<Scalars['String']['input']>;
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2319,18 +2081,30 @@ export type Query_VideoArgs = {
   where?: InputMaybe<_VideoWhereInput>;
 };
 
+
+export type Querysite_configArgs = {
+  cursor?: InputMaybe<Scalars['String']['input']>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<site_configOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  where?: InputMaybe<site_configWhereInput>;
+};
+
 export type QueryRef = {
   __typename?: 'QueryRef';
   BlankExperience?: Maybe<BlankExperienceOutput>;
   BlankSection?: Maybe<BlankSectionOutput>;
   CampaignPage?: Maybe<CampaignPageOutput>;
+  ContentPage?: Maybe<ContentPageOutput>;
   Data?: Maybe<DataOutput>;
   GenericMedia?: Maybe<GenericMediaOutput>;
   HomePage?: Maybe<HomePageOutput>;
   ImageMedia?: Maybe<ImageMediaOutput>;
-  Order?: Maybe<OrderOutput>;
+  NewsPage?: Maybe<NewsPageOutput>;
   Pokemon?: Maybe<PokemonOutput>;
-  Price?: Maybe<PriceOutput>;
+  SEO?: Maybe<SEOOutput>;
   SysContentFolder?: Maybe<SysContentFolderOutput>;
   VideoMedia?: Maybe<VideoMediaOutput>;
   WebEssentialBanner?: Maybe<WebEssentialBannerOutput>;
@@ -2341,7 +2115,6 @@ export type QueryRef = {
   WebEssentialRichTextMedia?: Maybe<WebEssentialRichTextMediaOutput>;
   _Component?: Maybe<_ComponentOutput>;
   _Content?: Maybe<_ContentOutput>;
-  _Element?: Maybe<_ElementOutput>;
   _Experience?: Maybe<_ExperienceOutput>;
   _Folder?: Maybe<_FolderOutput>;
   _Image?: Maybe<_ImageOutput>;
@@ -2349,6 +2122,7 @@ export type QueryRef = {
   _Page?: Maybe<_PageOutput>;
   _Section?: Maybe<_SectionOutput>;
   _Video?: Maybe<_VideoOutput>;
+  site_config?: Maybe<site_configOutput>;
 };
 
 
@@ -2382,6 +2156,17 @@ export type QueryRefCampaignPageArgs = {
   orderBy?: InputMaybe<CampaignPageOrderByInput>;
   skip?: Scalars['Int']['input'];
   where?: InputMaybe<CampaignPageWhereInput>;
+};
+
+
+export type QueryRefContentPageArgs = {
+  cursor?: InputMaybe<Scalars['String']['input']>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<ContentPageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  where?: InputMaybe<ContentPageWhereInput>;
 };
 
 
@@ -2429,14 +2214,14 @@ export type QueryRefImageMediaArgs = {
 };
 
 
-export type QueryRefOrderArgs = {
+export type QueryRefNewsPageArgs = {
   cursor?: InputMaybe<Scalars['String']['input']>;
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   limit?: Scalars['Int']['input'];
-  locale?: InputMaybe<Array<InputMaybe<dlw_Locales>>>;
-  orderBy?: InputMaybe<OrderOrderByInput>;
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<NewsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
-  where?: InputMaybe<OrderWhereInput>;
+  where?: InputMaybe<NewsPageWhereInput>;
 };
 
 
@@ -2451,14 +2236,14 @@ export type QueryRefPokemonArgs = {
 };
 
 
-export type QueryRefPriceArgs = {
+export type QueryRefSEOArgs = {
   cursor?: InputMaybe<Scalars['String']['input']>;
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   limit?: Scalars['Int']['input'];
-  locale?: InputMaybe<Array<InputMaybe<dlw_Locales>>>;
-  orderBy?: InputMaybe<PriceOrderByInput>;
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<SEOOrderByInput>;
   skip?: Scalars['Int']['input'];
-  where?: InputMaybe<PriceWhereInput>;
+  where?: InputMaybe<SEOWhereInput>;
 };
 
 
@@ -2572,17 +2357,6 @@ export type QueryRef_ContentArgs = {
 };
 
 
-export type QueryRef_ElementArgs = {
-  cursor?: InputMaybe<Scalars['String']['input']>;
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  limit?: Scalars['Int']['input'];
-  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
-  orderBy?: InputMaybe<_ElementOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  where?: InputMaybe<_ElementWhereInput>;
-};
-
-
 export type QueryRef_ExperienceArgs = {
   cursor?: InputMaybe<Scalars['String']['input']>;
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2659,9 +2433,15 @@ export type QueryRef_VideoArgs = {
   where?: InputMaybe<_VideoWhereInput>;
 };
 
-export type RangeFacetsInput = {
-  from?: InputMaybe<Scalars['Int']['input']>;
-  to?: InputMaybe<Scalars['Int']['input']>;
+
+export type QueryRefsite_configArgs = {
+  cursor?: InputMaybe<Scalars['String']['input']>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale?: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy?: InputMaybe<site_configOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  where?: InputMaybe<site_configWhereInput>;
 };
 
 export enum Ranking {
@@ -2707,6 +2487,81 @@ export type RichTextOrderByInput = {
 
 export type RichTextWhereInput = {
   html?: InputMaybe<StringFilterInput>;
+};
+
+export type SEO = IData & _IComponent & _IContent & {
+  __typename?: 'SEO';
+  PageTitle?: Maybe<Scalars['String']['output']>;
+  Robots?: Maybe<Scalars['String']['output']>;
+  SEODescription?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children?: Maybe<QueryRef>;
+  _deleted?: Maybe<Scalars['Bool']['output']>;
+  _fulltext?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id?: Maybe<Scalars['String']['output']>;
+  _link?: Maybe<QueryRef>;
+  _metadata?: Maybe<IContentMetadata>;
+  _modified?: Maybe<Scalars['Date']['output']>;
+  _score?: Maybe<Scalars['Float']['output']>;
+};
+
+
+export type SEO_fulltextArgs = {
+  highlight?: InputMaybe<HighlightOptions>;
+};
+
+
+export type SEO_linkArgs = {
+  type?: InputMaybe<LinkTypes>;
+};
+
+export type SEOAutocomplete = {
+  __typename?: 'SEOAutocomplete';
+  _metadata?: Maybe<IContentMetadataAutocomplete>;
+};
+
+export type SEOFacet = {
+  __typename?: 'SEOFacet';
+  _metadata?: Maybe<IContentMetadataFacet>;
+};
+
+export type SEOOrderByInput = {
+  _metadata?: InputMaybe<IContentMetadataOrderByInput>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type SEOOutput = {
+  __typename?: 'SEOOutput';
+  autocomplete?: Maybe<SEOAutocomplete>;
+  cursor?: Maybe<Scalars['String']['output']>;
+  facets?: Maybe<SEOFacet>;
+  items?: Maybe<Array<Maybe<SEO>>>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type SEOOutputtotalArgs = {
+  all?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SEOProperty = {
+  __typename?: 'SEOProperty';
+  PageTitle?: Maybe<Scalars['String']['output']>;
+  Robots?: Maybe<Scalars['String']['output']>;
+  SEODescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type SEOWhereInput = {
+  _and?: InputMaybe<Array<InputMaybe<SEOWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _metadata?: InputMaybe<IContentMetadataWhereInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<SEOWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<SEOWhereInput>>>;
 };
 
 export type SearchableStringFilterInput = {
@@ -2812,6 +2667,8 @@ export type SysContentFolderOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SysContentFolderOutput = {
@@ -2875,6 +2732,8 @@ export type VideoMediaOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type VideoMediaOutput = {
@@ -2900,7 +2759,7 @@ export type VideoMediaWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<VideoMediaWhereInput>>>;
 };
 
-export type WebEssentialBanner = IData & _IComponent & _IContent & _IElement & {
+export type WebEssentialBanner = IData & _IComponent & _IContent & {
   __typename?: 'WebEssentialBanner';
   Description?: Maybe<RichText>;
   Title?: Maybe<Scalars['String']['output']>;
@@ -2943,6 +2802,8 @@ export type WebEssentialBannerOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WebEssentialBannerOutput = {
@@ -2969,7 +2830,7 @@ export type WebEssentialBannerWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<WebEssentialBannerWhereInput>>>;
 };
 
-export type WebEssentialCallToAction = IData & _IComponent & _IContent & _IElement & {
+export type WebEssentialCallToAction = IData & _IComponent & _IContent & {
   __typename?: 'WebEssentialCallToAction';
   Label?: Maybe<Scalars['String']['output']>;
   Link?: Maybe<ContentUrl>;
@@ -3012,6 +2873,8 @@ export type WebEssentialCallToActionOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WebEssentialCallToActionOutput = {
@@ -3038,7 +2901,7 @@ export type WebEssentialCallToActionWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<WebEssentialCallToActionWhereInput>>>;
 };
 
-export type WebEssentialImage = IData & _IComponent & _IContent & _IElement & {
+export type WebEssentialImage = IData & _IComponent & _IContent & {
   __typename?: 'WebEssentialImage';
   Image?: Maybe<ContentUrl>;
   /** @deprecated Use `_link` field instead */
@@ -3080,6 +2943,8 @@ export type WebEssentialImageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WebEssentialImageOutput = {
@@ -3106,7 +2971,7 @@ export type WebEssentialImageWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<WebEssentialImageWhereInput>>>;
 };
 
-export type WebEssentialQuote = IData & _IComponent & _IContent & _IElement & {
+export type WebEssentialQuote = IData & _IComponent & _IContent & {
   __typename?: 'WebEssentialQuote';
   Author?: Maybe<Scalars['String']['output']>;
   Image?: Maybe<ContentUrl>;
@@ -3153,6 +3018,8 @@ export type WebEssentialQuoteOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WebEssentialQuoteOutput = {
@@ -3180,7 +3047,7 @@ export type WebEssentialQuoteWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<WebEssentialQuoteWhereInput>>>;
 };
 
-export type WebEssentialRichText = IData & _IComponent & _IContent & _IElement & {
+export type WebEssentialRichText = IData & _IComponent & _IContent & {
   __typename?: 'WebEssentialRichText';
   Content?: Maybe<RichText>;
   /** @deprecated Use `_link` field instead */
@@ -3216,7 +3083,7 @@ export type WebEssentialRichTextFacet = {
   _metadata?: Maybe<IContentMetadataFacet>;
 };
 
-export type WebEssentialRichTextMedia = IData & _IComponent & _IContent & _IElement & {
+export type WebEssentialRichTextMedia = IData & _IComponent & _IContent & {
   __typename?: 'WebEssentialRichTextMedia';
   Content?: Maybe<RichText>;
   Media?: Maybe<ContentUrl>;
@@ -3263,6 +3130,8 @@ export type WebEssentialRichTextMediaOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WebEssentialRichTextMediaOutput = {
@@ -3296,6 +3165,8 @@ export type WebEssentialRichTextOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WebEssentialRichTextOutput = {
@@ -3360,6 +3231,8 @@ export type _ComponentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _ComponentOutput = {
@@ -3423,6 +3296,8 @@ export type _ContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _ContentOutput = {
@@ -3446,69 +3321,6 @@ export type _ContentWhereInput = {
   _modified?: InputMaybe<DateFilterInput>;
   _not?: InputMaybe<Array<InputMaybe<_ContentWhereInput>>>;
   _or?: InputMaybe<Array<InputMaybe<_ContentWhereInput>>>;
-};
-
-export type _Element = IData & _IComponent & _IContent & _IElement & {
-  __typename?: '_Element';
-  /** @deprecated Use `_link` field instead */
-  _children?: Maybe<QueryRef>;
-  _deleted?: Maybe<Scalars['Bool']['output']>;
-  _fulltext?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  _id?: Maybe<Scalars['String']['output']>;
-  _link?: Maybe<QueryRef>;
-  _metadata?: Maybe<IContentMetadata>;
-  _modified?: Maybe<Scalars['Date']['output']>;
-  _score?: Maybe<Scalars['Float']['output']>;
-};
-
-
-export type _Element_fulltextArgs = {
-  highlight?: InputMaybe<HighlightOptions>;
-};
-
-
-export type _Element_linkArgs = {
-  type?: InputMaybe<LinkTypes>;
-};
-
-export type _ElementAutocomplete = {
-  __typename?: '_ElementAutocomplete';
-  _metadata?: Maybe<IContentMetadataAutocomplete>;
-};
-
-export type _ElementFacet = {
-  __typename?: '_ElementFacet';
-  _metadata?: Maybe<IContentMetadataFacet>;
-};
-
-export type _ElementOrderByInput = {
-  _metadata?: InputMaybe<IContentMetadataOrderByInput>;
-  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
-  _modified?: InputMaybe<OrderBy>;
-  _ranking?: InputMaybe<Ranking>;
-};
-
-export type _ElementOutput = {
-  __typename?: '_ElementOutput';
-  autocomplete?: Maybe<_ElementAutocomplete>;
-  cursor?: Maybe<Scalars['String']['output']>;
-  facets?: Maybe<_ElementFacet>;
-  items?: Maybe<Array<Maybe<_IElement>>>;
-  total?: Maybe<Scalars['Int']['output']>;
-};
-
-
-export type _ElementOutputtotalArgs = {
-  all?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type _ElementWhereInput = {
-  _and?: InputMaybe<Array<InputMaybe<_ElementWhereInput>>>;
-  _fulltext?: InputMaybe<SearchableStringFilterInput>;
-  _metadata?: InputMaybe<IContentMetadataWhereInput>;
-  _modified?: InputMaybe<DateFilterInput>;
-  _not?: InputMaybe<Array<InputMaybe<_ElementWhereInput>>>;
-  _or?: InputMaybe<Array<InputMaybe<_ElementWhereInput>>>;
 };
 
 export type _Experience = IData & _IContent & _IExperience & _IPage & {
@@ -3552,6 +3364,8 @@ export type _ExperienceOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
   composition?: InputMaybe<CompositionStructureNodeOrderByInput>;
 };
 
@@ -3617,6 +3431,8 @@ export type _FolderOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _FolderOutput = {
@@ -3701,6 +3517,8 @@ export type _IContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _IContentWhereInput = {
@@ -3710,28 +3528,6 @@ export type _IContentWhereInput = {
   _modified?: InputMaybe<DateFilterInput>;
   _not?: InputMaybe<Array<InputMaybe<_IContentWhereInput>>>;
   _or?: InputMaybe<Array<InputMaybe<_IContentWhereInput>>>;
-};
-
-export type _IElement = {
-  /** @deprecated Use `_link` field instead */
-  _children?: Maybe<QueryRef>;
-  _deleted?: Maybe<Scalars['Bool']['output']>;
-  _fulltext?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  _id?: Maybe<Scalars['String']['output']>;
-  _link?: Maybe<QueryRef>;
-  _metadata?: Maybe<IContentMetadata>;
-  _modified?: Maybe<Scalars['Date']['output']>;
-  _score?: Maybe<Scalars['Float']['output']>;
-};
-
-
-export type _IElement_fulltextArgs = {
-  highlight?: InputMaybe<HighlightOptions>;
-};
-
-
-export type _IElement_linkArgs = {
-  type?: InputMaybe<LinkTypes>;
 };
 
 export type _IExperience = {
@@ -3928,6 +3724,8 @@ export type _ImageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _ImageOutput = {
@@ -3991,6 +3789,8 @@ export type _MediaOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _MediaOutput = {
@@ -4054,6 +3854,8 @@ export type _PageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _PageOutput = {
@@ -4120,6 +3922,8 @@ export type _SectionOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
   composition?: InputMaybe<CompositionStructureNodeOrderByInput>;
 };
 
@@ -4185,6 +3989,8 @@ export type _VideoOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type _VideoOutput = {
@@ -4210,796 +4016,159 @@ export type _VideoWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<_VideoWhereInput>>>;
 };
 
-export enum dlw_Locales {
-  ALL = 'ALL',
-  NEUTRAL = 'NEUTRAL',
-  en = 'en'
-}
+export type site_config = IData & _IContent & _IPage & {
+  __typename?: 'site_config';
+  /** @deprecated Use `_link` field instead */
+  _children?: Maybe<QueryRef>;
+  _deleted?: Maybe<Scalars['Bool']['output']>;
+  _fulltext?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id?: Maybe<Scalars['String']['output']>;
+  _link?: Maybe<QueryRef>;
+  _metadata?: Maybe<IContentMetadata>;
+  _modified?: Maybe<Scalars['Date']['output']>;
+  _score?: Maybe<Scalars['Float']['output']>;
+};
+
+
+export type site_config_fulltextArgs = {
+  highlight?: InputMaybe<HighlightOptions>;
+};
+
+
+export type site_config_linkArgs = {
+  type?: InputMaybe<LinkTypes>;
+};
+
+export type site_configAutocomplete = {
+  __typename?: 'site_configAutocomplete';
+  _metadata?: Maybe<IContentMetadataAutocomplete>;
+};
+
+export type site_configFacet = {
+  __typename?: 'site_configFacet';
+  _metadata?: Maybe<IContentMetadataFacet>;
+};
+
+export type site_configOrderByInput = {
+  _metadata?: InputMaybe<IContentMetadataOrderByInput>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type site_configOutput = {
+  __typename?: 'site_configOutput';
+  autocomplete?: Maybe<site_configAutocomplete>;
+  cursor?: Maybe<Scalars['String']['output']>;
+  facets?: Maybe<site_configFacet>;
+  items?: Maybe<Array<Maybe<site_config>>>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type site_configOutputtotalArgs = {
+  all?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type site_configWhereInput = {
+  _and?: InputMaybe<Array<InputMaybe<site_configWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _metadata?: InputMaybe<IContentMetadataWhereInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<site_configWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<site_configWhereInput>>>;
+};
 
 export enum system_Locales {
   ALL = 'ALL',
   NEUTRAL = 'NEUTRAL'
 }
 
-export type getContentTypeQueryVariables = Exact<{
-  key: Scalars['String']['input'];
-  version?: InputMaybe<Scalars['String']['input']>;
-  locale?: InputMaybe<Array<Locales> | Locales>;
-  path?: InputMaybe<Scalars['String']['input']>;
-  domain?: InputMaybe<Scalars['String']['input']>;
+export type PokemonsQueryAltQueryVariables = Exact<{
+  searchQuery: Scalars['String']['input'];
 }>;
 
 
-export type getContentTypeQuery = { __typename?: 'Query', content?: { __typename?: '_ContentOutput', total?: number | null, items?: Array<{ __typename?: 'BlankExperience', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'BlankSection', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'CampaignPage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'GenericMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'HomePage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'ImageMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'Pokemon', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'SysContentFolder', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'VideoMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialBanner', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialCallToAction', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialImage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialQuote', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialRichText', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialRichTextMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Component', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Content', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Element', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Experience', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Folder', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Image', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Media', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Page', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Section', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Video', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | null> | null } | null };
+export type PokemonsQueryAltQuery = { __typename?: 'Query', Pokemon?: { __typename?: 'PokemonOutput', items?: Array<{ __typename?: 'Pokemon', Identifier?: string | null, Name?: string | null, Types?: string | null, Species?: string | null, Thumbnail?: { __typename?: 'ContentReference', url?: { __typename?: 'ContentUrl', base?: string | null, internal?: string | null, hierarchical?: string | null, default?: string | null, type?: string | null } | null } | null, _metadata?: { __typename?: 'ContentMetadata', key?: string | null, displayName?: string | null } | { __typename?: 'InstanceMetadata', key?: string | null, displayName?: string | null } | { __typename?: 'ItemMetadata', key?: string | null, displayName?: string | null } | { __typename?: 'MediaMetadata', key?: string | null, displayName?: string | null } | null } | null> | null } | null };
 
-export type ReferenceDataFragment = { __typename?: 'ContentReference', key?: string | null, url?: (
+export type PokemonDataFragment = { __typename?: 'Pokemon', Identifier?: string | null, Name?: string | null, Species?: string | null, Types?: string | null, Attack?: number | null, Height?: number | null, HP?: number | null, Speed?: number | null, Weight?: number | null, Thumbnail?: (
+    { __typename?: 'ContentReference' }
+    & { ' $fragmentRefs'?: { 'ReferenceDataFragment': ReferenceDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'PokemonDataFragment' };
+
+export type WebEssentialBannerDataFragment = { __typename?: 'WebEssentialBanner', Title?: string | null, Description?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null } & { ' $fragmentName'?: 'WebEssentialBannerDataFragment' };
+
+export type WebEssentialCallToActionDataFragment = { __typename?: 'WebEssentialCallToAction', Label?: string | null, Link?: (
     { __typename?: 'ContentUrl' }
     & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'ReferenceDataFragment' };
+  ) | null } & { ' $fragmentName'?: 'WebEssentialCallToActionDataFragment' };
 
-type ElementData_WebEssentialBanner_Fragment = (
-  { __typename?: 'WebEssentialBanner' }
-  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialBanner_Fragment': IElementData_WebEssentialBanner_Fragment;'WebEssentialBannerDataFragment': WebEssentialBannerDataFragment } }
-) & { ' $fragmentName'?: 'ElementData_WebEssentialBanner_Fragment' };
+export type WebEssentialImageDataFragment = { __typename?: 'WebEssentialImage', Image?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'WebEssentialImageDataFragment' };
 
-type ElementData_WebEssentialCallToAction_Fragment = (
-  { __typename?: 'WebEssentialCallToAction' }
-  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialCallToAction_Fragment': IElementData_WebEssentialCallToAction_Fragment;'WebEssentialCallToActionDataFragment': WebEssentialCallToActionDataFragment } }
-) & { ' $fragmentName'?: 'ElementData_WebEssentialCallToAction_Fragment' };
+export type WebEssentialQuoteDataFragment = { __typename?: 'WebEssentialQuote', Author?: string | null, Text?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null, Image?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'WebEssentialQuoteDataFragment' };
 
-type ElementData_WebEssentialImage_Fragment = (
-  { __typename?: 'WebEssentialImage' }
-  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialImage_Fragment': IElementData_WebEssentialImage_Fragment;'WebEssentialImageDataFragment': WebEssentialImageDataFragment } }
-) & { ' $fragmentName'?: 'ElementData_WebEssentialImage_Fragment' };
+export type WebEssentialRichTextDataFragment = { __typename?: 'WebEssentialRichText', Content?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null } & { ' $fragmentName'?: 'WebEssentialRichTextDataFragment' };
 
-type ElementData_WebEssentialQuote_Fragment = (
-  { __typename?: 'WebEssentialQuote' }
-  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialQuote_Fragment': IElementData_WebEssentialQuote_Fragment;'WebEssentialQuoteDataFragment': WebEssentialQuoteDataFragment } }
-) & { ' $fragmentName'?: 'ElementData_WebEssentialQuote_Fragment' };
+export type WebEssentialRichTextMediaDataFragment = { __typename?: 'WebEssentialRichTextMedia', Reverse?: boolean | null, Content?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null, Media?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'WebEssentialRichTextMediaDataFragment' };
 
-type ElementData_WebEssentialRichText_Fragment = (
-  { __typename?: 'WebEssentialRichText' }
-  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialRichText_Fragment': IElementData_WebEssentialRichText_Fragment;'WebEssentialRichTextDataFragment': WebEssentialRichTextDataFragment } }
-) & { ' $fragmentName'?: 'ElementData_WebEssentialRichText_Fragment' };
-
-type ElementData_WebEssentialRichTextMedia_Fragment = (
-  { __typename?: 'WebEssentialRichTextMedia' }
-  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialRichTextMedia_Fragment': IElementData_WebEssentialRichTextMedia_Fragment;'WebEssentialRichTextMediaDataFragment': WebEssentialRichTextMediaDataFragment } }
-) & { ' $fragmentName'?: 'ElementData_WebEssentialRichTextMedia_Fragment' };
-
-type ElementData__Element_Fragment = (
-  { __typename?: '_Element' }
-  & { ' $fragmentRefs'?: { 'IElementData__Element_Fragment': IElementData__Element_Fragment } }
-) & { ' $fragmentName'?: 'ElementData__Element_Fragment' };
-
-export type ElementDataFragment = ElementData_WebEssentialBanner_Fragment | ElementData_WebEssentialCallToAction_Fragment | ElementData_WebEssentialImage_Fragment | ElementData_WebEssentialQuote_Fragment | ElementData_WebEssentialRichText_Fragment | ElementData_WebEssentialRichTextMedia_Fragment | ElementData__Element_Fragment;
-
-type ExperienceData_BlankExperience_Fragment = { __typename?: 'BlankExperience', composition?: (
-    { __typename?: 'CompositionStructureNode' }
-    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'ExperienceData_BlankExperience_Fragment' };
-
-type ExperienceData_CampaignPage_Fragment = { __typename?: 'CampaignPage', composition?: (
-    { __typename?: 'CompositionStructureNode' }
-    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'ExperienceData_CampaignPage_Fragment' };
-
-type ExperienceData_HomePage_Fragment = { __typename?: 'HomePage', composition?: (
-    { __typename?: 'CompositionStructureNode' }
-    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'ExperienceData_HomePage_Fragment' };
-
-type ExperienceData__Experience_Fragment = { __typename?: '_Experience', composition?: (
-    { __typename?: 'CompositionStructureNode' }
-    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'ExperienceData__Experience_Fragment' };
-
-export type ExperienceDataFragment = ExperienceData_BlankExperience_Fragment | ExperienceData_CampaignPage_Fragment | ExperienceData_HomePage_Fragment | ExperienceData__Experience_Fragment;
-
-type IElementData_WebEssentialBanner_Fragment = { __typename?: 'WebEssentialBanner', _type: 'WebEssentialBanner', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialBanner_Fragment' };
-
-type IElementData_WebEssentialCallToAction_Fragment = { __typename?: 'WebEssentialCallToAction', _type: 'WebEssentialCallToAction', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialCallToAction_Fragment' };
-
-type IElementData_WebEssentialImage_Fragment = { __typename?: 'WebEssentialImage', _type: 'WebEssentialImage', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialImage_Fragment' };
-
-type IElementData_WebEssentialQuote_Fragment = { __typename?: 'WebEssentialQuote', _type: 'WebEssentialQuote', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialQuote_Fragment' };
-
-type IElementData_WebEssentialRichText_Fragment = { __typename?: 'WebEssentialRichText', _type: 'WebEssentialRichText', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialRichText_Fragment' };
-
-type IElementData_WebEssentialRichTextMedia_Fragment = { __typename?: 'WebEssentialRichTextMedia', _type: 'WebEssentialRichTextMedia', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialRichTextMedia_Fragment' };
-
-type IElementData__Element_Fragment = { __typename?: '_Element', _type: '_Element', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IElementData__Element_Fragment' };
-
-export type IElementDataFragment = IElementData_WebEssentialBanner_Fragment | IElementData_WebEssentialCallToAction_Fragment | IElementData_WebEssentialImage_Fragment | IElementData_WebEssentialQuote_Fragment | IElementData_WebEssentialRichText_Fragment | IElementData_WebEssentialRichTextMedia_Fragment | IElementData__Element_Fragment;
-
-type IContentListItem_BlankExperience_Fragment = (
+export type BlankExperienceDataFragment = (
   { __typename?: 'BlankExperience' }
-  & { ' $fragmentRefs'?: { 'IContentData_BlankExperience_Fragment': IContentData_BlankExperience_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_BlankExperience_Fragment' };
+  & { ' $fragmentRefs'?: { 'ExperienceData_BlankExperience_Fragment': ExperienceData_BlankExperience_Fragment } }
+) & { ' $fragmentName'?: 'BlankExperienceDataFragment' };
 
-type IContentListItem_BlankSection_Fragment = (
-  { __typename?: 'BlankSection' }
-  & { ' $fragmentRefs'?: { 'IContentData_BlankSection_Fragment': IContentData_BlankSection_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_BlankSection_Fragment' };
-
-type IContentListItem_CampaignPage_Fragment = (
-  { __typename?: 'CampaignPage' }
-  & { ' $fragmentRefs'?: { 'IContentData_CampaignPage_Fragment': IContentData_CampaignPage_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_CampaignPage_Fragment' };
-
-type IContentListItem_GenericMedia_Fragment = (
-  { __typename?: 'GenericMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_GenericMedia_Fragment': IContentData_GenericMedia_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_GenericMedia_Fragment' };
-
-type IContentListItem_HomePage_Fragment = (
-  { __typename?: 'HomePage' }
-  & { ' $fragmentRefs'?: { 'IContentData_HomePage_Fragment': IContentData_HomePage_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_HomePage_Fragment' };
-
-type IContentListItem_ImageMedia_Fragment = (
-  { __typename?: 'ImageMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_ImageMedia_Fragment': IContentData_ImageMedia_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_ImageMedia_Fragment' };
-
-type IContentListItem_Pokemon_Fragment = (
-  { __typename?: 'Pokemon' }
-  & { ' $fragmentRefs'?: { 'IContentData_Pokemon_Fragment': IContentData_Pokemon_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_Pokemon_Fragment' };
-
-type IContentListItem_SysContentFolder_Fragment = (
-  { __typename?: 'SysContentFolder' }
-  & { ' $fragmentRefs'?: { 'IContentData_SysContentFolder_Fragment': IContentData_SysContentFolder_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_SysContentFolder_Fragment' };
-
-type IContentListItem_VideoMedia_Fragment = (
-  { __typename?: 'VideoMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_VideoMedia_Fragment': IContentData_VideoMedia_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_VideoMedia_Fragment' };
-
-type IContentListItem_WebEssentialBanner_Fragment = (
-  { __typename?: 'WebEssentialBanner' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialBanner_Fragment': IContentData_WebEssentialBanner_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_WebEssentialBanner_Fragment' };
-
-type IContentListItem_WebEssentialCallToAction_Fragment = (
-  { __typename?: 'WebEssentialCallToAction' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialCallToAction_Fragment': IContentData_WebEssentialCallToAction_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_WebEssentialCallToAction_Fragment' };
-
-type IContentListItem_WebEssentialImage_Fragment = (
-  { __typename?: 'WebEssentialImage' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialImage_Fragment': IContentData_WebEssentialImage_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_WebEssentialImage_Fragment' };
-
-type IContentListItem_WebEssentialQuote_Fragment = (
-  { __typename?: 'WebEssentialQuote' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialQuote_Fragment': IContentData_WebEssentialQuote_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_WebEssentialQuote_Fragment' };
-
-type IContentListItem_WebEssentialRichText_Fragment = (
-  { __typename?: 'WebEssentialRichText' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichText_Fragment': IContentData_WebEssentialRichText_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_WebEssentialRichText_Fragment' };
-
-type IContentListItem_WebEssentialRichTextMedia_Fragment = (
-  { __typename?: 'WebEssentialRichTextMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichTextMedia_Fragment': IContentData_WebEssentialRichTextMedia_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem_WebEssentialRichTextMedia_Fragment' };
-
-type IContentListItem__Component_Fragment = (
-  { __typename?: '_Component' }
-  & { ' $fragmentRefs'?: { 'IContentData__Component_Fragment': IContentData__Component_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Component_Fragment' };
-
-type IContentListItem__Content_Fragment = (
-  { __typename?: '_Content' }
-  & { ' $fragmentRefs'?: { 'IContentData__Content_Fragment': IContentData__Content_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Content_Fragment' };
-
-type IContentListItem__Element_Fragment = (
-  { __typename?: '_Element' }
-  & { ' $fragmentRefs'?: { 'IContentData__Element_Fragment': IContentData__Element_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Element_Fragment' };
-
-type IContentListItem__Experience_Fragment = (
-  { __typename?: '_Experience' }
-  & { ' $fragmentRefs'?: { 'IContentData__Experience_Fragment': IContentData__Experience_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Experience_Fragment' };
-
-type IContentListItem__Folder_Fragment = (
-  { __typename?: '_Folder' }
-  & { ' $fragmentRefs'?: { 'IContentData__Folder_Fragment': IContentData__Folder_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Folder_Fragment' };
-
-type IContentListItem__Image_Fragment = (
-  { __typename?: '_Image' }
-  & { ' $fragmentRefs'?: { 'IContentData__Image_Fragment': IContentData__Image_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Image_Fragment' };
-
-type IContentListItem__Media_Fragment = (
-  { __typename?: '_Media' }
-  & { ' $fragmentRefs'?: { 'IContentData__Media_Fragment': IContentData__Media_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Media_Fragment' };
-
-type IContentListItem__Page_Fragment = (
-  { __typename?: '_Page' }
-  & { ' $fragmentRefs'?: { 'IContentData__Page_Fragment': IContentData__Page_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Page_Fragment' };
-
-type IContentListItem__Section_Fragment = (
-  { __typename?: '_Section' }
-  & { ' $fragmentRefs'?: { 'IContentData__Section_Fragment': IContentData__Section_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Section_Fragment' };
-
-type IContentListItem__Video_Fragment = (
-  { __typename?: '_Video' }
-  & { ' $fragmentRefs'?: { 'IContentData__Video_Fragment': IContentData__Video_Fragment } }
-) & { ' $fragmentName'?: 'IContentListItem__Video_Fragment' };
-
-export type IContentListItemFragment = IContentListItem_BlankExperience_Fragment | IContentListItem_BlankSection_Fragment | IContentListItem_CampaignPage_Fragment | IContentListItem_GenericMedia_Fragment | IContentListItem_HomePage_Fragment | IContentListItem_ImageMedia_Fragment | IContentListItem_Pokemon_Fragment | IContentListItem_SysContentFolder_Fragment | IContentListItem_VideoMedia_Fragment | IContentListItem_WebEssentialBanner_Fragment | IContentListItem_WebEssentialCallToAction_Fragment | IContentListItem_WebEssentialImage_Fragment | IContentListItem_WebEssentialQuote_Fragment | IContentListItem_WebEssentialRichText_Fragment | IContentListItem_WebEssentialRichTextMedia_Fragment | IContentListItem__Component_Fragment | IContentListItem__Content_Fragment | IContentListItem__Element_Fragment | IContentListItem__Experience_Fragment | IContentListItem__Folder_Fragment | IContentListItem__Image_Fragment | IContentListItem__Media_Fragment | IContentListItem__Page_Fragment | IContentListItem__Section_Fragment | IContentListItem__Video_Fragment;
-
-type PageData_BlankExperience_Fragment = (
-  { __typename?: 'BlankExperience' }
-  & { ' $fragmentRefs'?: { 'IContentData_BlankExperience_Fragment': IContentData_BlankExperience_Fragment;'BlankExperienceDataFragment': BlankExperienceDataFragment } }
-) & { ' $fragmentName'?: 'PageData_BlankExperience_Fragment' };
-
-type PageData_BlankSection_Fragment = (
-  { __typename?: 'BlankSection' }
-  & { ' $fragmentRefs'?: { 'IContentData_BlankSection_Fragment': IContentData_BlankSection_Fragment } }
-) & { ' $fragmentName'?: 'PageData_BlankSection_Fragment' };
-
-type PageData_CampaignPage_Fragment = (
-  { __typename?: 'CampaignPage' }
-  & { ' $fragmentRefs'?: { 'IContentData_CampaignPage_Fragment': IContentData_CampaignPage_Fragment;'CampaignPageDataFragment': CampaignPageDataFragment } }
-) & { ' $fragmentName'?: 'PageData_CampaignPage_Fragment' };
-
-type PageData_GenericMedia_Fragment = (
-  { __typename?: 'GenericMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_GenericMedia_Fragment': IContentData_GenericMedia_Fragment } }
-) & { ' $fragmentName'?: 'PageData_GenericMedia_Fragment' };
-
-type PageData_HomePage_Fragment = (
-  { __typename?: 'HomePage' }
-  & { ' $fragmentRefs'?: { 'IContentData_HomePage_Fragment': IContentData_HomePage_Fragment;'HomePageDataFragment': HomePageDataFragment } }
-) & { ' $fragmentName'?: 'PageData_HomePage_Fragment' };
-
-type PageData_ImageMedia_Fragment = (
-  { __typename?: 'ImageMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_ImageMedia_Fragment': IContentData_ImageMedia_Fragment } }
-) & { ' $fragmentName'?: 'PageData_ImageMedia_Fragment' };
-
-type PageData_Pokemon_Fragment = (
-  { __typename?: 'Pokemon' }
-  & { ' $fragmentRefs'?: { 'IContentData_Pokemon_Fragment': IContentData_Pokemon_Fragment } }
-) & { ' $fragmentName'?: 'PageData_Pokemon_Fragment' };
-
-type PageData_SysContentFolder_Fragment = (
-  { __typename?: 'SysContentFolder' }
-  & { ' $fragmentRefs'?: { 'IContentData_SysContentFolder_Fragment': IContentData_SysContentFolder_Fragment } }
-) & { ' $fragmentName'?: 'PageData_SysContentFolder_Fragment' };
-
-type PageData_VideoMedia_Fragment = (
-  { __typename?: 'VideoMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_VideoMedia_Fragment': IContentData_VideoMedia_Fragment } }
-) & { ' $fragmentName'?: 'PageData_VideoMedia_Fragment' };
-
-type PageData_WebEssentialBanner_Fragment = (
-  { __typename?: 'WebEssentialBanner' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialBanner_Fragment': IContentData_WebEssentialBanner_Fragment } }
-) & { ' $fragmentName'?: 'PageData_WebEssentialBanner_Fragment' };
-
-type PageData_WebEssentialCallToAction_Fragment = (
-  { __typename?: 'WebEssentialCallToAction' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialCallToAction_Fragment': IContentData_WebEssentialCallToAction_Fragment } }
-) & { ' $fragmentName'?: 'PageData_WebEssentialCallToAction_Fragment' };
-
-type PageData_WebEssentialImage_Fragment = (
-  { __typename?: 'WebEssentialImage' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialImage_Fragment': IContentData_WebEssentialImage_Fragment } }
-) & { ' $fragmentName'?: 'PageData_WebEssentialImage_Fragment' };
-
-type PageData_WebEssentialQuote_Fragment = (
-  { __typename?: 'WebEssentialQuote' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialQuote_Fragment': IContentData_WebEssentialQuote_Fragment } }
-) & { ' $fragmentName'?: 'PageData_WebEssentialQuote_Fragment' };
-
-type PageData_WebEssentialRichText_Fragment = (
-  { __typename?: 'WebEssentialRichText' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichText_Fragment': IContentData_WebEssentialRichText_Fragment } }
-) & { ' $fragmentName'?: 'PageData_WebEssentialRichText_Fragment' };
-
-type PageData_WebEssentialRichTextMedia_Fragment = (
-  { __typename?: 'WebEssentialRichTextMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichTextMedia_Fragment': IContentData_WebEssentialRichTextMedia_Fragment } }
-) & { ' $fragmentName'?: 'PageData_WebEssentialRichTextMedia_Fragment' };
-
-type PageData__Component_Fragment = (
-  { __typename?: '_Component' }
-  & { ' $fragmentRefs'?: { 'IContentData__Component_Fragment': IContentData__Component_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Component_Fragment' };
-
-type PageData__Content_Fragment = (
-  { __typename?: '_Content' }
-  & { ' $fragmentRefs'?: { 'IContentData__Content_Fragment': IContentData__Content_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Content_Fragment' };
-
-type PageData__Element_Fragment = (
-  { __typename?: '_Element' }
-  & { ' $fragmentRefs'?: { 'IContentData__Element_Fragment': IContentData__Element_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Element_Fragment' };
-
-type PageData__Experience_Fragment = (
-  { __typename?: '_Experience' }
-  & { ' $fragmentRefs'?: { 'IContentData__Experience_Fragment': IContentData__Experience_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Experience_Fragment' };
-
-type PageData__Folder_Fragment = (
-  { __typename?: '_Folder' }
-  & { ' $fragmentRefs'?: { 'IContentData__Folder_Fragment': IContentData__Folder_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Folder_Fragment' };
-
-type PageData__Image_Fragment = (
-  { __typename?: '_Image' }
-  & { ' $fragmentRefs'?: { 'IContentData__Image_Fragment': IContentData__Image_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Image_Fragment' };
-
-type PageData__Media_Fragment = (
-  { __typename?: '_Media' }
-  & { ' $fragmentRefs'?: { 'IContentData__Media_Fragment': IContentData__Media_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Media_Fragment' };
-
-type PageData__Page_Fragment = (
-  { __typename?: '_Page' }
-  & { ' $fragmentRefs'?: { 'IContentData__Page_Fragment': IContentData__Page_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Page_Fragment' };
-
-type PageData__Section_Fragment = (
-  { __typename?: '_Section' }
-  & { ' $fragmentRefs'?: { 'IContentData__Section_Fragment': IContentData__Section_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Section_Fragment' };
-
-type PageData__Video_Fragment = (
-  { __typename?: '_Video' }
-  & { ' $fragmentRefs'?: { 'IContentData__Video_Fragment': IContentData__Video_Fragment } }
-) & { ' $fragmentName'?: 'PageData__Video_Fragment' };
-
-export type PageDataFragment = PageData_BlankExperience_Fragment | PageData_BlankSection_Fragment | PageData_CampaignPage_Fragment | PageData_GenericMedia_Fragment | PageData_HomePage_Fragment | PageData_ImageMedia_Fragment | PageData_Pokemon_Fragment | PageData_SysContentFolder_Fragment | PageData_VideoMedia_Fragment | PageData_WebEssentialBanner_Fragment | PageData_WebEssentialCallToAction_Fragment | PageData_WebEssentialImage_Fragment | PageData_WebEssentialQuote_Fragment | PageData_WebEssentialRichText_Fragment | PageData_WebEssentialRichTextMedia_Fragment | PageData__Component_Fragment | PageData__Content_Fragment | PageData__Element_Fragment | PageData__Experience_Fragment | PageData__Folder_Fragment | PageData__Image_Fragment | PageData__Media_Fragment | PageData__Page_Fragment | PageData__Section_Fragment | PageData__Video_Fragment;
-
-type CompositionData_CompositionElementNode_Fragment = { __typename?: 'CompositionElementNode', type?: string | null, key?: string | null, name?: string | null, layoutType?: string | null, template?: string | null, element?: (
+export type CampaignPageDataFragment = (
+  { __typename?: 'CampaignPage', Title?: string | null, Content?: Array<{ __typename?: 'BlankExperience' } | (
+    { __typename?: 'BlankSection' }
+    & { ' $fragmentRefs'?: { 'BlockData_BlankSection_Fragment': BlockData_BlankSection_Fragment } }
+  ) | { __typename?: 'CampaignPage' } | { __typename?: 'ContentPage' } | { __typename?: 'GenericMedia' } | { __typename?: 'HomePage' } | { __typename?: 'ImageMedia' } | { __typename?: 'NewsPage' } | (
+    { __typename?: 'Pokemon' }
+    & { ' $fragmentRefs'?: { 'BlockData_Pokemon_Fragment': BlockData_Pokemon_Fragment;'PokemonDataFragment': PokemonDataFragment } }
+  ) | (
+    { __typename?: 'SEO' }
+    & { ' $fragmentRefs'?: { 'BlockData_SEO_Fragment': BlockData_SEO_Fragment } }
+  ) | { __typename?: 'SysContentFolder' } | { __typename?: 'VideoMedia' } | (
     { __typename?: 'WebEssentialBanner' }
-    & { ' $fragmentRefs'?: { 'ElementData_WebEssentialBanner_Fragment': ElementData_WebEssentialBanner_Fragment } }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialBanner_Fragment': BlockData_WebEssentialBanner_Fragment } }
   ) | (
     { __typename?: 'WebEssentialCallToAction' }
-    & { ' $fragmentRefs'?: { 'ElementData_WebEssentialCallToAction_Fragment': ElementData_WebEssentialCallToAction_Fragment } }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialCallToAction_Fragment': BlockData_WebEssentialCallToAction_Fragment } }
   ) | (
     { __typename?: 'WebEssentialImage' }
-    & { ' $fragmentRefs'?: { 'ElementData_WebEssentialImage_Fragment': ElementData_WebEssentialImage_Fragment } }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialImage_Fragment': BlockData_WebEssentialImage_Fragment } }
   ) | (
     { __typename?: 'WebEssentialQuote' }
-    & { ' $fragmentRefs'?: { 'ElementData_WebEssentialQuote_Fragment': ElementData_WebEssentialQuote_Fragment } }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialQuote_Fragment': BlockData_WebEssentialQuote_Fragment } }
   ) | (
     { __typename?: 'WebEssentialRichText' }
-    & { ' $fragmentRefs'?: { 'ElementData_WebEssentialRichText_Fragment': ElementData_WebEssentialRichText_Fragment } }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichText_Fragment': BlockData_WebEssentialRichText_Fragment } }
   ) | (
     { __typename?: 'WebEssentialRichTextMedia' }
-    & { ' $fragmentRefs'?: { 'ElementData_WebEssentialRichTextMedia_Fragment': ElementData_WebEssentialRichTextMedia_Fragment } }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichTextMedia_Fragment': BlockData_WebEssentialRichTextMedia_Fragment } }
   ) | (
-    { __typename?: '_Element' }
-    & { ' $fragmentRefs'?: { 'ElementData__Element_Fragment': ElementData__Element_Fragment } }
-  ) | null, settings?: Array<{ __typename?: 'CompositionDisplaySetting', key?: string | null, value?: string | null } | null> | null } & { ' $fragmentName'?: 'CompositionData_CompositionElementNode_Fragment' };
+    { __typename?: '_Component' }
+    & { ' $fragmentRefs'?: { 'BlockData__Component_Fragment': BlockData__Component_Fragment } }
+  ) | { __typename?: '_Content' } | { __typename?: '_Experience' } | { __typename?: '_Folder' } | { __typename?: '_Image' } | { __typename?: '_Media' } | { __typename?: '_Page' } | (
+    { __typename?: '_Section' }
+    & { ' $fragmentRefs'?: { 'BlockData__Section_Fragment': BlockData__Section_Fragment } }
+  ) | { __typename?: '_Video' } | { __typename?: 'site_config' } | null> | null }
+  & { ' $fragmentRefs'?: { 'ExperienceData_CampaignPage_Fragment': ExperienceData_CampaignPage_Fragment } }
+) & { ' $fragmentName'?: 'CampaignPageDataFragment' };
 
-type CompositionData_CompositionNode_Fragment = { __typename?: 'CompositionNode', type?: string | null, key?: string | null, name?: string | null, layoutType?: string | null, template?: string | null, settings?: Array<{ __typename?: 'CompositionDisplaySetting', key?: string | null, value?: string | null } | null> | null } & { ' $fragmentName'?: 'CompositionData_CompositionNode_Fragment' };
-
-type CompositionData_CompositionStructureNode_Fragment = { __typename?: 'CompositionStructureNode', type?: string | null, key?: string | null, name?: string | null, layoutType?: string | null, template?: string | null, nodes?: Array<{ __typename?: 'CompositionElementNode', name?: string | null } | { __typename?: 'CompositionNode', name?: string | null } | { __typename?: 'CompositionStructureNode', name?: string | null } | null> | null, settings?: Array<{ __typename?: 'CompositionDisplaySetting', key?: string | null, value?: string | null } | null> | null } & { ' $fragmentName'?: 'CompositionData_CompositionStructureNode_Fragment' };
-
-export type CompositionDataFragment = CompositionData_CompositionElementNode_Fragment | CompositionData_CompositionNode_Fragment | CompositionData_CompositionStructureNode_Fragment;
-
-type BlockData_BlankExperience_Fragment = (
-  { __typename?: 'BlankExperience' }
-  & { ' $fragmentRefs'?: { 'IContentData_BlankExperience_Fragment': IContentData_BlankExperience_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_BlankExperience_Fragment' };
-
-type BlockData_BlankSection_Fragment = (
-  { __typename?: 'BlankSection' }
-  & { ' $fragmentRefs'?: { 'IContentData_BlankSection_Fragment': IContentData_BlankSection_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_BlankSection_Fragment' };
-
-type BlockData_CampaignPage_Fragment = (
-  { __typename?: 'CampaignPage' }
-  & { ' $fragmentRefs'?: { 'IContentData_CampaignPage_Fragment': IContentData_CampaignPage_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_CampaignPage_Fragment' };
-
-type BlockData_GenericMedia_Fragment = (
-  { __typename?: 'GenericMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_GenericMedia_Fragment': IContentData_GenericMedia_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_GenericMedia_Fragment' };
-
-type BlockData_HomePage_Fragment = (
+export type HomePageDataFragment = (
   { __typename?: 'HomePage' }
-  & { ' $fragmentRefs'?: { 'IContentData_HomePage_Fragment': IContentData_HomePage_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_HomePage_Fragment' };
-
-type BlockData_ImageMedia_Fragment = (
-  { __typename?: 'ImageMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_ImageMedia_Fragment': IContentData_ImageMedia_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_ImageMedia_Fragment' };
-
-type BlockData_Pokemon_Fragment = (
-  { __typename?: 'Pokemon' }
-  & { ' $fragmentRefs'?: { 'IContentData_Pokemon_Fragment': IContentData_Pokemon_Fragment;'PokemonDataFragment': PokemonDataFragment } }
-) & { ' $fragmentName'?: 'BlockData_Pokemon_Fragment' };
-
-type BlockData_SysContentFolder_Fragment = (
-  { __typename?: 'SysContentFolder' }
-  & { ' $fragmentRefs'?: { 'IContentData_SysContentFolder_Fragment': IContentData_SysContentFolder_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_SysContentFolder_Fragment' };
-
-type BlockData_VideoMedia_Fragment = (
-  { __typename?: 'VideoMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_VideoMedia_Fragment': IContentData_VideoMedia_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_VideoMedia_Fragment' };
-
-type BlockData_WebEssentialBanner_Fragment = (
-  { __typename?: 'WebEssentialBanner' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialBanner_Fragment': IContentData_WebEssentialBanner_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_WebEssentialBanner_Fragment' };
-
-type BlockData_WebEssentialCallToAction_Fragment = (
-  { __typename?: 'WebEssentialCallToAction' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialCallToAction_Fragment': IContentData_WebEssentialCallToAction_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_WebEssentialCallToAction_Fragment' };
-
-type BlockData_WebEssentialImage_Fragment = (
-  { __typename?: 'WebEssentialImage' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialImage_Fragment': IContentData_WebEssentialImage_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_WebEssentialImage_Fragment' };
-
-type BlockData_WebEssentialQuote_Fragment = (
-  { __typename?: 'WebEssentialQuote' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialQuote_Fragment': IContentData_WebEssentialQuote_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_WebEssentialQuote_Fragment' };
-
-type BlockData_WebEssentialRichText_Fragment = (
-  { __typename?: 'WebEssentialRichText' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichText_Fragment': IContentData_WebEssentialRichText_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_WebEssentialRichText_Fragment' };
-
-type BlockData_WebEssentialRichTextMedia_Fragment = (
-  { __typename?: 'WebEssentialRichTextMedia' }
-  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichTextMedia_Fragment': IContentData_WebEssentialRichTextMedia_Fragment } }
-) & { ' $fragmentName'?: 'BlockData_WebEssentialRichTextMedia_Fragment' };
-
-type BlockData__Component_Fragment = (
-  { __typename?: '_Component' }
-  & { ' $fragmentRefs'?: { 'IContentData__Component_Fragment': IContentData__Component_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Component_Fragment' };
-
-type BlockData__Content_Fragment = (
-  { __typename?: '_Content' }
-  & { ' $fragmentRefs'?: { 'IContentData__Content_Fragment': IContentData__Content_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Content_Fragment' };
-
-type BlockData__Element_Fragment = (
-  { __typename?: '_Element' }
-  & { ' $fragmentRefs'?: { 'IContentData__Element_Fragment': IContentData__Element_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Element_Fragment' };
-
-type BlockData__Experience_Fragment = (
-  { __typename?: '_Experience' }
-  & { ' $fragmentRefs'?: { 'IContentData__Experience_Fragment': IContentData__Experience_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Experience_Fragment' };
-
-type BlockData__Folder_Fragment = (
-  { __typename?: '_Folder' }
-  & { ' $fragmentRefs'?: { 'IContentData__Folder_Fragment': IContentData__Folder_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Folder_Fragment' };
-
-type BlockData__Image_Fragment = (
-  { __typename?: '_Image' }
-  & { ' $fragmentRefs'?: { 'IContentData__Image_Fragment': IContentData__Image_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Image_Fragment' };
-
-type BlockData__Media_Fragment = (
-  { __typename?: '_Media' }
-  & { ' $fragmentRefs'?: { 'IContentData__Media_Fragment': IContentData__Media_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Media_Fragment' };
-
-type BlockData__Page_Fragment = (
-  { __typename?: '_Page' }
-  & { ' $fragmentRefs'?: { 'IContentData__Page_Fragment': IContentData__Page_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Page_Fragment' };
-
-type BlockData__Section_Fragment = (
-  { __typename?: '_Section' }
-  & { ' $fragmentRefs'?: { 'IContentData__Section_Fragment': IContentData__Section_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Section_Fragment' };
-
-type BlockData__Video_Fragment = (
-  { __typename?: '_Video' }
-  & { ' $fragmentRefs'?: { 'IContentData__Video_Fragment': IContentData__Video_Fragment } }
-) & { ' $fragmentName'?: 'BlockData__Video_Fragment' };
-
-export type BlockDataFragment = BlockData_BlankExperience_Fragment | BlockData_BlankSection_Fragment | BlockData_CampaignPage_Fragment | BlockData_GenericMedia_Fragment | BlockData_HomePage_Fragment | BlockData_ImageMedia_Fragment | BlockData_Pokemon_Fragment | BlockData_SysContentFolder_Fragment | BlockData_VideoMedia_Fragment | BlockData_WebEssentialBanner_Fragment | BlockData_WebEssentialCallToAction_Fragment | BlockData_WebEssentialImage_Fragment | BlockData_WebEssentialQuote_Fragment | BlockData_WebEssentialRichText_Fragment | BlockData_WebEssentialRichTextMedia_Fragment | BlockData__Component_Fragment | BlockData__Content_Fragment | BlockData__Element_Fragment | BlockData__Experience_Fragment | BlockData__Folder_Fragment | BlockData__Image_Fragment | BlockData__Media_Fragment | BlockData__Page_Fragment | BlockData__Section_Fragment | BlockData__Video_Fragment;
-
-type IContentInfo_ContentMetadata_Fragment = { __typename?: 'ContentMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'IContentInfo_ContentMetadata_Fragment' };
-
-type IContentInfo_InstanceMetadata_Fragment = { __typename?: 'InstanceMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'IContentInfo_InstanceMetadata_Fragment' };
-
-type IContentInfo_ItemMetadata_Fragment = { __typename?: 'ItemMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'IContentInfo_ItemMetadata_Fragment' };
-
-type IContentInfo_MediaMetadata_Fragment = { __typename?: 'MediaMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'IContentInfo_MediaMetadata_Fragment' };
-
-export type IContentInfoFragment = IContentInfo_ContentMetadata_Fragment | IContentInfo_InstanceMetadata_Fragment | IContentInfo_ItemMetadata_Fragment | IContentInfo_MediaMetadata_Fragment;
-
-export type getContentByIdQueryVariables = Exact<{
-  key: Scalars['String']['input'];
-  version?: InputMaybe<Scalars['String']['input']>;
-  locale?: InputMaybe<Array<Locales> | Locales>;
-  path?: InputMaybe<Scalars['String']['input']>;
-  domain?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-export type getContentByIdQuery = { __typename?: 'Query', content?: { __typename?: '_ContentOutput', total?: number | null, items?: Array<(
-      { __typename?: 'BlankExperience' }
-      & { ' $fragmentRefs'?: { 'BlockData_BlankExperience_Fragment': BlockData_BlankExperience_Fragment;'PageData_BlankExperience_Fragment': PageData_BlankExperience_Fragment } }
-    ) | (
-      { __typename?: 'BlankSection' }
-      & { ' $fragmentRefs'?: { 'BlockData_BlankSection_Fragment': BlockData_BlankSection_Fragment;'PageData_BlankSection_Fragment': PageData_BlankSection_Fragment } }
-    ) | (
-      { __typename?: 'CampaignPage' }
-      & { ' $fragmentRefs'?: { 'BlockData_CampaignPage_Fragment': BlockData_CampaignPage_Fragment;'PageData_CampaignPage_Fragment': PageData_CampaignPage_Fragment } }
-    ) | (
-      { __typename?: 'GenericMedia' }
-      & { ' $fragmentRefs'?: { 'BlockData_GenericMedia_Fragment': BlockData_GenericMedia_Fragment;'PageData_GenericMedia_Fragment': PageData_GenericMedia_Fragment } }
-    ) | (
-      { __typename?: 'HomePage' }
-      & { ' $fragmentRefs'?: { 'BlockData_HomePage_Fragment': BlockData_HomePage_Fragment;'PageData_HomePage_Fragment': PageData_HomePage_Fragment } }
-    ) | (
-      { __typename?: 'ImageMedia' }
-      & { ' $fragmentRefs'?: { 'BlockData_ImageMedia_Fragment': BlockData_ImageMedia_Fragment;'PageData_ImageMedia_Fragment': PageData_ImageMedia_Fragment } }
-    ) | (
-      { __typename?: 'Pokemon' }
-      & { ' $fragmentRefs'?: { 'BlockData_Pokemon_Fragment': BlockData_Pokemon_Fragment;'PageData_Pokemon_Fragment': PageData_Pokemon_Fragment } }
-    ) | (
-      { __typename?: 'SysContentFolder' }
-      & { ' $fragmentRefs'?: { 'BlockData_SysContentFolder_Fragment': BlockData_SysContentFolder_Fragment;'PageData_SysContentFolder_Fragment': PageData_SysContentFolder_Fragment } }
-    ) | (
-      { __typename?: 'VideoMedia' }
-      & { ' $fragmentRefs'?: { 'BlockData_VideoMedia_Fragment': BlockData_VideoMedia_Fragment;'PageData_VideoMedia_Fragment': PageData_VideoMedia_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialBanner' }
-      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialBanner_Fragment': BlockData_WebEssentialBanner_Fragment;'PageData_WebEssentialBanner_Fragment': PageData_WebEssentialBanner_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialCallToAction' }
-      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialCallToAction_Fragment': BlockData_WebEssentialCallToAction_Fragment;'PageData_WebEssentialCallToAction_Fragment': PageData_WebEssentialCallToAction_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialImage' }
-      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialImage_Fragment': BlockData_WebEssentialImage_Fragment;'PageData_WebEssentialImage_Fragment': PageData_WebEssentialImage_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialQuote' }
-      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialQuote_Fragment': BlockData_WebEssentialQuote_Fragment;'PageData_WebEssentialQuote_Fragment': PageData_WebEssentialQuote_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialRichText' }
-      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichText_Fragment': BlockData_WebEssentialRichText_Fragment;'PageData_WebEssentialRichText_Fragment': PageData_WebEssentialRichText_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialRichTextMedia' }
-      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichTextMedia_Fragment': BlockData_WebEssentialRichTextMedia_Fragment;'PageData_WebEssentialRichTextMedia_Fragment': PageData_WebEssentialRichTextMedia_Fragment } }
-    ) | (
-      { __typename?: '_Component' }
-      & { ' $fragmentRefs'?: { 'BlockData__Component_Fragment': BlockData__Component_Fragment;'PageData__Component_Fragment': PageData__Component_Fragment } }
-    ) | (
-      { __typename?: '_Content' }
-      & { ' $fragmentRefs'?: { 'BlockData__Content_Fragment': BlockData__Content_Fragment;'PageData__Content_Fragment': PageData__Content_Fragment } }
-    ) | (
-      { __typename?: '_Element' }
-      & { ' $fragmentRefs'?: { 'BlockData__Element_Fragment': BlockData__Element_Fragment;'PageData__Element_Fragment': PageData__Element_Fragment } }
-    ) | (
-      { __typename?: '_Experience' }
-      & { ' $fragmentRefs'?: { 'BlockData__Experience_Fragment': BlockData__Experience_Fragment;'PageData__Experience_Fragment': PageData__Experience_Fragment } }
-    ) | (
-      { __typename?: '_Folder' }
-      & { ' $fragmentRefs'?: { 'BlockData__Folder_Fragment': BlockData__Folder_Fragment;'PageData__Folder_Fragment': PageData__Folder_Fragment } }
-    ) | (
-      { __typename?: '_Image' }
-      & { ' $fragmentRefs'?: { 'BlockData__Image_Fragment': BlockData__Image_Fragment;'PageData__Image_Fragment': PageData__Image_Fragment } }
-    ) | (
-      { __typename?: '_Media' }
-      & { ' $fragmentRefs'?: { 'BlockData__Media_Fragment': BlockData__Media_Fragment;'PageData__Media_Fragment': PageData__Media_Fragment } }
-    ) | (
-      { __typename?: '_Page' }
-      & { ' $fragmentRefs'?: { 'BlockData__Page_Fragment': BlockData__Page_Fragment;'PageData__Page_Fragment': PageData__Page_Fragment } }
-    ) | (
-      { __typename?: '_Section' }
-      & { ' $fragmentRefs'?: { 'BlockData__Section_Fragment': BlockData__Section_Fragment;'PageData__Section_Fragment': PageData__Section_Fragment } }
-    ) | (
-      { __typename?: '_Video' }
-      & { ' $fragmentRefs'?: { 'BlockData__Video_Fragment': BlockData__Video_Fragment;'PageData__Video_Fragment': PageData__Video_Fragment } }
-    ) | null> | null } | null };
-
-export type getContentByPathQueryVariables = Exact<{
-  path: Scalars['String']['input'];
-  version?: InputMaybe<Scalars['String']['input']>;
-  locale?: InputMaybe<Array<Locales> | Locales>;
-  domain?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-export type getContentByPathQuery = { __typename?: 'Query', content?: { __typename?: '_ContentOutput', total?: number | null, items?: Array<(
-      { __typename?: 'BlankExperience' }
-      & { ' $fragmentRefs'?: { 'PageData_BlankExperience_Fragment': PageData_BlankExperience_Fragment } }
-    ) | (
-      { __typename?: 'BlankSection' }
-      & { ' $fragmentRefs'?: { 'PageData_BlankSection_Fragment': PageData_BlankSection_Fragment } }
-    ) | (
-      { __typename?: 'CampaignPage' }
-      & { ' $fragmentRefs'?: { 'PageData_CampaignPage_Fragment': PageData_CampaignPage_Fragment } }
-    ) | (
-      { __typename?: 'GenericMedia' }
-      & { ' $fragmentRefs'?: { 'PageData_GenericMedia_Fragment': PageData_GenericMedia_Fragment } }
-    ) | (
-      { __typename?: 'HomePage' }
-      & { ' $fragmentRefs'?: { 'PageData_HomePage_Fragment': PageData_HomePage_Fragment } }
-    ) | (
-      { __typename?: 'ImageMedia' }
-      & { ' $fragmentRefs'?: { 'PageData_ImageMedia_Fragment': PageData_ImageMedia_Fragment } }
-    ) | (
-      { __typename?: 'Pokemon' }
-      & { ' $fragmentRefs'?: { 'PageData_Pokemon_Fragment': PageData_Pokemon_Fragment } }
-    ) | (
-      { __typename?: 'SysContentFolder' }
-      & { ' $fragmentRefs'?: { 'PageData_SysContentFolder_Fragment': PageData_SysContentFolder_Fragment } }
-    ) | (
-      { __typename?: 'VideoMedia' }
-      & { ' $fragmentRefs'?: { 'PageData_VideoMedia_Fragment': PageData_VideoMedia_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialBanner' }
-      & { ' $fragmentRefs'?: { 'PageData_WebEssentialBanner_Fragment': PageData_WebEssentialBanner_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialCallToAction' }
-      & { ' $fragmentRefs'?: { 'PageData_WebEssentialCallToAction_Fragment': PageData_WebEssentialCallToAction_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialImage' }
-      & { ' $fragmentRefs'?: { 'PageData_WebEssentialImage_Fragment': PageData_WebEssentialImage_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialQuote' }
-      & { ' $fragmentRefs'?: { 'PageData_WebEssentialQuote_Fragment': PageData_WebEssentialQuote_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialRichText' }
-      & { ' $fragmentRefs'?: { 'PageData_WebEssentialRichText_Fragment': PageData_WebEssentialRichText_Fragment } }
-    ) | (
-      { __typename?: 'WebEssentialRichTextMedia' }
-      & { ' $fragmentRefs'?: { 'PageData_WebEssentialRichTextMedia_Fragment': PageData_WebEssentialRichTextMedia_Fragment } }
-    ) | (
-      { __typename?: '_Component' }
-      & { ' $fragmentRefs'?: { 'PageData__Component_Fragment': PageData__Component_Fragment } }
-    ) | (
-      { __typename?: '_Content' }
-      & { ' $fragmentRefs'?: { 'PageData__Content_Fragment': PageData__Content_Fragment } }
-    ) | (
-      { __typename?: '_Element' }
-      & { ' $fragmentRefs'?: { 'PageData__Element_Fragment': PageData__Element_Fragment } }
-    ) | (
-      { __typename?: '_Experience' }
-      & { ' $fragmentRefs'?: { 'PageData__Experience_Fragment': PageData__Experience_Fragment } }
-    ) | (
-      { __typename?: '_Folder' }
-      & { ' $fragmentRefs'?: { 'PageData__Folder_Fragment': PageData__Folder_Fragment } }
-    ) | (
-      { __typename?: '_Image' }
-      & { ' $fragmentRefs'?: { 'PageData__Image_Fragment': PageData__Image_Fragment } }
-    ) | (
-      { __typename?: '_Media' }
-      & { ' $fragmentRefs'?: { 'PageData__Media_Fragment': PageData__Media_Fragment } }
-    ) | (
-      { __typename?: '_Page' }
-      & { ' $fragmentRefs'?: { 'PageData__Page_Fragment': PageData__Page_Fragment } }
-    ) | (
-      { __typename?: '_Section' }
-      & { ' $fragmentRefs'?: { 'PageData__Section_Fragment': PageData__Section_Fragment } }
-    ) | (
-      { __typename?: '_Video' }
-      & { ' $fragmentRefs'?: { 'PageData__Video_Fragment': PageData__Video_Fragment } }
-    ) | null> | null } | null };
-
-export type LinkDataFragment = { __typename?: 'ContentUrl', base?: string | null, hierarchical?: string | null, default?: string | null } & { ' $fragmentName'?: 'LinkDataFragment' };
+  & { ' $fragmentRefs'?: { 'ExperienceData_HomePage_Fragment': ExperienceData_HomePage_Fragment } }
+) & { ' $fragmentName'?: 'HomePageDataFragment' };
 
 type IContentData_BlankExperience_Fragment = { __typename?: 'BlankExperience', _type: 'BlankExperience', _metadata?: (
     { __typename?: 'ContentMetadata' }
@@ -5043,6 +4212,20 @@ type IContentData_CampaignPage_Fragment = { __typename?: 'CampaignPage', _type: 
     & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
   ) | null } & { ' $fragmentName'?: 'IContentData_CampaignPage_Fragment' };
 
+type IContentData_ContentPage_Fragment = { __typename?: 'ContentPage', _type: 'ContentPage', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentData_ContentPage_Fragment' };
+
 type IContentData_GenericMedia_Fragment = { __typename?: 'GenericMedia', _type: 'GenericMedia', _metadata?: (
     { __typename?: 'ContentMetadata' }
     & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
@@ -5085,6 +4268,20 @@ type IContentData_ImageMedia_Fragment = { __typename?: 'ImageMedia', _type: 'Ima
     & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
   ) | null } & { ' $fragmentName'?: 'IContentData_ImageMedia_Fragment' };
 
+type IContentData_NewsPage_Fragment = { __typename?: 'NewsPage', _type: 'NewsPage', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentData_NewsPage_Fragment' };
+
 type IContentData_Pokemon_Fragment = { __typename?: 'Pokemon', _type: 'Pokemon', _metadata?: (
     { __typename?: 'ContentMetadata' }
     & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
@@ -5098,6 +4295,20 @@ type IContentData_Pokemon_Fragment = { __typename?: 'Pokemon', _type: 'Pokemon',
     { __typename?: 'MediaMetadata' }
     & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
   ) | null } & { ' $fragmentName'?: 'IContentData_Pokemon_Fragment' };
+
+type IContentData_SEO_Fragment = { __typename?: 'SEO', _type: 'SEO', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentData_SEO_Fragment' };
 
 type IContentData_SysContentFolder_Fragment = { __typename?: 'SysContentFolder', _type: 'SysContentFolder', _metadata?: (
     { __typename?: 'ContentMetadata' }
@@ -5239,20 +4450,6 @@ type IContentData__Content_Fragment = { __typename?: '_Content', _type: '_Conten
     & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
   ) | null } & { ' $fragmentName'?: 'IContentData__Content_Fragment' };
 
-type IContentData__Element_Fragment = { __typename?: '_Element', _type: '_Element', _metadata?: (
-    { __typename?: 'ContentMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
-  ) | (
-    { __typename?: 'InstanceMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
-  ) | (
-    { __typename?: 'ItemMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
-  ) | (
-    { __typename?: 'MediaMetadata' }
-    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
-  ) | null } & { ' $fragmentName'?: 'IContentData__Element_Fragment' };
-
 type IContentData__Experience_Fragment = { __typename?: '_Experience', _type: '_Experience', _metadata?: (
     { __typename?: 'ContentMetadata' }
     & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
@@ -5351,156 +4548,889 @@ type IContentData__Video_Fragment = { __typename?: '_Video', _type: '_Video', _m
     & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
   ) | null } & { ' $fragmentName'?: 'IContentData__Video_Fragment' };
 
-export type IContentDataFragment = IContentData_BlankExperience_Fragment | IContentData_BlankSection_Fragment | IContentData_CampaignPage_Fragment | IContentData_GenericMedia_Fragment | IContentData_HomePage_Fragment | IContentData_ImageMedia_Fragment | IContentData_Pokemon_Fragment | IContentData_SysContentFolder_Fragment | IContentData_VideoMedia_Fragment | IContentData_WebEssentialBanner_Fragment | IContentData_WebEssentialCallToAction_Fragment | IContentData_WebEssentialImage_Fragment | IContentData_WebEssentialQuote_Fragment | IContentData_WebEssentialRichText_Fragment | IContentData_WebEssentialRichTextMedia_Fragment | IContentData__Component_Fragment | IContentData__Content_Fragment | IContentData__Element_Fragment | IContentData__Experience_Fragment | IContentData__Folder_Fragment | IContentData__Image_Fragment | IContentData__Media_Fragment | IContentData__Page_Fragment | IContentData__Section_Fragment | IContentData__Video_Fragment;
+type IContentData_site_config_Fragment = { __typename?: 'site_config', _type: 'site_config', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentData_site_config_Fragment' };
 
-export type PokemonsQueryAltQueryVariables = Exact<{
-  searchQuery: Scalars['String']['input'];
+export type IContentDataFragment = IContentData_BlankExperience_Fragment | IContentData_BlankSection_Fragment | IContentData_CampaignPage_Fragment | IContentData_ContentPage_Fragment | IContentData_GenericMedia_Fragment | IContentData_HomePage_Fragment | IContentData_ImageMedia_Fragment | IContentData_NewsPage_Fragment | IContentData_Pokemon_Fragment | IContentData_SEO_Fragment | IContentData_SysContentFolder_Fragment | IContentData_VideoMedia_Fragment | IContentData_WebEssentialBanner_Fragment | IContentData_WebEssentialCallToAction_Fragment | IContentData_WebEssentialImage_Fragment | IContentData_WebEssentialQuote_Fragment | IContentData_WebEssentialRichText_Fragment | IContentData_WebEssentialRichTextMedia_Fragment | IContentData__Component_Fragment | IContentData__Content_Fragment | IContentData__Experience_Fragment | IContentData__Folder_Fragment | IContentData__Image_Fragment | IContentData__Media_Fragment | IContentData__Page_Fragment | IContentData__Section_Fragment | IContentData__Video_Fragment | IContentData_site_config_Fragment;
+
+type CompositionData_CompositionComponentNode_Fragment = { __typename?: 'CompositionComponentNode', type?: string | null, key?: string | null, name?: string | null, layoutType?: string | null, template?: string | null, component?: (
+    { __typename?: 'BlankSection' }
+    & { ' $fragmentRefs'?: { 'BlockData_BlankSection_Fragment': BlockData_BlankSection_Fragment;'ElementData_BlankSection_Fragment': ElementData_BlankSection_Fragment } }
+  ) | (
+    { __typename?: 'Pokemon' }
+    & { ' $fragmentRefs'?: { 'BlockData_Pokemon_Fragment': BlockData_Pokemon_Fragment;'ElementData_Pokemon_Fragment': ElementData_Pokemon_Fragment;'PokemonDataFragment': PokemonDataFragment } }
+  ) | (
+    { __typename?: 'SEO' }
+    & { ' $fragmentRefs'?: { 'BlockData_SEO_Fragment': BlockData_SEO_Fragment;'ElementData_SEO_Fragment': ElementData_SEO_Fragment } }
+  ) | (
+    { __typename?: 'WebEssentialBanner' }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialBanner_Fragment': BlockData_WebEssentialBanner_Fragment;'ElementData_WebEssentialBanner_Fragment': ElementData_WebEssentialBanner_Fragment;'WebEssentialBannerDataFragment': WebEssentialBannerDataFragment } }
+  ) | (
+    { __typename?: 'WebEssentialCallToAction' }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialCallToAction_Fragment': BlockData_WebEssentialCallToAction_Fragment;'ElementData_WebEssentialCallToAction_Fragment': ElementData_WebEssentialCallToAction_Fragment;'WebEssentialCallToActionDataFragment': WebEssentialCallToActionDataFragment } }
+  ) | (
+    { __typename?: 'WebEssentialImage' }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialImage_Fragment': BlockData_WebEssentialImage_Fragment;'ElementData_WebEssentialImage_Fragment': ElementData_WebEssentialImage_Fragment;'WebEssentialImageDataFragment': WebEssentialImageDataFragment } }
+  ) | (
+    { __typename?: 'WebEssentialQuote' }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialQuote_Fragment': BlockData_WebEssentialQuote_Fragment;'ElementData_WebEssentialQuote_Fragment': ElementData_WebEssentialQuote_Fragment;'WebEssentialQuoteDataFragment': WebEssentialQuoteDataFragment } }
+  ) | (
+    { __typename?: 'WebEssentialRichText' }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichText_Fragment': BlockData_WebEssentialRichText_Fragment;'ElementData_WebEssentialRichText_Fragment': ElementData_WebEssentialRichText_Fragment;'WebEssentialRichTextDataFragment': WebEssentialRichTextDataFragment } }
+  ) | (
+    { __typename?: 'WebEssentialRichTextMedia' }
+    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichTextMedia_Fragment': BlockData_WebEssentialRichTextMedia_Fragment;'ElementData_WebEssentialRichTextMedia_Fragment': ElementData_WebEssentialRichTextMedia_Fragment;'WebEssentialRichTextMediaDataFragment': WebEssentialRichTextMediaDataFragment } }
+  ) | (
+    { __typename?: '_Component' }
+    & { ' $fragmentRefs'?: { 'BlockData__Component_Fragment': BlockData__Component_Fragment;'ElementData__Component_Fragment': ElementData__Component_Fragment } }
+  ) | (
+    { __typename?: '_Section' }
+    & { ' $fragmentRefs'?: { 'BlockData__Section_Fragment': BlockData__Section_Fragment;'ElementData__Section_Fragment': ElementData__Section_Fragment } }
+  ) | null, settings?: Array<{ __typename?: 'CompositionDisplaySetting', key?: string | null, value?: string | null } | null> | null } & { ' $fragmentName'?: 'CompositionData_CompositionComponentNode_Fragment' };
+
+type CompositionData_CompositionNode_Fragment = { __typename?: 'CompositionNode', type?: string | null, key?: string | null, name?: string | null, layoutType?: string | null, template?: string | null, settings?: Array<{ __typename?: 'CompositionDisplaySetting', key?: string | null, value?: string | null } | null> | null } & { ' $fragmentName'?: 'CompositionData_CompositionNode_Fragment' };
+
+type CompositionData_CompositionStructureNode_Fragment = { __typename?: 'CompositionStructureNode', type?: string | null, key?: string | null, name?: string | null, layoutType?: string | null, template?: string | null, nodes?: Array<{ __typename?: 'CompositionComponentNode', name?: string | null } | { __typename?: 'CompositionNode', name?: string | null } | { __typename?: 'CompositionStructureNode', name?: string | null } | null> | null, settings?: Array<{ __typename?: 'CompositionDisplaySetting', key?: string | null, value?: string | null } | null> | null } & { ' $fragmentName'?: 'CompositionData_CompositionStructureNode_Fragment' };
+
+export type CompositionDataFragment = CompositionData_CompositionComponentNode_Fragment | CompositionData_CompositionNode_Fragment | CompositionData_CompositionStructureNode_Fragment;
+
+type IElementData_BlankSection_Fragment = { __typename?: 'BlankSection', _type: 'BlankSection', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_BlankSection_Fragment' };
+
+type IElementData_Pokemon_Fragment = { __typename?: 'Pokemon', _type: 'Pokemon', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_Pokemon_Fragment' };
+
+type IElementData_SEO_Fragment = { __typename?: 'SEO', _type: 'SEO', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_SEO_Fragment' };
+
+type IElementData_WebEssentialBanner_Fragment = { __typename?: 'WebEssentialBanner', _type: 'WebEssentialBanner', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialBanner_Fragment' };
+
+type IElementData_WebEssentialCallToAction_Fragment = { __typename?: 'WebEssentialCallToAction', _type: 'WebEssentialCallToAction', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialCallToAction_Fragment' };
+
+type IElementData_WebEssentialImage_Fragment = { __typename?: 'WebEssentialImage', _type: 'WebEssentialImage', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialImage_Fragment' };
+
+type IElementData_WebEssentialQuote_Fragment = { __typename?: 'WebEssentialQuote', _type: 'WebEssentialQuote', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialQuote_Fragment' };
+
+type IElementData_WebEssentialRichText_Fragment = { __typename?: 'WebEssentialRichText', _type: 'WebEssentialRichText', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialRichText_Fragment' };
+
+type IElementData_WebEssentialRichTextMedia_Fragment = { __typename?: 'WebEssentialRichTextMedia', _type: 'WebEssentialRichTextMedia', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData_WebEssentialRichTextMedia_Fragment' };
+
+type IElementData__Component_Fragment = { __typename?: '_Component', _type: '_Component', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData__Component_Fragment' };
+
+type IElementData__Section_Fragment = { __typename?: '_Section', _type: '_Section', _metadata?: (
+    { __typename?: 'ContentMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ContentMetadata_Fragment': IContentInfo_ContentMetadata_Fragment } }
+  ) | (
+    { __typename?: 'InstanceMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_InstanceMetadata_Fragment': IContentInfo_InstanceMetadata_Fragment } }
+  ) | (
+    { __typename?: 'ItemMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_ItemMetadata_Fragment': IContentInfo_ItemMetadata_Fragment } }
+  ) | (
+    { __typename?: 'MediaMetadata' }
+    & { ' $fragmentRefs'?: { 'IContentInfo_MediaMetadata_Fragment': IContentInfo_MediaMetadata_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'IElementData__Section_Fragment' };
+
+export type IElementDataFragment = IElementData_BlankSection_Fragment | IElementData_Pokemon_Fragment | IElementData_SEO_Fragment | IElementData_WebEssentialBanner_Fragment | IElementData_WebEssentialCallToAction_Fragment | IElementData_WebEssentialImage_Fragment | IElementData_WebEssentialQuote_Fragment | IElementData_WebEssentialRichText_Fragment | IElementData_WebEssentialRichTextMedia_Fragment | IElementData__Component_Fragment | IElementData__Section_Fragment;
+
+type ElementData_BlankSection_Fragment = (
+  { __typename?: 'BlankSection' }
+  & { ' $fragmentRefs'?: { 'IElementData_BlankSection_Fragment': IElementData_BlankSection_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_BlankSection_Fragment' };
+
+type ElementData_Pokemon_Fragment = (
+  { __typename?: 'Pokemon' }
+  & { ' $fragmentRefs'?: { 'IElementData_Pokemon_Fragment': IElementData_Pokemon_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_Pokemon_Fragment' };
+
+type ElementData_SEO_Fragment = (
+  { __typename?: 'SEO' }
+  & { ' $fragmentRefs'?: { 'IElementData_SEO_Fragment': IElementData_SEO_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_SEO_Fragment' };
+
+type ElementData_WebEssentialBanner_Fragment = (
+  { __typename?: 'WebEssentialBanner' }
+  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialBanner_Fragment': IElementData_WebEssentialBanner_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_WebEssentialBanner_Fragment' };
+
+type ElementData_WebEssentialCallToAction_Fragment = (
+  { __typename?: 'WebEssentialCallToAction' }
+  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialCallToAction_Fragment': IElementData_WebEssentialCallToAction_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_WebEssentialCallToAction_Fragment' };
+
+type ElementData_WebEssentialImage_Fragment = (
+  { __typename?: 'WebEssentialImage' }
+  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialImage_Fragment': IElementData_WebEssentialImage_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_WebEssentialImage_Fragment' };
+
+type ElementData_WebEssentialQuote_Fragment = (
+  { __typename?: 'WebEssentialQuote' }
+  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialQuote_Fragment': IElementData_WebEssentialQuote_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_WebEssentialQuote_Fragment' };
+
+type ElementData_WebEssentialRichText_Fragment = (
+  { __typename?: 'WebEssentialRichText' }
+  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialRichText_Fragment': IElementData_WebEssentialRichText_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_WebEssentialRichText_Fragment' };
+
+type ElementData_WebEssentialRichTextMedia_Fragment = (
+  { __typename?: 'WebEssentialRichTextMedia' }
+  & { ' $fragmentRefs'?: { 'IElementData_WebEssentialRichTextMedia_Fragment': IElementData_WebEssentialRichTextMedia_Fragment } }
+) & { ' $fragmentName'?: 'ElementData_WebEssentialRichTextMedia_Fragment' };
+
+type ElementData__Component_Fragment = (
+  { __typename?: '_Component' }
+  & { ' $fragmentRefs'?: { 'IElementData__Component_Fragment': IElementData__Component_Fragment } }
+) & { ' $fragmentName'?: 'ElementData__Component_Fragment' };
+
+type ElementData__Section_Fragment = (
+  { __typename?: '_Section' }
+  & { ' $fragmentRefs'?: { 'IElementData__Section_Fragment': IElementData__Section_Fragment } }
+) & { ' $fragmentName'?: 'ElementData__Section_Fragment' };
+
+export type ElementDataFragment = ElementData_BlankSection_Fragment | ElementData_Pokemon_Fragment | ElementData_SEO_Fragment | ElementData_WebEssentialBanner_Fragment | ElementData_WebEssentialCallToAction_Fragment | ElementData_WebEssentialImage_Fragment | ElementData_WebEssentialQuote_Fragment | ElementData_WebEssentialRichText_Fragment | ElementData_WebEssentialRichTextMedia_Fragment | ElementData__Component_Fragment | ElementData__Section_Fragment;
+
+type BlockData_BlankSection_Fragment = (
+  { __typename?: 'BlankSection' }
+  & { ' $fragmentRefs'?: { 'IContentData_BlankSection_Fragment': IContentData_BlankSection_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_BlankSection_Fragment' };
+
+type BlockData_Pokemon_Fragment = (
+  { __typename?: 'Pokemon' }
+  & { ' $fragmentRefs'?: { 'IContentData_Pokemon_Fragment': IContentData_Pokemon_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_Pokemon_Fragment' };
+
+type BlockData_SEO_Fragment = (
+  { __typename?: 'SEO' }
+  & { ' $fragmentRefs'?: { 'IContentData_SEO_Fragment': IContentData_SEO_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_SEO_Fragment' };
+
+type BlockData_WebEssentialBanner_Fragment = (
+  { __typename?: 'WebEssentialBanner' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialBanner_Fragment': IContentData_WebEssentialBanner_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_WebEssentialBanner_Fragment' };
+
+type BlockData_WebEssentialCallToAction_Fragment = (
+  { __typename?: 'WebEssentialCallToAction' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialCallToAction_Fragment': IContentData_WebEssentialCallToAction_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_WebEssentialCallToAction_Fragment' };
+
+type BlockData_WebEssentialImage_Fragment = (
+  { __typename?: 'WebEssentialImage' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialImage_Fragment': IContentData_WebEssentialImage_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_WebEssentialImage_Fragment' };
+
+type BlockData_WebEssentialQuote_Fragment = (
+  { __typename?: 'WebEssentialQuote' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialQuote_Fragment': IContentData_WebEssentialQuote_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_WebEssentialQuote_Fragment' };
+
+type BlockData_WebEssentialRichText_Fragment = (
+  { __typename?: 'WebEssentialRichText' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichText_Fragment': IContentData_WebEssentialRichText_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_WebEssentialRichText_Fragment' };
+
+type BlockData_WebEssentialRichTextMedia_Fragment = (
+  { __typename?: 'WebEssentialRichTextMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichTextMedia_Fragment': IContentData_WebEssentialRichTextMedia_Fragment } }
+) & { ' $fragmentName'?: 'BlockData_WebEssentialRichTextMedia_Fragment' };
+
+type BlockData__Component_Fragment = (
+  { __typename?: '_Component' }
+  & { ' $fragmentRefs'?: { 'IContentData__Component_Fragment': IContentData__Component_Fragment } }
+) & { ' $fragmentName'?: 'BlockData__Component_Fragment' };
+
+type BlockData__Section_Fragment = (
+  { __typename?: '_Section' }
+  & { ' $fragmentRefs'?: { 'IContentData__Section_Fragment': IContentData__Section_Fragment } }
+) & { ' $fragmentName'?: 'BlockData__Section_Fragment' };
+
+export type BlockDataFragment = BlockData_BlankSection_Fragment | BlockData_Pokemon_Fragment | BlockData_SEO_Fragment | BlockData_WebEssentialBanner_Fragment | BlockData_WebEssentialCallToAction_Fragment | BlockData_WebEssentialImage_Fragment | BlockData_WebEssentialQuote_Fragment | BlockData_WebEssentialRichText_Fragment | BlockData_WebEssentialRichTextMedia_Fragment | BlockData__Component_Fragment | BlockData__Section_Fragment;
+
+type PageData_BlankExperience_Fragment = (
+  { __typename?: 'BlankExperience' }
+  & { ' $fragmentRefs'?: { 'IContentData_BlankExperience_Fragment': IContentData_BlankExperience_Fragment } }
+) & { ' $fragmentName'?: 'PageData_BlankExperience_Fragment' };
+
+type PageData_BlankSection_Fragment = (
+  { __typename?: 'BlankSection' }
+  & { ' $fragmentRefs'?: { 'IContentData_BlankSection_Fragment': IContentData_BlankSection_Fragment } }
+) & { ' $fragmentName'?: 'PageData_BlankSection_Fragment' };
+
+type PageData_CampaignPage_Fragment = (
+  { __typename?: 'CampaignPage' }
+  & { ' $fragmentRefs'?: { 'IContentData_CampaignPage_Fragment': IContentData_CampaignPage_Fragment } }
+) & { ' $fragmentName'?: 'PageData_CampaignPage_Fragment' };
+
+type PageData_ContentPage_Fragment = (
+  { __typename?: 'ContentPage' }
+  & { ' $fragmentRefs'?: { 'IContentData_ContentPage_Fragment': IContentData_ContentPage_Fragment } }
+) & { ' $fragmentName'?: 'PageData_ContentPage_Fragment' };
+
+type PageData_GenericMedia_Fragment = (
+  { __typename?: 'GenericMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_GenericMedia_Fragment': IContentData_GenericMedia_Fragment } }
+) & { ' $fragmentName'?: 'PageData_GenericMedia_Fragment' };
+
+type PageData_HomePage_Fragment = (
+  { __typename?: 'HomePage' }
+  & { ' $fragmentRefs'?: { 'IContentData_HomePage_Fragment': IContentData_HomePage_Fragment } }
+) & { ' $fragmentName'?: 'PageData_HomePage_Fragment' };
+
+type PageData_ImageMedia_Fragment = (
+  { __typename?: 'ImageMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_ImageMedia_Fragment': IContentData_ImageMedia_Fragment } }
+) & { ' $fragmentName'?: 'PageData_ImageMedia_Fragment' };
+
+type PageData_NewsPage_Fragment = (
+  { __typename?: 'NewsPage' }
+  & { ' $fragmentRefs'?: { 'IContentData_NewsPage_Fragment': IContentData_NewsPage_Fragment } }
+) & { ' $fragmentName'?: 'PageData_NewsPage_Fragment' };
+
+type PageData_Pokemon_Fragment = (
+  { __typename?: 'Pokemon' }
+  & { ' $fragmentRefs'?: { 'IContentData_Pokemon_Fragment': IContentData_Pokemon_Fragment } }
+) & { ' $fragmentName'?: 'PageData_Pokemon_Fragment' };
+
+type PageData_SEO_Fragment = (
+  { __typename?: 'SEO' }
+  & { ' $fragmentRefs'?: { 'IContentData_SEO_Fragment': IContentData_SEO_Fragment } }
+) & { ' $fragmentName'?: 'PageData_SEO_Fragment' };
+
+type PageData_SysContentFolder_Fragment = (
+  { __typename?: 'SysContentFolder' }
+  & { ' $fragmentRefs'?: { 'IContentData_SysContentFolder_Fragment': IContentData_SysContentFolder_Fragment } }
+) & { ' $fragmentName'?: 'PageData_SysContentFolder_Fragment' };
+
+type PageData_VideoMedia_Fragment = (
+  { __typename?: 'VideoMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_VideoMedia_Fragment': IContentData_VideoMedia_Fragment } }
+) & { ' $fragmentName'?: 'PageData_VideoMedia_Fragment' };
+
+type PageData_WebEssentialBanner_Fragment = (
+  { __typename?: 'WebEssentialBanner' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialBanner_Fragment': IContentData_WebEssentialBanner_Fragment } }
+) & { ' $fragmentName'?: 'PageData_WebEssentialBanner_Fragment' };
+
+type PageData_WebEssentialCallToAction_Fragment = (
+  { __typename?: 'WebEssentialCallToAction' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialCallToAction_Fragment': IContentData_WebEssentialCallToAction_Fragment } }
+) & { ' $fragmentName'?: 'PageData_WebEssentialCallToAction_Fragment' };
+
+type PageData_WebEssentialImage_Fragment = (
+  { __typename?: 'WebEssentialImage' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialImage_Fragment': IContentData_WebEssentialImage_Fragment } }
+) & { ' $fragmentName'?: 'PageData_WebEssentialImage_Fragment' };
+
+type PageData_WebEssentialQuote_Fragment = (
+  { __typename?: 'WebEssentialQuote' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialQuote_Fragment': IContentData_WebEssentialQuote_Fragment } }
+) & { ' $fragmentName'?: 'PageData_WebEssentialQuote_Fragment' };
+
+type PageData_WebEssentialRichText_Fragment = (
+  { __typename?: 'WebEssentialRichText' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichText_Fragment': IContentData_WebEssentialRichText_Fragment } }
+) & { ' $fragmentName'?: 'PageData_WebEssentialRichText_Fragment' };
+
+type PageData_WebEssentialRichTextMedia_Fragment = (
+  { __typename?: 'WebEssentialRichTextMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichTextMedia_Fragment': IContentData_WebEssentialRichTextMedia_Fragment } }
+) & { ' $fragmentName'?: 'PageData_WebEssentialRichTextMedia_Fragment' };
+
+type PageData__Component_Fragment = (
+  { __typename?: '_Component' }
+  & { ' $fragmentRefs'?: { 'IContentData__Component_Fragment': IContentData__Component_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Component_Fragment' };
+
+type PageData__Content_Fragment = (
+  { __typename?: '_Content' }
+  & { ' $fragmentRefs'?: { 'IContentData__Content_Fragment': IContentData__Content_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Content_Fragment' };
+
+type PageData__Experience_Fragment = (
+  { __typename?: '_Experience' }
+  & { ' $fragmentRefs'?: { 'IContentData__Experience_Fragment': IContentData__Experience_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Experience_Fragment' };
+
+type PageData__Folder_Fragment = (
+  { __typename?: '_Folder' }
+  & { ' $fragmentRefs'?: { 'IContentData__Folder_Fragment': IContentData__Folder_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Folder_Fragment' };
+
+type PageData__Image_Fragment = (
+  { __typename?: '_Image' }
+  & { ' $fragmentRefs'?: { 'IContentData__Image_Fragment': IContentData__Image_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Image_Fragment' };
+
+type PageData__Media_Fragment = (
+  { __typename?: '_Media' }
+  & { ' $fragmentRefs'?: { 'IContentData__Media_Fragment': IContentData__Media_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Media_Fragment' };
+
+type PageData__Page_Fragment = (
+  { __typename?: '_Page' }
+  & { ' $fragmentRefs'?: { 'IContentData__Page_Fragment': IContentData__Page_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Page_Fragment' };
+
+type PageData__Section_Fragment = (
+  { __typename?: '_Section' }
+  & { ' $fragmentRefs'?: { 'IContentData__Section_Fragment': IContentData__Section_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Section_Fragment' };
+
+type PageData__Video_Fragment = (
+  { __typename?: '_Video' }
+  & { ' $fragmentRefs'?: { 'IContentData__Video_Fragment': IContentData__Video_Fragment } }
+) & { ' $fragmentName'?: 'PageData__Video_Fragment' };
+
+type PageData_site_config_Fragment = (
+  { __typename?: 'site_config' }
+  & { ' $fragmentRefs'?: { 'IContentData_site_config_Fragment': IContentData_site_config_Fragment } }
+) & { ' $fragmentName'?: 'PageData_site_config_Fragment' };
+
+export type PageDataFragment = PageData_BlankExperience_Fragment | PageData_BlankSection_Fragment | PageData_CampaignPage_Fragment | PageData_ContentPage_Fragment | PageData_GenericMedia_Fragment | PageData_HomePage_Fragment | PageData_ImageMedia_Fragment | PageData_NewsPage_Fragment | PageData_Pokemon_Fragment | PageData_SEO_Fragment | PageData_SysContentFolder_Fragment | PageData_VideoMedia_Fragment | PageData_WebEssentialBanner_Fragment | PageData_WebEssentialCallToAction_Fragment | PageData_WebEssentialImage_Fragment | PageData_WebEssentialQuote_Fragment | PageData_WebEssentialRichText_Fragment | PageData_WebEssentialRichTextMedia_Fragment | PageData__Component_Fragment | PageData__Content_Fragment | PageData__Experience_Fragment | PageData__Folder_Fragment | PageData__Image_Fragment | PageData__Media_Fragment | PageData__Page_Fragment | PageData__Section_Fragment | PageData__Video_Fragment | PageData_site_config_Fragment;
+
+export type LinkDataFragment = { __typename?: 'ContentUrl', base?: string | null, hierarchical?: string | null, default?: string | null } & { ' $fragmentName'?: 'LinkDataFragment' };
+
+export type ReferenceDataFragment = { __typename?: 'ContentReference', key?: string | null, url?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'ReferenceDataFragment' };
+
+type IContentInfo_ContentMetadata_Fragment = { __typename?: 'ContentMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentInfo_ContentMetadata_Fragment' };
+
+type IContentInfo_InstanceMetadata_Fragment = { __typename?: 'InstanceMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentInfo_InstanceMetadata_Fragment' };
+
+type IContentInfo_ItemMetadata_Fragment = { __typename?: 'ItemMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentInfo_ItemMetadata_Fragment' };
+
+type IContentInfo_MediaMetadata_Fragment = { __typename?: 'MediaMetadata', key?: string | null, locale?: string | null, types?: Array<string | null> | null, displayName?: string | null, version?: string | null, url?: (
+    { __typename?: 'ContentUrl' }
+    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
+  ) | null } & { ' $fragmentName'?: 'IContentInfo_MediaMetadata_Fragment' };
+
+export type IContentInfoFragment = IContentInfo_ContentMetadata_Fragment | IContentInfo_InstanceMetadata_Fragment | IContentInfo_ItemMetadata_Fragment | IContentInfo_MediaMetadata_Fragment;
+
+type IContentListItem_BlankExperience_Fragment = (
+  { __typename?: 'BlankExperience' }
+  & { ' $fragmentRefs'?: { 'IContentData_BlankExperience_Fragment': IContentData_BlankExperience_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_BlankExperience_Fragment' };
+
+type IContentListItem_BlankSection_Fragment = (
+  { __typename?: 'BlankSection' }
+  & { ' $fragmentRefs'?: { 'IContentData_BlankSection_Fragment': IContentData_BlankSection_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_BlankSection_Fragment' };
+
+type IContentListItem_CampaignPage_Fragment = (
+  { __typename?: 'CampaignPage' }
+  & { ' $fragmentRefs'?: { 'IContentData_CampaignPage_Fragment': IContentData_CampaignPage_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_CampaignPage_Fragment' };
+
+type IContentListItem_ContentPage_Fragment = (
+  { __typename?: 'ContentPage' }
+  & { ' $fragmentRefs'?: { 'IContentData_ContentPage_Fragment': IContentData_ContentPage_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_ContentPage_Fragment' };
+
+type IContentListItem_GenericMedia_Fragment = (
+  { __typename?: 'GenericMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_GenericMedia_Fragment': IContentData_GenericMedia_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_GenericMedia_Fragment' };
+
+type IContentListItem_HomePage_Fragment = (
+  { __typename?: 'HomePage' }
+  & { ' $fragmentRefs'?: { 'IContentData_HomePage_Fragment': IContentData_HomePage_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_HomePage_Fragment' };
+
+type IContentListItem_ImageMedia_Fragment = (
+  { __typename?: 'ImageMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_ImageMedia_Fragment': IContentData_ImageMedia_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_ImageMedia_Fragment' };
+
+type IContentListItem_NewsPage_Fragment = (
+  { __typename?: 'NewsPage' }
+  & { ' $fragmentRefs'?: { 'IContentData_NewsPage_Fragment': IContentData_NewsPage_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_NewsPage_Fragment' };
+
+type IContentListItem_Pokemon_Fragment = (
+  { __typename?: 'Pokemon' }
+  & { ' $fragmentRefs'?: { 'IContentData_Pokemon_Fragment': IContentData_Pokemon_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_Pokemon_Fragment' };
+
+type IContentListItem_SEO_Fragment = (
+  { __typename?: 'SEO' }
+  & { ' $fragmentRefs'?: { 'IContentData_SEO_Fragment': IContentData_SEO_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_SEO_Fragment' };
+
+type IContentListItem_SysContentFolder_Fragment = (
+  { __typename?: 'SysContentFolder' }
+  & { ' $fragmentRefs'?: { 'IContentData_SysContentFolder_Fragment': IContentData_SysContentFolder_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_SysContentFolder_Fragment' };
+
+type IContentListItem_VideoMedia_Fragment = (
+  { __typename?: 'VideoMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_VideoMedia_Fragment': IContentData_VideoMedia_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_VideoMedia_Fragment' };
+
+type IContentListItem_WebEssentialBanner_Fragment = (
+  { __typename?: 'WebEssentialBanner' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialBanner_Fragment': IContentData_WebEssentialBanner_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_WebEssentialBanner_Fragment' };
+
+type IContentListItem_WebEssentialCallToAction_Fragment = (
+  { __typename?: 'WebEssentialCallToAction' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialCallToAction_Fragment': IContentData_WebEssentialCallToAction_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_WebEssentialCallToAction_Fragment' };
+
+type IContentListItem_WebEssentialImage_Fragment = (
+  { __typename?: 'WebEssentialImage' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialImage_Fragment': IContentData_WebEssentialImage_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_WebEssentialImage_Fragment' };
+
+type IContentListItem_WebEssentialQuote_Fragment = (
+  { __typename?: 'WebEssentialQuote' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialQuote_Fragment': IContentData_WebEssentialQuote_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_WebEssentialQuote_Fragment' };
+
+type IContentListItem_WebEssentialRichText_Fragment = (
+  { __typename?: 'WebEssentialRichText' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichText_Fragment': IContentData_WebEssentialRichText_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_WebEssentialRichText_Fragment' };
+
+type IContentListItem_WebEssentialRichTextMedia_Fragment = (
+  { __typename?: 'WebEssentialRichTextMedia' }
+  & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichTextMedia_Fragment': IContentData_WebEssentialRichTextMedia_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_WebEssentialRichTextMedia_Fragment' };
+
+type IContentListItem__Component_Fragment = (
+  { __typename?: '_Component' }
+  & { ' $fragmentRefs'?: { 'IContentData__Component_Fragment': IContentData__Component_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Component_Fragment' };
+
+type IContentListItem__Content_Fragment = (
+  { __typename?: '_Content' }
+  & { ' $fragmentRefs'?: { 'IContentData__Content_Fragment': IContentData__Content_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Content_Fragment' };
+
+type IContentListItem__Experience_Fragment = (
+  { __typename?: '_Experience' }
+  & { ' $fragmentRefs'?: { 'IContentData__Experience_Fragment': IContentData__Experience_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Experience_Fragment' };
+
+type IContentListItem__Folder_Fragment = (
+  { __typename?: '_Folder' }
+  & { ' $fragmentRefs'?: { 'IContentData__Folder_Fragment': IContentData__Folder_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Folder_Fragment' };
+
+type IContentListItem__Image_Fragment = (
+  { __typename?: '_Image' }
+  & { ' $fragmentRefs'?: { 'IContentData__Image_Fragment': IContentData__Image_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Image_Fragment' };
+
+type IContentListItem__Media_Fragment = (
+  { __typename?: '_Media' }
+  & { ' $fragmentRefs'?: { 'IContentData__Media_Fragment': IContentData__Media_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Media_Fragment' };
+
+type IContentListItem__Page_Fragment = (
+  { __typename?: '_Page' }
+  & { ' $fragmentRefs'?: { 'IContentData__Page_Fragment': IContentData__Page_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Page_Fragment' };
+
+type IContentListItem__Section_Fragment = (
+  { __typename?: '_Section' }
+  & { ' $fragmentRefs'?: { 'IContentData__Section_Fragment': IContentData__Section_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Section_Fragment' };
+
+type IContentListItem__Video_Fragment = (
+  { __typename?: '_Video' }
+  & { ' $fragmentRefs'?: { 'IContentData__Video_Fragment': IContentData__Video_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem__Video_Fragment' };
+
+type IContentListItem_site_config_Fragment = (
+  { __typename?: 'site_config' }
+  & { ' $fragmentRefs'?: { 'IContentData_site_config_Fragment': IContentData_site_config_Fragment } }
+) & { ' $fragmentName'?: 'IContentListItem_site_config_Fragment' };
+
+export type IContentListItemFragment = IContentListItem_BlankExperience_Fragment | IContentListItem_BlankSection_Fragment | IContentListItem_CampaignPage_Fragment | IContentListItem_ContentPage_Fragment | IContentListItem_GenericMedia_Fragment | IContentListItem_HomePage_Fragment | IContentListItem_ImageMedia_Fragment | IContentListItem_NewsPage_Fragment | IContentListItem_Pokemon_Fragment | IContentListItem_SEO_Fragment | IContentListItem_SysContentFolder_Fragment | IContentListItem_VideoMedia_Fragment | IContentListItem_WebEssentialBanner_Fragment | IContentListItem_WebEssentialCallToAction_Fragment | IContentListItem_WebEssentialImage_Fragment | IContentListItem_WebEssentialQuote_Fragment | IContentListItem_WebEssentialRichText_Fragment | IContentListItem_WebEssentialRichTextMedia_Fragment | IContentListItem__Component_Fragment | IContentListItem__Content_Fragment | IContentListItem__Experience_Fragment | IContentListItem__Folder_Fragment | IContentListItem__Image_Fragment | IContentListItem__Media_Fragment | IContentListItem__Page_Fragment | IContentListItem__Section_Fragment | IContentListItem__Video_Fragment | IContentListItem_site_config_Fragment;
+
+type ExperienceData_BlankExperience_Fragment = { __typename?: 'BlankExperience', composition?: (
+    { __typename?: 'CompositionStructureNode' }
+    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'ExperienceData_BlankExperience_Fragment' };
+
+type ExperienceData_CampaignPage_Fragment = { __typename?: 'CampaignPage', composition?: (
+    { __typename?: 'CompositionStructureNode' }
+    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'ExperienceData_CampaignPage_Fragment' };
+
+type ExperienceData_HomePage_Fragment = { __typename?: 'HomePage', composition?: (
+    { __typename?: 'CompositionStructureNode' }
+    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'ExperienceData_HomePage_Fragment' };
+
+type ExperienceData__Experience_Fragment = { __typename?: '_Experience', composition?: (
+    { __typename?: 'CompositionStructureNode' }
+    & { ' $fragmentRefs'?: { 'CompositionData_CompositionStructureNode_Fragment': CompositionData_CompositionStructureNode_Fragment } }
+  ) | null } & { ' $fragmentName'?: 'ExperienceData__Experience_Fragment' };
+
+export type ExperienceDataFragment = ExperienceData_BlankExperience_Fragment | ExperienceData_CampaignPage_Fragment | ExperienceData_HomePage_Fragment | ExperienceData__Experience_Fragment;
+
+export type getContentByIdQueryVariables = Exact<{
+  key: Scalars['String']['input'];
+  version?: InputMaybe<Scalars['String']['input']>;
+  locale?: InputMaybe<Array<Locales> | Locales>;
+  path?: InputMaybe<Scalars['String']['input']>;
+  domain?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type PokemonsQueryAltQuery = { __typename?: 'Query', Pokemon?: { __typename?: 'PokemonOutput', items?: Array<{ __typename?: 'Pokemon', Identifier?: string | null, Name?: string | null, Types?: string | null, Species?: string | null, Thumbnail?: { __typename?: 'ContentReference', url?: { __typename?: 'ContentUrl', base?: string | null, internal?: string | null, hierarchical?: string | null, default?: string | null, type?: string | null } | null } | null, _metadata?: { __typename?: 'ContentMetadata', key?: string | null, displayName?: string | null } | { __typename?: 'InstanceMetadata', key?: string | null, displayName?: string | null } | { __typename?: 'ItemMetadata', key?: string | null, displayName?: string | null } | { __typename?: 'MediaMetadata', key?: string | null, displayName?: string | null } | null, _link?: { __typename?: 'QueryRef', Price?: { __typename?: 'PriceOutput', items?: Array<{ __typename?: 'Price', parentIdentifier?: string | null, listPrice?: number | null, salePrice?: number | null } | null> | null } | null } | null } | null> | null } | null };
+export type getContentByIdQuery = { __typename?: 'Query', content?: { __typename?: '_ContentOutput', total?: number | null, items?: Array<(
+      { __typename?: 'BlankExperience' }
+      & { ' $fragmentRefs'?: { 'PageData_BlankExperience_Fragment': PageData_BlankExperience_Fragment;'BlankExperienceDataFragment': BlankExperienceDataFragment } }
+    ) | (
+      { __typename?: 'BlankSection' }
+      & { ' $fragmentRefs'?: { 'BlockData_BlankSection_Fragment': BlockData_BlankSection_Fragment;'PageData_BlankSection_Fragment': PageData_BlankSection_Fragment } }
+    ) | (
+      { __typename?: 'CampaignPage' }
+      & { ' $fragmentRefs'?: { 'PageData_CampaignPage_Fragment': PageData_CampaignPage_Fragment;'CampaignPageDataFragment': CampaignPageDataFragment } }
+    ) | (
+      { __typename?: 'ContentPage' }
+      & { ' $fragmentRefs'?: { 'PageData_ContentPage_Fragment': PageData_ContentPage_Fragment } }
+    ) | (
+      { __typename?: 'GenericMedia' }
+      & { ' $fragmentRefs'?: { 'PageData_GenericMedia_Fragment': PageData_GenericMedia_Fragment } }
+    ) | (
+      { __typename?: 'HomePage' }
+      & { ' $fragmentRefs'?: { 'PageData_HomePage_Fragment': PageData_HomePage_Fragment;'HomePageDataFragment': HomePageDataFragment } }
+    ) | (
+      { __typename?: 'ImageMedia' }
+      & { ' $fragmentRefs'?: { 'PageData_ImageMedia_Fragment': PageData_ImageMedia_Fragment } }
+    ) | (
+      { __typename?: 'NewsPage' }
+      & { ' $fragmentRefs'?: { 'PageData_NewsPage_Fragment': PageData_NewsPage_Fragment } }
+    ) | (
+      { __typename?: 'Pokemon' }
+      & { ' $fragmentRefs'?: { 'BlockData_Pokemon_Fragment': BlockData_Pokemon_Fragment;'PageData_Pokemon_Fragment': PageData_Pokemon_Fragment;'PokemonDataFragment': PokemonDataFragment } }
+    ) | (
+      { __typename?: 'SEO' }
+      & { ' $fragmentRefs'?: { 'BlockData_SEO_Fragment': BlockData_SEO_Fragment;'PageData_SEO_Fragment': PageData_SEO_Fragment } }
+    ) | (
+      { __typename?: 'SysContentFolder' }
+      & { ' $fragmentRefs'?: { 'PageData_SysContentFolder_Fragment': PageData_SysContentFolder_Fragment } }
+    ) | (
+      { __typename?: 'VideoMedia' }
+      & { ' $fragmentRefs'?: { 'PageData_VideoMedia_Fragment': PageData_VideoMedia_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialBanner' }
+      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialBanner_Fragment': BlockData_WebEssentialBanner_Fragment;'PageData_WebEssentialBanner_Fragment': PageData_WebEssentialBanner_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialCallToAction' }
+      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialCallToAction_Fragment': BlockData_WebEssentialCallToAction_Fragment;'PageData_WebEssentialCallToAction_Fragment': PageData_WebEssentialCallToAction_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialImage' }
+      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialImage_Fragment': BlockData_WebEssentialImage_Fragment;'PageData_WebEssentialImage_Fragment': PageData_WebEssentialImage_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialQuote' }
+      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialQuote_Fragment': BlockData_WebEssentialQuote_Fragment;'PageData_WebEssentialQuote_Fragment': PageData_WebEssentialQuote_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialRichText' }
+      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichText_Fragment': BlockData_WebEssentialRichText_Fragment;'PageData_WebEssentialRichText_Fragment': PageData_WebEssentialRichText_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialRichTextMedia' }
+      & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichTextMedia_Fragment': BlockData_WebEssentialRichTextMedia_Fragment;'PageData_WebEssentialRichTextMedia_Fragment': PageData_WebEssentialRichTextMedia_Fragment } }
+    ) | (
+      { __typename?: '_Component' }
+      & { ' $fragmentRefs'?: { 'BlockData__Component_Fragment': BlockData__Component_Fragment;'PageData__Component_Fragment': PageData__Component_Fragment } }
+    ) | (
+      { __typename?: '_Content' }
+      & { ' $fragmentRefs'?: { 'PageData__Content_Fragment': PageData__Content_Fragment } }
+    ) | (
+      { __typename?: '_Experience' }
+      & { ' $fragmentRefs'?: { 'PageData__Experience_Fragment': PageData__Experience_Fragment } }
+    ) | (
+      { __typename?: '_Folder' }
+      & { ' $fragmentRefs'?: { 'PageData__Folder_Fragment': PageData__Folder_Fragment } }
+    ) | (
+      { __typename?: '_Image' }
+      & { ' $fragmentRefs'?: { 'PageData__Image_Fragment': PageData__Image_Fragment } }
+    ) | (
+      { __typename?: '_Media' }
+      & { ' $fragmentRefs'?: { 'PageData__Media_Fragment': PageData__Media_Fragment } }
+    ) | (
+      { __typename?: '_Page' }
+      & { ' $fragmentRefs'?: { 'PageData__Page_Fragment': PageData__Page_Fragment } }
+    ) | (
+      { __typename?: '_Section' }
+      & { ' $fragmentRefs'?: { 'BlockData__Section_Fragment': BlockData__Section_Fragment;'PageData__Section_Fragment': PageData__Section_Fragment } }
+    ) | (
+      { __typename?: '_Video' }
+      & { ' $fragmentRefs'?: { 'PageData__Video_Fragment': PageData__Video_Fragment } }
+    ) | (
+      { __typename?: 'site_config' }
+      & { ' $fragmentRefs'?: { 'PageData_site_config_Fragment': PageData_site_config_Fragment } }
+    ) | null> | null } | null };
 
-export type PokemonDataFragment = { __typename?: 'Pokemon', Identifier?: string | null, Name?: string | null, Species?: string | null, Types?: string | null, Attack?: number | null, Height?: number | null, HP?: number | null, Speed?: number | null, Weight?: number | null, Thumbnail?: (
-    { __typename?: 'ContentReference' }
-    & { ' $fragmentRefs'?: { 'ReferenceDataFragment': ReferenceDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'PokemonDataFragment' };
+export type getContentByPathQueryVariables = Exact<{
+  path: Array<Scalars['String']['input']> | Scalars['String']['input'];
+  locale?: InputMaybe<Array<Locales> | Locales>;
+  siteId?: InputMaybe<Scalars['String']['input']>;
+}>;
 
-export type WebEssentialBannerDataFragment = { __typename?: 'WebEssentialBanner', Title?: string | null, Description?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null } & { ' $fragmentName'?: 'WebEssentialBannerDataFragment' };
 
-export type WebEssentialCallToActionDataFragment = { __typename?: 'WebEssentialCallToAction', Label?: string | null, Link?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'WebEssentialCallToActionDataFragment' };
+export type getContentByPathQuery = { __typename?: 'Query', content?: { __typename?: '_ContentOutput', total?: number | null, items?: Array<(
+      { __typename?: 'BlankExperience' }
+      & { ' $fragmentRefs'?: { 'IContentData_BlankExperience_Fragment': IContentData_BlankExperience_Fragment;'PageData_BlankExperience_Fragment': PageData_BlankExperience_Fragment;'BlankExperienceDataFragment': BlankExperienceDataFragment } }
+    ) | (
+      { __typename?: 'BlankSection' }
+      & { ' $fragmentRefs'?: { 'IContentData_BlankSection_Fragment': IContentData_BlankSection_Fragment;'PageData_BlankSection_Fragment': PageData_BlankSection_Fragment } }
+    ) | (
+      { __typename?: 'CampaignPage' }
+      & { ' $fragmentRefs'?: { 'IContentData_CampaignPage_Fragment': IContentData_CampaignPage_Fragment;'PageData_CampaignPage_Fragment': PageData_CampaignPage_Fragment;'CampaignPageDataFragment': CampaignPageDataFragment } }
+    ) | (
+      { __typename?: 'ContentPage' }
+      & { ' $fragmentRefs'?: { 'IContentData_ContentPage_Fragment': IContentData_ContentPage_Fragment;'PageData_ContentPage_Fragment': PageData_ContentPage_Fragment } }
+    ) | (
+      { __typename?: 'GenericMedia' }
+      & { ' $fragmentRefs'?: { 'IContentData_GenericMedia_Fragment': IContentData_GenericMedia_Fragment;'PageData_GenericMedia_Fragment': PageData_GenericMedia_Fragment } }
+    ) | (
+      { __typename?: 'HomePage' }
+      & { ' $fragmentRefs'?: { 'IContentData_HomePage_Fragment': IContentData_HomePage_Fragment;'PageData_HomePage_Fragment': PageData_HomePage_Fragment;'HomePageDataFragment': HomePageDataFragment } }
+    ) | (
+      { __typename?: 'ImageMedia' }
+      & { ' $fragmentRefs'?: { 'IContentData_ImageMedia_Fragment': IContentData_ImageMedia_Fragment;'PageData_ImageMedia_Fragment': PageData_ImageMedia_Fragment } }
+    ) | (
+      { __typename?: 'NewsPage' }
+      & { ' $fragmentRefs'?: { 'IContentData_NewsPage_Fragment': IContentData_NewsPage_Fragment;'PageData_NewsPage_Fragment': PageData_NewsPage_Fragment } }
+    ) | (
+      { __typename?: 'Pokemon' }
+      & { ' $fragmentRefs'?: { 'IContentData_Pokemon_Fragment': IContentData_Pokemon_Fragment;'PageData_Pokemon_Fragment': PageData_Pokemon_Fragment } }
+    ) | (
+      { __typename?: 'SEO' }
+      & { ' $fragmentRefs'?: { 'IContentData_SEO_Fragment': IContentData_SEO_Fragment;'PageData_SEO_Fragment': PageData_SEO_Fragment } }
+    ) | (
+      { __typename?: 'SysContentFolder' }
+      & { ' $fragmentRefs'?: { 'IContentData_SysContentFolder_Fragment': IContentData_SysContentFolder_Fragment;'PageData_SysContentFolder_Fragment': PageData_SysContentFolder_Fragment } }
+    ) | (
+      { __typename?: 'VideoMedia' }
+      & { ' $fragmentRefs'?: { 'IContentData_VideoMedia_Fragment': IContentData_VideoMedia_Fragment;'PageData_VideoMedia_Fragment': PageData_VideoMedia_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialBanner' }
+      & { ' $fragmentRefs'?: { 'IContentData_WebEssentialBanner_Fragment': IContentData_WebEssentialBanner_Fragment;'PageData_WebEssentialBanner_Fragment': PageData_WebEssentialBanner_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialCallToAction' }
+      & { ' $fragmentRefs'?: { 'IContentData_WebEssentialCallToAction_Fragment': IContentData_WebEssentialCallToAction_Fragment;'PageData_WebEssentialCallToAction_Fragment': PageData_WebEssentialCallToAction_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialImage' }
+      & { ' $fragmentRefs'?: { 'IContentData_WebEssentialImage_Fragment': IContentData_WebEssentialImage_Fragment;'PageData_WebEssentialImage_Fragment': PageData_WebEssentialImage_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialQuote' }
+      & { ' $fragmentRefs'?: { 'IContentData_WebEssentialQuote_Fragment': IContentData_WebEssentialQuote_Fragment;'PageData_WebEssentialQuote_Fragment': PageData_WebEssentialQuote_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialRichText' }
+      & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichText_Fragment': IContentData_WebEssentialRichText_Fragment;'PageData_WebEssentialRichText_Fragment': PageData_WebEssentialRichText_Fragment } }
+    ) | (
+      { __typename?: 'WebEssentialRichTextMedia' }
+      & { ' $fragmentRefs'?: { 'IContentData_WebEssentialRichTextMedia_Fragment': IContentData_WebEssentialRichTextMedia_Fragment;'PageData_WebEssentialRichTextMedia_Fragment': PageData_WebEssentialRichTextMedia_Fragment } }
+    ) | (
+      { __typename?: '_Component' }
+      & { ' $fragmentRefs'?: { 'IContentData__Component_Fragment': IContentData__Component_Fragment;'PageData__Component_Fragment': PageData__Component_Fragment } }
+    ) | (
+      { __typename?: '_Content' }
+      & { ' $fragmentRefs'?: { 'IContentData__Content_Fragment': IContentData__Content_Fragment;'PageData__Content_Fragment': PageData__Content_Fragment } }
+    ) | (
+      { __typename?: '_Experience' }
+      & { ' $fragmentRefs'?: { 'IContentData__Experience_Fragment': IContentData__Experience_Fragment;'PageData__Experience_Fragment': PageData__Experience_Fragment } }
+    ) | (
+      { __typename?: '_Folder' }
+      & { ' $fragmentRefs'?: { 'IContentData__Folder_Fragment': IContentData__Folder_Fragment;'PageData__Folder_Fragment': PageData__Folder_Fragment } }
+    ) | (
+      { __typename?: '_Image' }
+      & { ' $fragmentRefs'?: { 'IContentData__Image_Fragment': IContentData__Image_Fragment;'PageData__Image_Fragment': PageData__Image_Fragment } }
+    ) | (
+      { __typename?: '_Media' }
+      & { ' $fragmentRefs'?: { 'IContentData__Media_Fragment': IContentData__Media_Fragment;'PageData__Media_Fragment': PageData__Media_Fragment } }
+    ) | (
+      { __typename?: '_Page' }
+      & { ' $fragmentRefs'?: { 'IContentData__Page_Fragment': IContentData__Page_Fragment;'PageData__Page_Fragment': PageData__Page_Fragment } }
+    ) | (
+      { __typename?: '_Section' }
+      & { ' $fragmentRefs'?: { 'IContentData__Section_Fragment': IContentData__Section_Fragment;'PageData__Section_Fragment': PageData__Section_Fragment } }
+    ) | (
+      { __typename?: '_Video' }
+      & { ' $fragmentRefs'?: { 'IContentData__Video_Fragment': IContentData__Video_Fragment;'PageData__Video_Fragment': PageData__Video_Fragment } }
+    ) | (
+      { __typename?: 'site_config' }
+      & { ' $fragmentRefs'?: { 'IContentData_site_config_Fragment': IContentData_site_config_Fragment;'PageData_site_config_Fragment': PageData_site_config_Fragment } }
+    ) | null> | null } | null };
 
-export type WebEssentialImageDataFragment = { __typename?: 'WebEssentialImage', Image?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'WebEssentialImageDataFragment' };
+export type getContentTypeQueryVariables = Exact<{
+  key: Scalars['String']['input'];
+  version?: InputMaybe<Scalars['String']['input']>;
+  locale?: InputMaybe<Array<Locales> | Locales>;
+  path?: InputMaybe<Scalars['String']['input']>;
+  domain?: InputMaybe<Scalars['String']['input']>;
+}>;
 
-export type WebEssentialQuoteDataFragment = { __typename?: 'WebEssentialQuote', Author?: string | null, Text?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null, Image?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'WebEssentialQuoteDataFragment' };
 
-export type WebEssentialRichTextDataFragment = { __typename?: 'WebEssentialRichText', Content?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null } & { ' $fragmentName'?: 'WebEssentialRichTextDataFragment' };
-
-export type WebEssentialRichTextMediaDataFragment = { __typename?: 'WebEssentialRichTextMedia', Reverse?: boolean | null, Content?: { __typename?: 'RichText', json?: any | null, html?: string | null } | null, Media?: (
-    { __typename?: 'ContentUrl' }
-    & { ' $fragmentRefs'?: { 'LinkDataFragment': LinkDataFragment } }
-  ) | null } & { ' $fragmentName'?: 'WebEssentialRichTextMediaDataFragment' };
-
-export type BlankExperienceDataFragment = (
-  { __typename?: 'BlankExperience' }
-  & { ' $fragmentRefs'?: { 'ExperienceData_BlankExperience_Fragment': ExperienceData_BlankExperience_Fragment } }
-) & { ' $fragmentName'?: 'BlankExperienceDataFragment' };
-
-export type CampaignPageDataFragment = (
-  { __typename?: 'CampaignPage', Title?: string | null, Content?: Array<(
-    { __typename?: 'BlankExperience' }
-    & { ' $fragmentRefs'?: { 'BlockData_BlankExperience_Fragment': BlockData_BlankExperience_Fragment } }
-  ) | (
-    { __typename?: 'BlankSection' }
-    & { ' $fragmentRefs'?: { 'BlockData_BlankSection_Fragment': BlockData_BlankSection_Fragment } }
-  ) | (
-    { __typename?: 'CampaignPage' }
-    & { ' $fragmentRefs'?: { 'BlockData_CampaignPage_Fragment': BlockData_CampaignPage_Fragment } }
-  ) | (
-    { __typename?: 'GenericMedia' }
-    & { ' $fragmentRefs'?: { 'BlockData_GenericMedia_Fragment': BlockData_GenericMedia_Fragment } }
-  ) | (
-    { __typename?: 'HomePage' }
-    & { ' $fragmentRefs'?: { 'BlockData_HomePage_Fragment': BlockData_HomePage_Fragment } }
-  ) | (
-    { __typename?: 'ImageMedia' }
-    & { ' $fragmentRefs'?: { 'BlockData_ImageMedia_Fragment': BlockData_ImageMedia_Fragment } }
-  ) | (
-    { __typename?: 'Pokemon' }
-    & { ' $fragmentRefs'?: { 'BlockData_Pokemon_Fragment': BlockData_Pokemon_Fragment } }
-  ) | (
-    { __typename?: 'SysContentFolder' }
-    & { ' $fragmentRefs'?: { 'BlockData_SysContentFolder_Fragment': BlockData_SysContentFolder_Fragment } }
-  ) | (
-    { __typename?: 'VideoMedia' }
-    & { ' $fragmentRefs'?: { 'BlockData_VideoMedia_Fragment': BlockData_VideoMedia_Fragment } }
-  ) | (
-    { __typename?: 'WebEssentialBanner' }
-    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialBanner_Fragment': BlockData_WebEssentialBanner_Fragment } }
-  ) | (
-    { __typename?: 'WebEssentialCallToAction' }
-    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialCallToAction_Fragment': BlockData_WebEssentialCallToAction_Fragment } }
-  ) | (
-    { __typename?: 'WebEssentialImage' }
-    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialImage_Fragment': BlockData_WebEssentialImage_Fragment } }
-  ) | (
-    { __typename?: 'WebEssentialQuote' }
-    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialQuote_Fragment': BlockData_WebEssentialQuote_Fragment } }
-  ) | (
-    { __typename?: 'WebEssentialRichText' }
-    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichText_Fragment': BlockData_WebEssentialRichText_Fragment } }
-  ) | (
-    { __typename?: 'WebEssentialRichTextMedia' }
-    & { ' $fragmentRefs'?: { 'BlockData_WebEssentialRichTextMedia_Fragment': BlockData_WebEssentialRichTextMedia_Fragment } }
-  ) | (
-    { __typename?: '_Component' }
-    & { ' $fragmentRefs'?: { 'BlockData__Component_Fragment': BlockData__Component_Fragment } }
-  ) | (
-    { __typename?: '_Content' }
-    & { ' $fragmentRefs'?: { 'BlockData__Content_Fragment': BlockData__Content_Fragment } }
-  ) | (
-    { __typename?: '_Element' }
-    & { ' $fragmentRefs'?: { 'BlockData__Element_Fragment': BlockData__Element_Fragment } }
-  ) | (
-    { __typename?: '_Experience' }
-    & { ' $fragmentRefs'?: { 'BlockData__Experience_Fragment': BlockData__Experience_Fragment } }
-  ) | (
-    { __typename?: '_Folder' }
-    & { ' $fragmentRefs'?: { 'BlockData__Folder_Fragment': BlockData__Folder_Fragment } }
-  ) | (
-    { __typename?: '_Image' }
-    & { ' $fragmentRefs'?: { 'BlockData__Image_Fragment': BlockData__Image_Fragment } }
-  ) | (
-    { __typename?: '_Media' }
-    & { ' $fragmentRefs'?: { 'BlockData__Media_Fragment': BlockData__Media_Fragment } }
-  ) | (
-    { __typename?: '_Page' }
-    & { ' $fragmentRefs'?: { 'BlockData__Page_Fragment': BlockData__Page_Fragment } }
-  ) | (
-    { __typename?: '_Section' }
-    & { ' $fragmentRefs'?: { 'BlockData__Section_Fragment': BlockData__Section_Fragment } }
-  ) | (
-    { __typename?: '_Video' }
-    & { ' $fragmentRefs'?: { 'BlockData__Video_Fragment': BlockData__Video_Fragment } }
-  ) | null> | null }
-  & { ' $fragmentRefs'?: { 'ExperienceData_CampaignPage_Fragment': ExperienceData_CampaignPage_Fragment } }
-) & { ' $fragmentName'?: 'CampaignPageDataFragment' };
-
-export type HomePageDataFragment = (
-  { __typename?: 'HomePage' }
-  & { ' $fragmentRefs'?: { 'ExperienceData_HomePage_Fragment': ExperienceData_HomePage_Fragment } }
-) & { ' $fragmentName'?: 'HomePageDataFragment' };
+export type getContentTypeQuery = { __typename?: 'Query', content?: { __typename?: '_ContentOutput', total?: number | null, items?: Array<{ __typename?: 'BlankExperience', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'BlankSection', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'CampaignPage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'ContentPage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'GenericMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'HomePage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'ImageMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'NewsPage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'Pokemon', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'SEO', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'SysContentFolder', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'VideoMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialBanner', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialCallToAction', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialImage', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialQuote', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialRichText', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'WebEssentialRichTextMedia', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Component', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Content', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Experience', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Folder', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Image', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Media', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Page', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Section', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: '_Video', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | { __typename?: 'site_config', _metadata?: { __typename?: 'ContentMetadata', types?: Array<string | null> | null } | { __typename?: 'InstanceMetadata', types?: Array<string | null> | null } | { __typename?: 'ItemMetadata', types?: Array<string | null> | null } | { __typename?: 'MediaMetadata', types?: Array<string | null> | null } | null } | null> | null } | null };
 
 export const LinkDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<LinkDataFragment, unknown>;
 export const IContentInfoFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<IContentInfoFragment, unknown>;
 export const IContentDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}}]} as unknown as DocumentNode<IContentDataFragment, unknown>;
-export const IContentListItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentListItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<IContentListItemFragment, unknown>;
-export const IElementDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}}]} as unknown as DocumentNode<IElementDataFragment, unknown>;
+export const BlockDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<BlockDataFragment, unknown>;
+export const IElementDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}}]} as unknown as DocumentNode<IElementDataFragment, unknown>;
+export const ElementDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<ElementDataFragment, unknown>;
+export const ReferenceDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<ReferenceDataFragment, unknown>;
+export const PokemonDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}}]} as unknown as DocumentNode<PokemonDataFragment, unknown>;
 export const WebEssentialBannerDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}}]} as unknown as DocumentNode<WebEssentialBannerDataFragment, unknown>;
 export const WebEssentialCallToActionDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<WebEssentialCallToActionDataFragment, unknown>;
 export const WebEssentialImageDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<WebEssentialImageDataFragment, unknown>;
 export const WebEssentialQuoteDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<WebEssentialQuoteDataFragment, unknown>;
 export const WebEssentialRichTextDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}}]} as unknown as DocumentNode<WebEssentialRichTextDataFragment, unknown>;
 export const WebEssentialRichTextMediaDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<WebEssentialRichTextMediaDataFragment, unknown>;
-export const ElementDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}}]} as unknown as DocumentNode<ElementDataFragment, unknown>;
-export const CompositionDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]} as unknown as DocumentNode<CompositionDataFragment, unknown>;
-export const ExperienceDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}}]} as unknown as DocumentNode<ExperienceDataFragment, unknown>;
-export const BlankExperienceDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlankExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlankExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}}]} as unknown as DocumentNode<BlankExperienceDataFragment, unknown>;
-export const ReferenceDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}}]} as unknown as DocumentNode<ReferenceDataFragment, unknown>;
-export const PokemonDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}}]} as unknown as DocumentNode<PokemonDataFragment, unknown>;
-export const BlockDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}}]} as unknown as DocumentNode<BlockDataFragment, unknown>;
-export const CampaignPageDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CampaignPageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CampaignPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}}]}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}}]} as unknown as DocumentNode<CampaignPageDataFragment, unknown>;
-export const HomePageDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"HomePageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomePage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}}]} as unknown as DocumentNode<HomePageDataFragment, unknown>;
-export const PageDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlankExperienceData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CampaignPageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"HomePageData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlankExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlankExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CampaignPageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CampaignPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}}]}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"HomePageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomePage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}}]} as unknown as DocumentNode<PageDataFragment, unknown>;
+export const CompositionDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionComponentNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"component"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}}]} as unknown as DocumentNode<CompositionDataFragment, unknown>;
+export const ExperienceDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionComponentNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"component"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]}}]}}]} as unknown as DocumentNode<ExperienceDataFragment, unknown>;
+export const BlankExperienceDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlankExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlankExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionComponentNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"component"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}}]} as unknown as DocumentNode<BlankExperienceDataFragment, unknown>;
+export const CampaignPageDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CampaignPageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CampaignPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionComponentNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"component"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}}]} as unknown as DocumentNode<CampaignPageDataFragment, unknown>;
+export const HomePageDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"HomePageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomePage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionComponentNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"component"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}}]} as unknown as DocumentNode<HomePageDataFragment, unknown>;
+export const PageDataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<PageDataFragment, unknown>;
+export const IContentListItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentListItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<IContentListItemFragment, unknown>;
+export const PokemonsQueryAltDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PokemonsQueryAlt"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"searchQuery"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Pokemon"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_fulltext"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"match"},"value":{"kind":"Variable","name":{"kind":"Name","value":"searchQuery"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"internal"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}},{"kind":"Field","name":{"kind":"Name","value":"type"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}}]}}]}}]}}]}}]} as unknown as DocumentNode<PokemonsQueryAltQuery, PokemonsQueryAltQueryVariables>;
+export const getContentByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getContentById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"key"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"version"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Locales"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"path"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"domain"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"content"},"name":{"kind":"Name","value":"_Content"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_or"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"key"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"version"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"version"}}}]}}]}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"url"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"hierarchical"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"path"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"base"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"domain"}}}]}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"version"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"version"}}}]}}]}}]}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlankExperienceData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CampaignPageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"HomePageData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionComponentNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"component"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlankExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlankExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CampaignPageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CampaignPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"HomePageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomePage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}}]} as unknown as DocumentNode<getContentByIdQuery, getContentByIdQueryVariables>;
+export const getContentByPathDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getContentByPath"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"path"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Locales"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"siteId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"content"},"name":{"kind":"Name","value":"_Content"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"url"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"default"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"Variable","name":{"kind":"Name","value":"path"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"base"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"siteId"}}}]}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlankExperienceData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CampaignPageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"HomePageData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IComponent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionComponentNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"component"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlankExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlankExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CampaignPageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CampaignPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"HomePageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomePage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}}]} as unknown as DocumentNode<getContentByPathQuery, getContentByPathQueryVariables>;
 export const getContentTypeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getContentType"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"key"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"version"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Locales"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"path"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"domain"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"content"},"name":{"kind":"Name","value":"_Content"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_or"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"key"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"version"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"version"}}}]}}]}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"url"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"hierarchical"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"path"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"base"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"domain"}}}]}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"version"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"version"}}}]}}]}}]}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"types"}}]}}]}}]}}]}}]} as unknown as DocumentNode<getContentTypeQuery, getContentTypeQueryVariables>;
-export const getContentByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getContentById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"key"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"version"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Locales"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"path"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"domain"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"content"},"name":{"kind":"Name","value":"_Content"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_or"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"key"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"version"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"version"}}}]}}]}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"url"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"hierarchical"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"path"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"base"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"domain"}}}]}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"version"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"version"}}}]}}]}}]}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PageData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlankExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlankExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CampaignPageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CampaignPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}}]}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"HomePageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomePage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlankExperienceData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CampaignPageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"HomePageData"}}]}}]} as unknown as DocumentNode<getContentByIdQuery, getContentByIdQueryVariables>;
-export const getContentByPathDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getContentByPath"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"path"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"version"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Locales"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"domain"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"content"},"name":{"kind":"Name","value":"_Content"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_metadata"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"url"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"default"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"path"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"base"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"domain"}}}]}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"version"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"version"}}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PageData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentUrl"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IContentMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"types"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"version"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IContentData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"IElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"_type"},"name":{"kind":"Name","value":"__typename"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialBannerData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialBanner"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialCallToActionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialCallToAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialImageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialQuoteData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialQuote"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Author"}},{"kind":"Field","name":{"kind":"Name","value":"Text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichText"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"WebEssentialRichTextMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"json"}},{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Reverse"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ElementData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IElement"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IElementData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialBannerData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialCallToActionData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialImageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialQuoteData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"WebEssentialRichTextMediaData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompositionData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}},{"kind":"Field","alias":{"kind":"Name","value":"layoutType"},"name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","alias":{"kind":"Name","value":"template"},"name":{"kind":"Name","value":"displayTemplateKey"}},{"kind":"Field","alias":{"kind":"Name","value":"settings"},"name":{"kind":"Name","value":"displaySettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionStructureNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"recursive"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"depth"},"value":{"kind":"IntValue","value":"10"}}]}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"name"},"name":{"kind":"Name","value":"displayName"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ICompositionElementNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"element"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ElementData"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"composition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompositionData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlankExperienceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlankExperience"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferenceData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ContentReference"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkData"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PokemonData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pokemon"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferenceData"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Attack"}},{"kind":"Field","name":{"kind":"Name","value":"Height"}},{"kind":"Field","name":{"kind":"Name","value":"HP"}},{"kind":"Field","name":{"kind":"Name","value":"Speed"}},{"kind":"Field","name":{"kind":"Name","value":"Weight"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BlockData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"PokemonData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CampaignPageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CampaignPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlockData"}}]}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"HomePageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomePage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ExperienceData"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PageData"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"_IContent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"IContentData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"BlankExperienceData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CampaignPageData"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"HomePageData"}}]}}]} as unknown as DocumentNode<getContentByPathQuery, getContentByPathQueryVariables>;
-export const PokemonsQueryAltDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PokemonsQueryAlt"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"searchQuery"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Pokemon"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_fulltext"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"match"},"value":{"kind":"Variable","name":{"kind":"Name","value":"searchQuery"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Identifier"}},{"kind":"Field","name":{"kind":"Name","value":"Name"}},{"kind":"Field","name":{"kind":"Name","value":"Types"}},{"kind":"Field","name":{"kind":"Name","value":"Species"}},{"kind":"Field","name":{"kind":"Name","value":"Thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"base"}},{"kind":"Field","name":{"kind":"Name","value":"internal"}},{"kind":"Field","name":{"kind":"Name","value":"hierarchical"}},{"kind":"Field","name":{"kind":"Name","value":"default"}},{"kind":"Field","name":{"kind":"Name","value":"type"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"_metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}}]}},{"kind":"Field","name":{"kind":"Name","value":"_link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Price"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"parentIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"listPrice"}},{"kind":"Field","name":{"kind":"Name","value":"salePrice"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<PokemonsQueryAltQuery, PokemonsQueryAltQueryVariables>;
