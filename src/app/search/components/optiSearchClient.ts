@@ -65,8 +65,46 @@ async function queryOptiGraph(searchString: string): Promise<AlgoliaHit[]> {
         }
     `;
 
+    const DEFAULT_POKEMONS_QUERY = gql`
+        query PokemonsQueryAlt  {
+            Pokemon {
+                items{
+                    Identifier
+                    Name,
+                    Types,
+                    Species,
+                    Thumbnail {
+                        url {
+                            base
+                            internal
+                            hierarchical
+                            default
+                            type
+                        }
+                    },
+                    _metadata{
+                        key,
+                        displayName
+                    }
+                    _link {
+                        Price {
+                            items {
+                                parentIdentifier
+                                listPrice
+                                salePrice
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
     const variables = { searchQuery: searchString };
-    const response : any = await graphQLClient.request(POKEMONS_QUERY, variables);
+    const response: any = await graphQLClient.request(
+        searchString?.trim() ? POKEMONS_QUERY : DEFAULT_POKEMONS_QUERY,
+        searchString?.trim() ? variables : undefined
+    );
 
     return response.Pokemon.items.map((item: any) => {
 
