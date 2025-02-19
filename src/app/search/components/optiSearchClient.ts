@@ -51,15 +51,6 @@ async function queryOptiGraph(searchString: string): Promise<AlgoliaHit[]> {
                         key,
                         displayName
                     }
-                    _link {
-                        Price {
-                            items {
-                                parentIdentifier
-                                listPrice
-                                salePrice
-                            }
-                        }
-                    }
                 }
             }
         }
