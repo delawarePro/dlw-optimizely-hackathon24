@@ -57,7 +57,7 @@ async function queryOptiGraph(searchString: string): Promise<AlgoliaHit[]> {
     `;
 
     const DEFAULT_POKEMONS_QUERY = gql`
-        query PokemonsQueryAlt()  {
+        query PokemonsQueryAlt  {
             Pokemon {
                 items{
                     Identifier
